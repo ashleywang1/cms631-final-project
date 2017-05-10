@@ -1,0 +1,17 @@
+.background {
+    fill: #ffffff;
+}
+
+.band {
+    fill: none;
+    fill-opacity: 0;
+    stroke: #efefef;
+    stroke-opacity: 1;
+}
+
+.line {
+    fill: none;
+    stroke: #3273dc;
+    stroke-width: 2px;
+    stroke-dasharray: 2 2;
+}

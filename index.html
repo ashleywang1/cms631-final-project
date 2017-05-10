@@ -3,8 +3,12 @@
 <head>
     <title>100 Years</title>
     <link rel="stylesheet" href="css/bulma.css"/>
+    <link rel="stylesheet" href="css/nyt.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.5.0/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
     <script src="js/jquery.min.js"></script>
     <script src="js/vue.min.js"></script>
+    <script src="js/nyt.js"></script>
     <style>
         main {
             width: 100%;
@@ -37,8 +41,17 @@
                     Section 1. Section 1. Section 1. Section 1. Section 1. Section 1. Section 1. Section 1. Section 1. Section 1.
                 </p>
                 <figure class="has-text-centered vertical-padding">
-                    <img src="https://placeholdit.imgix.net/~text?txtsize=33&txt=Temperature%20vs%20Time&w=960&h=360"/>
+                    <svg id="temp"/>
                 </figure>
+                <div v-if="temperature.drew" class="vertical-padding">
+                    <div v-if="temperature.decrease" class="notification is-warning">
+                      It looks like you thought the temperature would go down. Don't feel bad, X% of people thought so too! In 
+                        reality, however, we think Y.
+                    </div>
+                    <div v-if="!temperature.decrease" class="notification is-success">
+                        Great! You are correct. I don't know what to say here so I'm just typing random things now!
+                    </div>
+                </div>
                 <p>
                     Section 2. Section 2. Section 2. Section 2. Section 2. Section 2. Section 2. Section 2. Section 2. Section 2.
                     Section 2. Section 2. Section 2. Section 2. Section 2. Section 2. Section 2. Section 2. Section 2. Section 2.
@@ -57,7 +70,7 @@
                     Section 3. Section 3. Section 3. Section 3. Section 3. Section 3. Section 3. Section 3. Section 3. Section 3.
                 </p>
                 <figure class="has-text-centered vertical-padding">
-                    <img src="https://placeholdit.imgix.net/~text?txtsize=33&txt=CO2%20vs%20Time&w=960&h=360"/>
+                    <svg id="co2"/>
                 </figure>
                 <p>
                     Section 4. Section 4. Section 4. Section 4. Section 4. Section 4. Section 4. Section 4. Section 4. Section 4. 
@@ -89,11 +102,28 @@
         </section>
     </main>
     <script>
-        var vm = new Vue({
+        const vm = new Vue({
             el: "main",
             data: {
+                temperature: {
+                    drew: false,
+                    decrease: null
+                }
+            },
+            methods: {
+                update_temp: function (path) {
+                    console.log(path)
+                    var self = this;
+                    var distance_from_top_1 = path[1][1];
+                    var distance_from_top_2 = path[_.size(path)-1][1];
+                    self.temperature.drew = true;
+                    self.temperature.decrease = distance_from_top_2 > distance_from_top_1;
+                    console.log(self.temperature.drew, self.temperature.decrease);
+                }
             }
         });
+        make_graph("#temp", vm.update_temp)
+        make_graph("#co2", console.log)
     </script>
 </body>
 </html>
