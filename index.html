@@ -175,6 +175,8 @@
                 },
                 compute_emissions: function () {
                     var self = this;
+                    console.log(self.emissions.origin);
+                    console.log(self.emissions.destination);
                     getCommute(self.emissions.origin, self.emissions.destination, function (res) {
                         self.emissions.result = res;
                     })
