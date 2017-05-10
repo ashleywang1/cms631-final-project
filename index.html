@@ -4,10 +4,12 @@
     <title>100 Years</title>
     <link rel="stylesheet" href="css/bulma.css"/>
     <link rel="stylesheet" href="css/nyt.css"/>
+    <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.5.0/d3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
     <script src="js/jquery.min.js"></script>
     <script src="js/vue.min.js"></script>
+    <script src="js/commute.js"></script>
     <script src="js/nyt.js"></script>
     <style>
         main {
@@ -48,7 +50,7 @@
                       It looks like you thought the temperature would go down. Don't feel bad, X% of people thought so too! In 
                         reality, however, we think Y.
                     </div>
-                    <div v-if="!temperature.decrease" class="notification is-success">
+                    <div v-if="!temperature.decrease" class="notification is-primary">
                         Great! You are correct. I don't know what to say here so I'm just typing random things now!
                     </div>
                 </div>
@@ -91,9 +93,57 @@
                     Section 5. Section 5. Section 5. Section 5. Section 5. Section 5. Section 5. Section 5. Section 5. Section 5.
                     Section 5. Section 5. Section 5. Section 5. Section 5. Section 5. Section 5. Section 5. Section 5. Section 5.
                 </p>
-                <figure class="has-text-centered vertical-padding">
-                    <img src="https://placeholdit.imgix.net/~text?txtsize=33&txt=Emissions%20Tracker&w=960&h=360"/>
-                </figure>
+                <div class="column is-4 is-offset-4">
+                    <div class="card">
+                      <header class="card-header">
+                        <p class="card-header-title">
+                          How much CO2 do you produce?
+                        </p>
+                        <a class="card-header-icon">
+                          <span class="icon">
+                            <i class="fa fa-question-circle"></i>
+                          </span>
+                        </a>
+                      </header>
+                      <div class="card-content">
+                        <div class="content">
+                            <div class="field">
+                              <p class="control">
+                                <input class="input" type="text" placeholder="Origin" v-model="emissions.origin"/>
+                              </p>
+                            </div>
+                            <div class="field">
+                              <p class="control">
+                                <input class="input" type="text" placeholder="Destination" v-model="emissions.destination"/>
+                              </p>
+                            </div>
+                            <div class="field">
+                                <p class="has-text-right">
+                                    <button class="button is-primary" @click="compute_emissions">Calculate</button>
+                                </p>
+                            </div>
+                        </div>
+                      </div>
+                      <footer class="card-footer has-text-centered">
+                        <a class="card-footer-item">
+                            Distance<br/>
+                            {{emissions.result.distance_in_meters}}
+                        </a>
+                        <a class="card-footer-item">
+                            Car<br/>
+                            {{emissions.result.car}}
+                        </a>
+                        <a class="card-footer-item">
+                            Bus<br/>
+                            {{emissions.result.bus}}
+                        </a>
+                        <a class="card-footer-item">
+                            Bike<br/>
+                            {{emissions.result.bike}}
+                        </a>
+                      </footer>
+                    </div>
+                </div>
                 <p>
                     Section 6. Section 6. Section 6. Section 6. Section 6. Section 6. Section 6. Section 6. Section 6. Section 6.
                     Section 6. Section 6. Section 6. Section 6. Section 6. Section 6. Section 6. Section 6. Section 6. Section 6.
@@ -108,17 +158,26 @@
                 temperature: {
                     drew: false,
                     decrease: null
+                },
+                emissions: {
+                    origin: "",
+                    destination: "",
+                    result: false
                 }
             },
             methods: {
                 update_temp: function (path) {
-                    console.log(path)
                     var self = this;
                     var distance_from_top_1 = path[1][1];
                     var distance_from_top_2 = path[_.size(path)-1][1];
                     self.temperature.drew = true;
                     self.temperature.decrease = distance_from_top_2 > distance_from_top_1;
-                    console.log(self.temperature.drew, self.temperature.decrease);
+                },
+                compute_emissions: function () {
+                    var self = this;
+                    getCommute(self.emissions.origin, self.emissions.destination, function (res) {
+                        self.emissions.result = res;
+                    })
                 }
             }
         });
