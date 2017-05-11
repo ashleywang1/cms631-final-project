@@ -9,29 +9,21 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.3/vue.min.js"></script>
-    <link rel="stylesheet" href="../css/nyt.css"/>
-    <script src="../js/nyt.js"></script>
     <style>
         main {
             position: absolute;
             top: 0; bottom: 0;
             left: 0; right: 0;
         }
-
-        #paint {
-            position: absolute;
-            right: : 0;
-        }
     </style>
 </head>
 <body>
     <main>
         <svg id="graph"/>
-        <svg id="paint"/>
     </main>
     <script>
         function makeGraph(selector) {
-            let w = window.innerWidth / 2;
+            let w = window.innerWidth;
             let h = window.innerHeight;
 
             let svg = d3.select(selector)
@@ -41,7 +33,6 @@
         }
 
         makeGraph("#graph");
-        makePaint("#paint", parent.update_co2);
     </script>
 </body>
 </html>
