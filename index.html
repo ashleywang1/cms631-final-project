@@ -10,6 +10,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.3/vue.min.js"></script>
     <script src="js/commute.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <style>
         main {
             width: 100%;
@@ -57,7 +58,7 @@
                 </div>
                 <div v-if="temperature.drew" class="vertical-padding">
                     <div v-if="temperature.decrease" class="notification is-warning">
-                      It looks like you thought the temperature would go down. Don't feel bad, X% of people thought so too! In 
+                      It looks like you thought the temperature would go down. Don't feel bad, X% of people thought so too! In
                         reality, however, we think Y.
                     </div>
                     <div v-if="!temperature.decrease" class="notification is-primary">
@@ -68,7 +69,7 @@
                     If the US and the rest of the world don’t take significant action to curb greenhouse gas emissions, scientists estimate that average global temperatures will rise by 3.6 degrees Celsius by the year 2100. In Boston, Massachusetts, that’s the difference between a chilly February day and a hot June afternoon. (This part seems super sudden – even for me, I was like whaaaat how??? 3 degrees celcius is like….not that much.)
                 </p>
                 <p>
-                    Fortunately, in 2016, the US became one of 185 nations to sign on to the historic Paris climate agreement, which aims to keep that increase in global temperatures to a far less drastic 1.5 degrees Celsius. 
+                    Fortunately, in 2016, the US became one of 185 nations to sign on to the historic Paris climate agreement, which aims to keep that increase in global temperatures to a far less drastic 1.5 degrees Celsius.
                 </p>
             </div>
         </section>
@@ -82,7 +83,7 @@
                 </figure>
                 <div v-if="co2.drew" class="vertical-padding">
                     <div v-if="co2.decrease" class="notification is-warning">
-                      It looks like you thought the co2 would go down. Don't feel bad, X% of people thought so too! In 
+                      It looks like you thought the co2 would go down. Don't feel bad, X% of people thought so too! In
                         reality, however, we think Y.
                     </div>
                     <div v-if="!co2.decrease" class="notification is-primary">
@@ -90,17 +91,17 @@
                     </div>
                 </div>
                 <p>
-                    In order for the United States to live up to its promise in the Paris agreement, it will have to cut its greenhouse gas emissions by 26 to 28 percent of 2005 levels by 2025. 
+                    In order for the United States to live up to its promise in the Paris agreement, it will have to cut its greenhouse gas emissions by 26 to 28 percent of 2005 levels by 2025.
                 </p>
                 <p>
-                    The bad news: Without an increased effort on the part of Americans to release fewer greenhouse gases, we will fail to reach that goal. Under current and soon-to-be-implemented policies alone, the US will only be able to curb its emissions by 7 to 21 percent of 2005 levels. 
+                    The bad news: Without an increased effort on the part of Americans to release fewer greenhouse gases, we will fail to reach that goal. Under current and soon-to-be-implemented policies alone, the US will only be able to curb its emissions by 7 to 21 percent of 2005 levels.
                 </p>
             </div>
         </section>
         <section class="hero is-light vertical-padding">
             <div class="container">
                 <p>
-                    Transportation is the second-largest contributor to American greenhouse gas emissions. By changing the way we commute, we can go a long way towards helping our nation hit its Paris target. 
+                    Transportation is the second-largest contributor to American greenhouse gas emissions. By changing the way we commute, we can go a long way towards helping our nation hit its Paris target.
                 </p>
                 <div class="column is-6 is-offset-3">
                     <div class="card">
@@ -143,7 +144,7 @@
                         Lucky for you, there’s a bus/train route that can get you to work.  By taking public transportation/the bus, you could cut your emissions by <b>{{emissions.result.pct_saving_if_bus}}%</b>. If just X% of Americans took the bus to work each day, it would cut US greenhouse gas emissions by X%.
                     </p>
                     <p class="vertical-padding" v-if="emissions.result.distance_in_meters < 5000">
-                        Fortunately, it looks like you work close enough to home to bike or walk there. By biking or walking, you could reduce your emissions by <b>{{emissions.result.pct_saving_if_bike}}%</b>.  If just X% of Americans walked or biked to work each day, it would cut US greenhouse gas emissions by X%. 
+                        Fortunately, it looks like you work close enough to home to bike or walk there. By biking or walking, you could reduce your emissions by <b>{{emissions.result.pct_saving_if_bike}}%</b>.  If just X% of Americans walked or biked to work each day, it would cut US greenhouse gas emissions by X%.
                     </p>
                 </div>
             </div>
