@@ -2,15 +2,14 @@
 <html>
 <head>
     <title>100 Years</title>
-    <link rel="stylesheet" href="css/bulma.css"/>
-    <link rel="stylesheet" href="css/nyt.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.1/css/bulma.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <script src="https://maps.google.com/maps/api/js?sensor=false&key=AIzaSyB9R73RQs2X2n3J8xpPKez_1hotrCwInH8"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.5.0/d3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/vue.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.3/vue.min.js"></script>
     <script src="js/commute.js"></script>
-    <script src="js/nyt.js"></script>
     <style>
         main {
             width: 100%;
@@ -19,6 +18,13 @@
         .vertical-padding {
             padding-top: 16px;
             padding-bottom: 16px;
+        }
+
+        iframe.interactive {
+            width: 900px;
+            height: 480px;
+            border: none;
+            overflow: hidden;
         }
     </style>
 </head>
@@ -39,12 +45,16 @@
         <section class="hero is-light vertical-padding">
             <div class="container">
                 <p>
-                    Section 1. Section 1. Section 1. Section 1. Section 1. Section 1. Section 1. Section 1. Section 1. Section 1.
-                    Section 1. Section 1. Section 1. Section 1. Section 1. Section 1. Section 1. Section 1. Section 1. Section 1.
+                    Our planet is warming. Over the past ___ years, average global temperatures have increased by ____. This alarming trend will have major consequences for humans, including rising sea levels and increased coastal flooding due to melting ocean ice, a dramatic increase in severe storms, long-lasting droughts, and the spread of diseases like malaria and Zika to new parts of the globe. While a few skeptics argue about the specific cause for this rise in global temperatures, 97% of scientists believe the largest contributor is the greenhouse gases like carbon dioxide and methane that we release into the atmosphere all day, every day.
                 </p>
-                <figure class="has-text-centered vertical-padding">
-                    <svg id="temp"/>
-                </figure>
+                <div class="has-text-centered vertical-padding">
+                    <p>
+                        How do you think average global temperatures will change in the future if we continue emitting greenhouse gases at our current rate?
+                    </p>
+                    <figure class="has-text-centered vertical-padding">
+                        <iframe class="interactive" src="app/temperature.html" scrolling="no"></iframe>
+                    </figure>
+                </div>
                 <div v-if="temperature.drew" class="vertical-padding">
                     <div v-if="temperature.decrease" class="notification is-warning">
                       It looks like you thought the temperature would go down. Don't feel bad, X% of people thought so too! In 
@@ -55,49 +65,48 @@
                     </div>
                 </div>
                 <p>
-                    Section 2. Section 2. Section 2. Section 2. Section 2. Section 2. Section 2. Section 2. Section 2. Section 2.
-                    Section 2. Section 2. Section 2. Section 2. Section 2. Section 2. Section 2. Section 2. Section 2. Section 2.
-                    Section 2. Section 2. Section 2. Section 2. Section 2. Section 2. Section 2. Section 2. Section 2. Section 2.
-                    Section 2. Section 2. Section 2. Section 2. Section 2. Section 2. Section 2. Section 2. Section 2. Section 2.
-                    Section 2. Section 2. Section 2. Section 2. Section 2. Section 2. Section 2. Section 2. Section 2. Section 2.
-                    Section 2. Section 2. Section 2. Section 2. Section 2. Section 2. Section 2. Section 2. Section 2. Section 2.
-                    Section 2. Section 2. Section 2. Section 2. Section 2. Section 2. Section 2. Section 2. Section 2. Section 2.
+                    If the US and the rest of the world don’t take significant action to curb greenhouse gas emissions, scientists estimate that average global temperatures will rise by 3.6 degrees Celsius by the year 2100. In Boston, Massachusetts, that’s the difference between a chilly February day and a hot June afternoon. (This part seems super sudden – even for me, I was like whaaaat how??? 3 degrees celcius is like….not that much.)
+                </p>
+                <p>
+                    Fortunately, in 2016, the US became one of 185 nations to sign on to the historic Paris climate agreement, which aims to keep that increase in global temperatures to a far less drastic 1.5 degrees Celsius. 
                 </p>
             </div>
         </section>
         <section class="hero is-dark vertical-padding">
             <div class="container">
                 <p>
-                    Section 3. Section 3. Section 3. Section 3. Section 3. Section 3. Section 3. Section 3. Section 3. Section 3.
-                    Section 3. Section 3. Section 3. Section 3. Section 3. Section 3. Section 3. Section 3. Section 3. Section 3.
+                    The graph below shows how much greenhouse gases the US emitted in 2005. How much do you think we would have to cut those emissions to meet our commitments under the Paris agreement? (I really like this!!!!!)
                 </p>
                 <figure class="has-text-centered vertical-padding">
-                    <svg id="co2"/>
+                    <iframe class="interactive" src="app/co2.html" scrolling="no"></iframe>
                 </figure>
+                <div v-if="co2.drew" class="vertical-padding">
+                    <div v-if="co2.decrease" class="notification is-warning">
+                      It looks like you thought the co2 would go down. Don't feel bad, X% of people thought so too! In 
+                        reality, however, we think Y.
+                    </div>
+                    <div v-if="!co2.decrease" class="notification is-primary">
+                        Great! You are correct. I don't know what to say here so I'm just typing random things now!
+                    </div>
+                </div>
                 <p>
-                    Section 4. Section 4. Section 4. Section 4. Section 4. Section 4. Section 4. Section 4. Section 4. Section 4. 
-                    Section 4. Section 4. Section 4. Section 4. Section 4. Section 4. Section 4. Section 4. Section 4. Section 4. 
-                    Section 4. Section 4. Section 4. Section 4. Section 4. Section 4. Section 4. Section 4. Section 4. Section 4. 
-                    Section 4. Section 4. Section 4. Section 4. Section 4. Section 4. Section 4. Section 4. Section 4. Section 4. 
-                    Section 4. Section 4. Section 4. Section 4. Section 4. Section 4. Section 4. Section 4. Section 4. Section 4. 
-                    Section 4. Section 4. Section 4. Section 4. Section 4. Section 4. Section 4. Section 4. Section 4. Section 4. 
-                    Section 4. Section 4. Section 4. Section 4. Section 4. Section 4. Section 4. Section 4. Section 4. Section 4. 
-                    Section 4. Section 4. Section 4. Section 4. Section 4. Section 4. Section 4. Section 4. Section 4. Section 4. 
-                    Section 4. Section 4. Section 4. Section 4. Section 4. Section 4. Section 4. Section 4. Section 4. Section 4. 
+                    In order for the United States to live up to its promise in the Paris agreement, it will have to cut its greenhouse gas emissions by 26 to 28 percent of 2005 levels by 2025. 
+                </p>
+                <p>
+                    The bad news: Without an increased effort on the part of Americans to release fewer greenhouse gases, we will fail to reach that goal. Under current and soon-to-be-implemented policies alone, the US will only be able to curb its emissions by 7 to 21 percent of 2005 levels. 
                 </p>
             </div>
         </section>
         <section class="hero is-light vertical-padding">
             <div class="container">
                 <p>
-                    Section 5. Section 5. Section 5. Section 5. Section 5. Section 5. Section 5. Section 5. Section 5. Section 5.
-                    Section 5. Section 5. Section 5. Section 5. Section 5. Section 5. Section 5. Section 5. Section 5. Section 5.
+                    Transportation is the second-largest contributor to American greenhouse gas emissions. By changing the way we commute, we can go a long way towards helping our nation hit its Paris target. 
                 </p>
                 <div class="column is-4 is-offset-4">
                     <div class="card">
                       <header class="card-header">
                         <p class="card-header-title">
-                          How much CO2 do you produce?
+                          How much CO2 does your commute produce?
                         </p>
                         <a class="card-header-icon">
                           <span class="icon">
@@ -124,33 +133,48 @@
                             </div>
                         </div>
                       </div>
-                      <footer class="card-footer has-text-centered">
-                        <p class="card-footer-item">
-                            Distance<br/>
-                            {{emissions.result.distance_in_meters}}
-                        </p>
-                        <p class="card-footer-item">
-                            Car<br/>
-                            {{emissions.result.car}}
-                        </p>
-                        <p class="card-footer-item">
-                            Bus<br/>
-                            {{emissions.result.bus}}
-                        </p>
-                        <p class="card-footer-item">
-                            Bike<br/>
-                            {{emissions.result.bike}}
-                        </p>
-                      </footer>
                     </div>
                 </div>
-                <p>
-                    Section 6. Section 6. Section 6. Section 6. Section 6. Section 6. Section 6. Section 6. Section 6. Section 6.
-                    Section 6. Section 6. Section 6. Section 6. Section 6. Section 6. Section 6. Section 6. Section 6. Section 6.
-                </p>
+                <div v-if="emissions.result">
+                    <p class="vertical-padding">
+                        Your {{emissions.result.distance_in_meters/1000}} meter drive to (and from?) work emits <strong>{{emissions.result.car}}</strong> of carbon dioxide. Over the course of a year, that adds up to <strong>{{emissions.result.car_yearly}}</strong>.
+                    </p>
+                    <p class="vertical-padding">
+                        Lucky for you, there’s a bus/train route that can get you to work.  By taking public transportation/the bus, you could cut your emissions by <b>{{emissions.result.pct_saving_if_bus}}%</b>. If just X% of Americans took the bus to work each day, it would cut US greenhouse gas emissions by X%.
+                    </p>
+                    <p class="vertical-padding" v-if="emissions.result.distance_in_meters < 5000">
+                        Fortunately, it looks like you work close enough to home to bike or walk there. By biking or walking, you could reduce your emissions by <b>{{emissions.result.pct_saving_if_bike}}%</b>.  If just X% of Americans walked or biked to work each day, it would cut US greenhouse gas emissions by X%. 
+                    </p>
+                </div>
+            </div>
+        </section>
+        <section class="hero is-primary is-medium">
+            <div class="hero-body">
+                <div class="container has-text-centered">
+                    <h1 class="title">
+                        It’s as easy as changing the way you get to work.
+                    </h1>
+                    <h2 class="subtitle">
+                        For more information, go to: ????
+                    </h2>
+                </div>
             </div>
         </section>
     </main>
+    <footer class="footer">
+        <div class="container is-dark">
+            <div class="content has-text-centered">
+                <p>
+                    <strong>100 Years</strong> by Ashley, Brandon, <a href="http://www.kevz.me">Kevin</a>, Nikki, and Nina.
+                </p>
+                <p>
+                    <a class="icon" href="https://github.com/k15z/cms631-final-project">
+                        <i class="fa fa-github"></i>
+                    </a>
+                </p>
+            </div>
+        </div>
+    </footer>
     <script>
         const vm = new Vue({
             el: "main",
@@ -159,9 +183,13 @@
                     drew: false,
                     decrease: null
                 },
+                co2: {
+                    drew: false,
+                    decrease: null
+                },
                 emissions: {
                     origin: "",
-                    destination: "",
+                    destination: "77 Massachusetts Ave, Cambridge, MA 02139",
                     result: false
                 }
             },
@@ -173,6 +201,13 @@
                     self.temperature.drew = true;
                     self.temperature.decrease = distance_from_top_2 > distance_from_top_1;
                 },
+                update_co2: function (path) {
+                    var self = this;
+                    var distance_from_top_1 = path[1][1];
+                    var distance_from_top_2 = path[_.size(path)-1][1];
+                    self.co2.drew = true;
+                    self.co2.decrease = distance_from_top_2 > distance_from_top_1;
+                },
                 compute_emissions: function () {
                     var self = this;
                     console.log(self.emissions.origin);
@@ -183,8 +218,8 @@
                 }
             }
         });
-        make_graph("#temp", vm.update_temp)
-        make_graph("#co2", console.log)
+        update_temp = vm.update_temp;
+        update_co2 = vm.update_co2;
     </script>
 </body>
 </html>
