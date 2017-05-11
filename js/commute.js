@@ -6,6 +6,9 @@ function getCommute(origin, destination, callback) {
         travelMode: 'TRANSIT',
     }, function (res, status) {
         var has_transit = res.rows[0].elements[0].status != "ZERO_RESULTS";
+        if (has_transit) {
+            var transit_distance = res.rows[0].elements[0].distance.value;
+        }
         service.getDistanceMatrix({
             origins: [origin],
             destinations: [destination],
@@ -18,9 +21,10 @@ function getCommute(origin, destination, callback) {
                 "car_yearly": Math.floor(distance_in_meters*0.230577999*42*5) + " grams",
                 "bus": Math.floor(distance_in_meters*0.18582970789)  + " grams", // 299 g/pass-mi
                 "bike": Math.floor(distance_in_meters*0.021) + " grams", //21 g/km,
-                "pct_saving_if_bus": Math.floor(100*(371-299)/371),
+                "pct_saving_if_bus": Math.floor(100*(distance_in_meters*0.230577999-transit_distance*0.18582970789)/(distance_in_meters*0.230577999)),
                 "pct_saving_if_bike": Math.floor(100*(371-21)/371),
-                "has_transit": has_transit
+                "has_transit": has_transit,
+                "transit_distance": transit_distance
             })
         });
     })
