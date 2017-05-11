@@ -130,12 +130,20 @@
                             <div class="field">
                                 <p class="has-text-right">
                                     <button class="button is-primary" @click="compute_emissions">Calculate</button>
+
                                 </p>
                             </div>
+
                         </div>
                       </div>
                     </div>
+                    <br>
+                <button class="button is-primary" @click="compute_emissions">Walking</button>
+                <button class="button is-primary" @click="compute_emissions">Biking</button>
+                <button class="button is-primary" @click="compute_emissions">Bus</button>
+                <button class="button is-primary" @click="compute_emissions">Car</button>
                 </div>
+
                 <div v-if="emissions.result">
                     <p class="vertical-padding">
                         Your {{emissions.result.distance_in_meters/1000}} km drive to (and from?) work emits <strong>{{emissions.result.car}}</strong> of carbon dioxide. Over the course of a year, that adds up to <strong>{{emissions.result.car_yearly}}</strong>.
