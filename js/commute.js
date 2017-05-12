@@ -6,6 +6,19 @@ function getCommute(origin, destination, callback) {
         travelMode: 'TRANSIT',
     }, function (res, status) {
         var has_transit = res.rows[0].elements[0].status != "ZERO_RESULTS";
+        var bus_distance_in_meters = 0;
+        if (has_transit) {
+            bus_distance_in_meters = res.rows[0].elements[0].distance.value;
+        }
+        // Save biking results
+        var biking_distance_in_meters;
+        service.getDistanceMatrix({
+            origins: [origin],
+            destinations: [destination],
+            travelMode: 'BICYCLING',
+        }, function (res, status) {
+            biking_distance_in_meters = res.rows[0].elements[0].distance.value;
+        });
         service.getDistanceMatrix({
             origins: [origin],
             destinations: [destination],
@@ -16,8 +29,8 @@ function getCommute(origin, destination, callback) {
                 "distance_in_meters": distance_in_meters,
                 "car": Math.floor(distance_in_meters*0.230577999) + " grams", // 371 g/pass-mi
                 "car_yearly": Math.floor(distance_in_meters*0.230577999*42*5) + " grams",
-                "bus": Math.floor(distance_in_meters*0.18582970789)  + " grams", // 299 g/pass-mi
-                "bike": Math.floor(distance_in_meters*0.021) + " grams", //21 g/km,
+                "bus": Math.floor(bus_distance_in_meters*0.18582970789)  + " grams", // 299 g/pass-mi
+                "bike": Math.floor(biking_distance_in_meters*0.021) + " grams", //21 g/km,
                 "pct_saving_if_bus": Math.floor(100*(371-299)/371),
                 "pct_saving_if_bike": Math.floor(100*(371-21)/371),
                 "has_transit": has_transit

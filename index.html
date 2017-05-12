@@ -27,6 +27,15 @@
             border: none;
             overflow: hidden;
         }
+
+        .butto/*n.active {
+            background: cyan;
+            /*color: gray;*/
+        }*/
+
+        #map {
+            height: 100px;
+        }
     </style>
 </head>
 <body>
@@ -101,7 +110,14 @@
         <section class="hero is-light vertical-padding">
             <div class="container">
                 <p>
-                    Transportation is the second-largest contributor to American greenhouse gas emissions. By changing the way we commute, we can go a long way towards helping our nation hit its Paris target.
+                    Here is the interactive that shows the leading causes of greenhouse gas emissions (industry, transportation/commute, etc). Mess around with the bubble sizes to see what we need to do in order to reach the goals set by the Paris agreement
+                </p>
+            </div>
+        </section>
+        <section class="hero is-light vertical-padding">
+            <div class="container">
+                <p>
+                    As we can see in the secon above, transportation is the second-largest contributor to American greenhouse gas emissions. By changing the way we commute, we can go a long way towards helping our nation hit its Paris target.
                 </p>
                 <div class="column is-6 is-offset-3">
                     <div class="card">
@@ -115,8 +131,19 @@
                           </span>
                         </a>
                       </header>
+                      <div class="card-content" id="ask_transportation_mode">
+                        <div class="content">
+                            <p> How do you get to work? </p>
+                            <div class="block" align="center">
+                              <a class="button is-active" @click="set_transportation_mode" data="DRIVING"><i class="fa fa-car" aria-hidden="true"></i></a>
+                              <a class="button is-active" @click="set_transportation_mode" data="BUS"><i class="fa fa-bus" aria-hidden="true"></i></a>
+                              <a class="button is-active" @click="set_transportation_mode" data="BIKE"><i class="fa fa-bicycle" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                      </div>
                       <div class="card-content">
                         <div class="content">
+                            <p> What is your route? </p>
                             <div class="field">
                               <p class="control">
                                 <input class="input" type="text" placeholder="Origin" v-model="emissions.origin"/>
@@ -132,6 +159,7 @@
                                     <button class="button is-primary" @click="compute_emissions">Calculate</button>
                                 </p>
                             </div>
+                            <div id="map"></div>
                         </div>
                       </div>
                     </div>
@@ -192,6 +220,9 @@
                     origin: "",
                     destination: "77 Massachusetts Ave, Cambridge, MA 02139",
                     result: false
+                },
+                transportation: {
+                    mode: "DRIVING"
                 }
             },
             methods: {
@@ -216,11 +247,29 @@
                     getCommute(self.emissions.origin, self.emissions.destination, function (res) {
                         self.emissions.result = res;
                     })
+                    var map = new google.maps.Map(document.getElementById('map'), {
+                        center: {lat: -34.397, lng: 150.644},
+                        zoom: 8
+                    });
+                },
+                set_transportation_mode: function(mode) {
+                    var self = this;
+                    console.log(this);
+                    // var self.transportation.mode = mode;
+                    console.log(self.transportation.mode);
                 }
             }
         });
         update_temp = vm.update_temp;
         update_co2 = vm.update_co2;
+
+        // $('.button').click(function(){
+        //     if($(this).hasClass('active')){
+        //         $(this).removeClass('active')
+        //     } else {
+        //         $(this).addClass('active')
+        //     }
+        // });
     </script>
 </body>
 </html>
