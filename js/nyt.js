@@ -42,12 +42,12 @@ function makePaint(selector, callback) {
                     position = Math.round(d3.event.offsetX/(w/bars));
                     pathdata[position] = [position*w/bars,d3.mouse(this)[1]];
                     path.datum(_.values(pathdata)).attr("d",line);
-                    if (callback) callback(pathdata)
                 })
                 .on("mouseup",()=>{
                     background
                         .on("mousemove",null)
                         .on("mouseup",null);
+                    if (callback) callback(pathdata)
                 });
         });
 }

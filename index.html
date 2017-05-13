@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>100 Years</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.1/css/bulma.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <script src="https://maps.google.com/maps/api/js?sensor=false&key=AIzaSyB9R73RQs2X2n3J8xpPKez_1hotrCwInH8"></script>
@@ -10,7 +11,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.3/vue.min.js"></script>
     <script src="js/commute.js"></script>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script src="js/logger.js"></script>
     <style>
         main {
             width: 100%;
@@ -289,6 +290,7 @@
         </div>
     </footer>
     <script>
+        Logger.log({"event": "page_load"});
         const vm = new Vue({
             el: "main",
             data: {
@@ -314,6 +316,7 @@
                     var self = this;
                     self.temperature.drew = true;
                     self.temperature.status = status;
+                    Logger.log({"event": "temperature", status});
                 },
                 update_co2: function (path) {
                     var self = this;
