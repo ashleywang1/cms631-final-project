@@ -41,7 +41,25 @@
         }
 
         makeGraph("#graph");
-        makePaint("#paint", parent.update_temp);
+        makePaint("#paint", function (path) {
+            var distance_from_top_1 = path[1][1];
+            var distance_from_top_2 = path[_.size(path)-1][1];
+
+            if (distance_from_top_2 < distance_from_top_1 - 100)
+                parent.update_temp("overestimate");
+            else if (distance_from_top_2 < distance_from_top_1)
+                parent.update_temp("underestimate");
+            else
+                parent.update_temp("wrong");
+
+            // @Nina: Here are the valid update values:
+            // parent.update_temp("right");
+            // parent.update_temp("wrong");
+            // parent.update_temp("overestimate");
+            // parent.update_temp("underestimate");
+            // parent.update_temp("slight_overestimate");
+            // parent.update_temp("slight_underestimate");
+        });
     </script>
 </body>
 </html>
