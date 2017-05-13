@@ -7,31 +7,31 @@ var maxrad = 400;
 var maxsize = maxrad;
 var xmax = maxsize-150;
 
-var xagg = xmax + maxrad - 50;
+var xagg = xmax + maxrad;
 var yagg = 40;
 var aggper = .09;
 var radagg = aggper*maxrad;
 var aggsize = aggper*maxsize;
 
-var xcomm = xmax + maxrad - 50;
+var xcomm = xagg;
 var ycomm = yagg + 60;
 var commper = .12;
 var radcomm = commper*maxrad;
 var commsize = commper*maxsize;
 
-var xind = xmax + maxrad - 50;
+var xind = xagg;
 var yind = ycomm + 85;
 var indper = .21;
 var radind = indper*maxrad;
 var indsize = indper*maxsize;
 
-var xtrans = xmax + maxrad - 50;
+var xtrans = xagg;
 var ytrans = yind + 120;
 var transper = .27;
 var radtrans = transper*maxrad;
 var transsize = transper*maxsize;
 
-var xelec = xmax + maxrad - 50;
+var xelec =  xagg;
 var yelec = ytrans+ 135;
 var elecper = .29;
 var radelec = elecper*maxrad;
@@ -49,7 +49,14 @@ function draw() {
   noFill();
 
   noStroke();
-
+  textSize(15);
+  textAlign(LEFT);
+  fill(255);
+  text("Electricity", xelec - elecsize - 40, yelec);
+  text("Agriculture", xelec - elecsize - 40, yagg);
+  text("Transportation", xelec - elecsize - 40, ytrans);
+  text("Industry", xelec - elecsize - 40, yind);
+  text("Commericial\nResidential", xelec - elecsize - 40, ycomm);
   fill(255, 56, 96);
   ellipse(xelec, yelec, radelec, radelec);
   fill(255, 61, 75);
@@ -94,12 +101,12 @@ function draw() {
   }
 }
 else{
-  background(54);
+  // background(54);
   fill(255);
   textSize(20);
   noStroke();
   textAlign(CENTER);
-  text("GOOD JOB!!!", width/2, height/2);
+  text("GOOD JOB!!!", width/2, height-50);
 }
 }
 
