@@ -39,22 +39,14 @@ var elecsize = elecper*maxsize;
 
 function draw() {
   background(54);
-//  background(200);
   noStroke();
-
-  // fill(150, 255, 255, 50);
-  // ellipse(xmax, height/2, maxsize*.8, maxsize*.8);
-
   fill(255, 38, 38, 100);
   ellipse(xmax, height/2, maxrad, maxrad);
 
   fill(150, 255, 255, 100);
-  ellipse(xmax, height/2, maxsize*.8, maxsize*.8);
+  ellipse(xmax, height/2, maxsize*.74, maxsize*.74);
 
   noFill();
-  // stroke(150, 255, 255);
-  // strokeWeight(3);
-  // ellipse(xmax, height/2, maxsize*.8, maxsize*.8);
 
   noStroke();
 
@@ -72,32 +64,43 @@ function draw() {
 
   fill(200, 100, 200);
 
+  if(maxrad > maxsize*.74){
   if (mouseIsPressed){
+
     if(mouseX < xtrans + radtrans/2 && mouseX > xtrans - radtrans/2 && mouseY < ytrans + radtrans/2 && mouseY > ytrans - radtrans/2){
-      radtrans -=.5;
-      maxrad -= (.5/transsize)*maxsize;
+      radtrans -=.01*transsize;
+      maxrad -= .01*transper*maxsize;
   }
     if(mouseX < xcomm + radcomm/2 && mouseX > xcomm - radcomm/2 && mouseY < ycomm + radcomm/2 && mouseY > ycomm - radcomm/2){
-      radcomm -=.5;
-      maxrad -= (.5/commsize)*maxsize;
+      radcomm -=.01*commsize;
+      maxrad -= .01*commper*maxsize;
     }
 
     if(mouseX < xelec + radelec/2 && mouseX > xelec- radelec/2 && mouseY < yelec + radelec/2 && mouseY > yelec - radelec/2){
-      radelec -=.5;
-      maxrad -= (.5*(elecsize/maxsize))*elecper;
+      radelec -=.01*elecsize;
+      maxrad -= .01*elecper*maxsize;
     }
 
     if(mouseX < xagg + radagg/2 && mouseX > xagg - radagg/2 && mouseY < yagg + radagg/2 && mouseY > yagg - radagg/2){
-      radagg -=.5;
-      maxrad -= (.5*(aggsize/maxsize))*aggper;
+      radagg -=.01*aggsize;
+      maxrad -= .01*aggper*maxsize;
     }
 
     if(mouseX < xind + radind/2 && mouseX > xind - radind/2 && mouseY < yind + radind/2 && mouseY > yind - radind/2){
-      radind -=.5;
-      maxrad -= (.5*(indsize/maxsize))*indper;
+      radind -=.01*indsize;
+      maxrad -= .01*indper*maxsize;
     }
 
   }
+}
+else{
+  background(54);
+  fill(255);
+  textSize(20);
+  noStroke();
+  textAlign(CENTER);
+  text("GOOD JOB!!!", width/2, height/2);
+}
 }
 
 
