@@ -17,8 +17,11 @@
                     <th>Event</th>
                     <th>URL</th>
                     <th>IP</th>
+                    <th>Platform</th>
                     <th>City</th>
                     <th>Zip Code</th>
+                    <th>Country</th>
+                    <th>Event Data</th>
                 </tr>
             </thead>
             <tr v-for="el in json">
@@ -26,8 +29,11 @@
                 <td>{{el.data.event}}</td>
                 <td>{{el.context.location.href}}</td>
                 <td>{{el.context.ip_info.ip}}</td>
+                <td>{{el.context.navigator.platform}}</td>
                 <td>{{el.context.ip_info.city}}</td>
+                <td>{{el.context.ip_info.country_name}}</td>
                 <td>{{el.context.ip_info.zip_code}}</td>
+                <td>{{el.data}}</td>
             </tr>
         </table>
     </main>
