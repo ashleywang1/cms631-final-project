@@ -9,6 +9,7 @@ function getCommute(origin, destination, callback) {
         var bus_distance_in_meters = 0;
         if (has_transit) {
             bus_distance_in_meters = res.rows[0].elements[0].distance.value;
+            transit_distancevar = bus_distance_in_meters;
         }
         // Save biking results
         var biking_distance_in_meters;
@@ -31,9 +32,10 @@ function getCommute(origin, destination, callback) {
                 "car_yearly": Math.floor(distance_in_meters*0.230577999*42*5) + " grams",
                 "bus": Math.floor(bus_distance_in_meters*0.18582970789)  + " grams", // 299 g/pass-mi
                 "bike": Math.floor(biking_distance_in_meters*0.021) + " grams", //21 g/km,
-                "pct_saving_if_bus": Math.floor(100*(371-299)/371),
+                "pct_saving_if_bus": Math.floor(100*(distance_in_meters*0.230577999-transit_distance*0.18582970789)/(distance_in_meters*0.230577999)),
                 "pct_saving_if_bike": Math.floor(100*(371-21)/371),
-                "has_transit": has_transit
+                "has_transit": has_transit,
+                "transit_distance": transit_distance
             })
         });
     })
