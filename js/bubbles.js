@@ -41,17 +41,33 @@ function draw() {
   background(54);
   noStroke();
 
-  fill(255, 0, 0, 150);
+  // fill(150, 255, 255, 50);
+  // ellipse(xmax, height/2, maxsize*.8, maxsize*.8);
+
+  fill(255, 38, 38, 100);
   ellipse(xmax, height/2, maxrad, maxrad);
-  fill(0, 255, 20, 150);
+
+  fill(150, 255, 255, 100);
   ellipse(xmax, height/2, maxsize*.8, maxsize*.8);
 
-  fill(150, 255, 255);
-  ellipse(xtrans, ytrans, radtrans, radtrans);
-  ellipse(xcomm, ycomm, radcomm, radcomm);
+  noFill();
+  // stroke(150, 255, 255);
+  // strokeWeight(3);
+  // ellipse(xmax, height/2, maxsize*.8, maxsize*.8);
+
+  noStroke();
+
+  fill(255, 56, 96);
   ellipse(xelec, yelec, radelec, radelec);
-  ellipse(xagg, yagg, radagg, radagg);
+  fill(255, 61, 75);
+  ellipse(xtrans, ytrans, radtrans, radtrans);
+  fill(255, 69, 59);
   ellipse(xind, yind, radind, radind);
+  fill(255,83,67);
+  ellipse(xcomm, ycomm, radcomm, radcomm);
+  fill(255,82,79);
+  ellipse(xagg, yagg, radagg, radagg);
+
 
   fill(200, 100, 200);
 
