@@ -7,7 +7,7 @@ var maxrad = 400;
 var maxsize = maxrad;
 var xmax = maxsize-150;
 
-var xagg = xmax + maxrad;
+var xagg = xmax + maxrad + 70;
 var yagg = 40;
 var aggper = .09;
 var radagg = aggper*maxrad;
@@ -48,8 +48,10 @@ function draw() {
 
   noFill();
 
+  push();
+  translate(-30, 0);
   noStroke();
-  textSize(15);
+  textSize(18);
   textAlign(LEFT);
   fill(255);
   text("Electricity", xelec - elecsize - 40, yelec);
@@ -57,6 +59,17 @@ function draw() {
   text("Transportation", xelec - elecsize - 40, ytrans);
   text("Industry", xelec - elecsize - 40, yind);
   text("Commericial\nResidential", xelec - elecsize - 40, ycomm);
+  pop();
+
+  fill(255);
+  textSize(20);
+  text(int(radelec*100/maxrad) + "%",xelec + 90, yelec);
+  text(int(radtrans*100/maxrad) + "%",xelec + 90, ytrans);
+  text(int(radind*100/maxrad) + "%",xelec + 90, yind);
+  text(int(radcomm*100/maxrad) + "%",xelec + 90, ycomm);
+  text(int(radagg*100/maxrad) + "%",xelec + 90, yagg);
+
+
   fill(255, 56, 96);
   ellipse(xelec, yelec, radelec, radelec);
   fill(255, 61, 75);
@@ -68,6 +81,20 @@ function draw() {
   fill(255,82,79);
   ellipse(xagg, yagg, radagg, radagg);
 
+
+noFill();
+  stroke(255, 56, 96);
+  ellipse(xelec, yelec, elecsize, elecsize);
+  stroke(255, 61, 75);
+  ellipse(xtrans, ytrans, transsize, transsize);
+  stroke(255, 69, 59);
+  ellipse(xind, yind, indsize, indsize);
+  stroke(255,83,67);
+  ellipse(xcomm, ycomm, commsize, commsize);
+  stroke(255,82,79);
+  ellipse(xagg, yagg, aggsize, aggsize);
+
+noStroke();
 
   fill(200, 100, 200);
 
@@ -101,16 +128,34 @@ function draw() {
   }
 }
 else{
-  // background(54);
+  background(54);
   fill(255);
   textSize(20);
   noStroke();
-  textAlign(CENTER);
-  text("GOOD JOB!!!", width/2, height-50);
+  textAlign(CENTER, CENTER);
+  text("Good job, you got the US to the Paris agreement number!", width/2, 100);
+  fill(255,82,79);
+  rectMode(CENTER);
+  rect(width/2, height/2, 120, 50, 20, 20, 20, 20);
+  fill(255);
+  text("RESET", width/2, height/2);
 }
 }
 
 
-function thing(rad){
-  rad-=2;
+function mousePressed(){
+  if(mouseX < width/2+100 && mouseX > width/2 - 100 && mouseY < height/2+100 && mouseY > height/2 -100){
+    maxrad = maxsize;
+    indsize = maxsize*indper;
+    radind = indsize;
+    aggsize = maxsize*aggper;
+    radagg = aggsize;
+    commsize = maxsize*commper;
+    radcomm = commsize;
+    transize = maxsize*transper;
+    radtrans = transize;
+    elecsize = maxsize*elecper;
+    radelec = elecsize;
+  }
+
 }
