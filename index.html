@@ -46,15 +46,15 @@
         <section class="hero is-light vertical-padding">
             <div class="container">
                 <p>
-                    Our planet is warming. Over the past 130 years, average global temperatures have 
-                    increased by 1.2 degrees Celsius, or about 2 degrees Farenheit. While a few skeptics 
-                    argue about the specific cause for this rise in global temperatures, 97% of climate 
-                    scientists believe the largest contributor is the greenhouse gases like carbon 
+                    Our planet is warming. Over the past 130 years, average global temperatures have
+                    increased by 1.2 degrees Celsius, or about 2 degrees Farenheit. While a few skeptics
+                    argue about the specific cause for this rise in global temperatures, 97% of climate
+                    scientists believe the largest contributor is the greenhouse gases like carbon
                     dioxide and methane that we release into the atmosphere all day, every day.
                 </p>
                 <div class="has-text-centered vertical-padding">
                     <p>
-                        How do you think average global temperatures will change in the future if we 
+                        How do you think average global temperatures will change in the future if we
                         continue emitting greenhouse gases at our current rate?
                     </p>
                     <figure class="has-text-centered vertical-padding">
@@ -72,68 +72,68 @@
                 </div>
                 <div v-if="temperature.drew" class="vertical-padding">
                     <div v-if="temperature.status == 'right'" class="notification is-primary">
-                        Wow, you’re spot-on! Only X% of our users’ predictions align precisely with those 
-                        of scientists, who estimate that average global temperatures will rise by 3.6 degrees 
-                        Celsius by the year 2100, or roughly 6.5 degrees Fahrenheit, if the US and the rest 
-                        of the world don’t take significant action to curb greenhouse gas emissions. That’s 
-                        the difference between a warm spring day in the mid-60’s and a toastier summer day 
-                        in the low 70’s. 
+                        Wow, you’re spot-on! Only X% of our users’ predictions align precisely with those
+                        of scientists, who estimate that average global temperatures will rise by 3.6 degrees
+                        Celsius by the year 2100, or roughly 6.5 degrees Fahrenheit, if the US and the rest
+                        of the world don’t take significant action to curb greenhouse gas emissions. That’s
+                        the difference between a warm spring day in the mid-60’s and a toastier summer day
+                        in the low 70’s.
                     </div>
                     <div v-if="temperature.status == 'wrong'" class="notification is-warning">
-                        It looks like you thought global temperatures will go down in the future. However, 
-                        scientists actually predict that if the US and the rest of the world don’t take 
-                        significant action to curb greenhouse gas emissions, average global temperatures 
-                        will rise by 3.6 degrees Celsius by the year 2100, or roughly 6.5 degrees 
-                        Fahrenheit. That’s the difference between a pleasant spring day in the mid-60’s 
+                        It looks like you thought global temperatures will go down in the future. However,
+                        scientists actually predict that if the US and the rest of the world don’t take
+                        significant action to curb greenhouse gas emissions, average global temperatures
+                        will rise by 3.6 degrees Celsius by the year 2100, or roughly 6.5 degrees
+                        Fahrenheit. That’s the difference between a pleasant spring day in the mid-60’s
                         and a toastier summer day in the low 70’s.
                     </div>
                     <div v-if="temperature.status == 'underestimate'" class="notification is-warning">
-                        It looks like you thought global temperatures will go up in the future. You’re 
-                        absolutely right, but like X% of our users, you underestimated how much temperatures 
-                        will increase. Scientists actually predict that if the US and the rest of the world 
-                        don’t take significant action to curb greenhouse gas emissions, average global 
-                        temperatures will rise by 3.6 degrees Celsius by the year 2100, or roughly 6.5 degrees 
-                        Fahrenheit. That’s the difference between a pleasant spring day in the mid-60’s and 
+                        It looks like you thought global temperatures will go up in the future. You’re
+                        absolutely right, but like X% of our users, you underestimated how much temperatures
+                        will increase. Scientists actually predict that if the US and the rest of the world
+                        don’t take significant action to curb greenhouse gas emissions, average global
+                        temperatures will rise by 3.6 degrees Celsius by the year 2100, or roughly 6.5 degrees
+                        Fahrenheit. That’s the difference between a pleasant spring day in the mid-60’s and
                         a toastier summer day in the low 70’s.
                     </div>
                     <div v-if="temperature.status == 'overestimate'" class="notification is-primary">
-                        It looks like you thought global temperatures will go up in the future. You’re 
-                        absolutely right, but like X% of our users, you overestimated how much temperatures will 
-                        increase. Scientists actually predict that if the US and the rest of the world don’t take 
-                        significant action to curb greenhouse gas emissions, average global temperatures will 
-                        rise by 3.6 degrees Celsius by the year 2100, or roughly 6.5 degrees Fahrenheit. That’s 
-                        the difference between a pleasant spring day in the mid-60’s and a toastier summer day 
+                        It looks like you thought global temperatures will go up in the future. You’re
+                        absolutely right, but like X% of our users, you overestimated how much temperatures will
+                        increase. Scientists actually predict that if the US and the rest of the world don’t take
+                        significant action to curb greenhouse gas emissions, average global temperatures will
+                        rise by 3.6 degrees Celsius by the year 2100, or roughly 6.5 degrees Fahrenheit. That’s
+                        the difference between a pleasant spring day in the mid-60’s and a toastier summer day
                         in the low 70’s.
                     </div>
                     <div v-if="temperature.status == 'slight_underestimate'" class="notification is-warning">
-                        It looks like you thought global temperatures will go up in the future. You’re absolutely 
-                        right, but like X% of our users, you underestimated how much temperatures will increase. 
-                        You were really close though! Scientists actually predict that if the US and the rest of 
-                        the world don’t take significant action to curb greenhouse gas emissions, average global 
-                        temperatures will rise by 3.6 degrees Celsius by the year 2100, or roughly 6.5 degrees 
-                        Fahrenheit. That’s the difference between a pleasant spring day in the mid-60’s and a 
+                        It looks like you thought global temperatures will go up in the future. You’re absolutely
+                        right, but like X% of our users, you underestimated how much temperatures will increase.
+                        You were really close though! Scientists actually predict that if the US and the rest of
+                        the world don’t take significant action to curb greenhouse gas emissions, average global
+                        temperatures will rise by 3.6 degrees Celsius by the year 2100, or roughly 6.5 degrees
+                        Fahrenheit. That’s the difference between a pleasant spring day in the mid-60’s and a
                         toastier summer day in the low 70’s.
                     </div>
                     <div v-if="temperature.status == 'slight_overestimate'" class="notification is-primary">
-                        It looks like you thought global temperatures will go up in the future. You’re absolutely 
-                        right, but like X% of our users, you overestimated how much temperatures will increase. 
-                        You were really close though! Scientists actually predict that if the US and the rest of 
-                        the world don’t take significant action to curb greenhouse gas emissions, average global 
-                        temperatures will rise by 3.6 degrees Celsius by the year 2100, or roughly 6.5 degrees 
-                        Fahrenheit. That’s the difference between a pleasant spring day in the mid-60’s and a 
+                        It looks like you thought global temperatures will go up in the future. You’re absolutely
+                        right, but like X% of our users, you overestimated how much temperatures will increase.
+                        You were really close though! Scientists actually predict that if the US and the rest of
+                        the world don’t take significant action to curb greenhouse gas emissions, average global
+                        temperatures will rise by 3.6 degrees Celsius by the year 2100, or roughly 6.5 degrees
+                        Fahrenheit. That’s the difference between a pleasant spring day in the mid-60’s and a
                         toastier summer day in the low 70’s.
                     </div>
                 </div>
                 <p>
-                    This may not seem like a big difference, but 3.6 degrees Celsius of warming would have devastating 
-                    impacts, including rising sea levels and increased coastal flooding due to melting ocean ice, a 
-                    dramatic increase in severe storms, long-lasting droughts, and the spread of diseases like malaria 
+                    This may not seem like a big difference, but 3.6 degrees Celsius of warming would have devastating
+                    impacts, including rising sea levels and increased coastal flooding due to melting ocean ice, a
+                    dramatic increase in severe storms, long-lasting droughts, and the spread of diseases like malaria
                     and Zika to new parts of the globe.
                 </p>
                 <br/>
                 <p>
-                    Fortunately, in 2016, the US became one of 185 nations to sign on to the historic Paris climate 
-                    agreement, which aims to keep that increase in global temperatures to a far less drastic 1.5 degrees 
+                    Fortunately, in 2016, the US became one of 185 nations to sign on to the historic Paris climate
+                    agreement, which aims to keep that increase in global temperatures to a far less drastic 1.5 degrees
                     Celsius, or just over 2.5 degrees Farenheit.
                 </p>
             </div>
@@ -141,10 +141,10 @@
         <section class="hero is-dark vertical-padding">
             <div class="container">
                 <p>
-                    The graph below shows how much greenhouse gases the US emitted in 2005. How much do you think we would have to cut those emissions to meet our commitments under the Paris agreement? (I really like this!!!!!)
+                    The graph below shows how much greenhouse gases the US emitted in 2005. How much do you think we would have to cut those emissions to meet our commitments under the Paris agreement?
                 </p>
                 <figure class="has-text-centered vertical-padding">
-                    <iframe class="interactive" src="app/co2.html" scrolling="no"></iframe>
+                    <iframe class="interactive" src="js/bubbles.html" scrolling="no"></iframe>
                 </figure>
                 <div v-if="co2.drew" class="vertical-padding">
                     <div v-if="co2.decrease" class="notification is-warning">

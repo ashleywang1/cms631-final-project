@@ -38,7 +38,8 @@ var radelec = elecper*maxrad;
 var elecsize = elecper*maxsize;
 
 function draw() {
-  background(230);
+  background(54);
+  noStroke();
 
   fill(255, 0, 0, 150);
   ellipse(xmax, height/2, maxrad, maxrad);
