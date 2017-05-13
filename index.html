@@ -33,8 +33,13 @@
             /*color: gray;*/
         }*/
 
+        /*.mapContainer {
+            padding-top: 300px;
+            padding-bottom: 300px;
+        }*/
+
         #map {
-            height: 100px;
+            height: 100%;
         }
     </style>
 </head>
@@ -159,12 +164,12 @@
                                     <button class="button is-primary" @click="compute_emissions">Calculate</button>
                                 </p>
                             </div>
-                            <div id="map"></div>
                         </div>
                       </div>
                     </div>
                 </div>
                 <div v-if="emissions.result">
+                    <iframe class="interactive" src="app/map.html" scrolling="no"></iframe>
                     <p class="vertical-padding">
                         Your {{emissions.result.distance_in_meters/1000}} km drive to (and from?) work emits <strong>{{emissions.result.car}}</strong> of carbon dioxide. Over the course of a year, that adds up to <strong>{{emissions.result.car_yearly}}</strong>.
                     </p>
@@ -217,7 +222,7 @@
                     decrease: null
                 },
                 emissions: {
-                    origin: "",
+                    origin: "9 watson street, cambridge, MA, 02139",
                     destination: "77 Massachusetts Ave, Cambridge, MA 02139",
                     result: false
                 },
@@ -247,10 +252,6 @@
                     getCommute(self.emissions.origin, self.emissions.destination, function (res) {
                         self.emissions.result = res;
                     })
-                    var map = new google.maps.Map(document.getElementById('map'), {
-                        center: {lat: -34.397, lng: 150.644},
-                        zoom: 8
-                    });
                 },
                 set_transportation_mode: function(mode) {
                     var self = this;
@@ -262,6 +263,13 @@
         });
         update_temp = vm.update_temp;
         update_co2 = vm.update_co2;
+        var map;
+        // function initMap() {
+        // map = new google.maps.Map(document.getElementById('map'), {
+        //   center: {lat: -34.397, lng: 150.644},
+        //   zoom: 8
+        // });
+        // }
 
         // $('.button').click(function(){
         //     if($(this).hasClass('active')){
