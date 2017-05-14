@@ -9,7 +9,7 @@ function getCommute(origin, destination, callback) {
         var bus_distance_in_meters = 0;
         if (has_transit) {
             bus_distance_in_meters = res.rows[0].elements[0].distance.value;
-            transit_distancevar = bus_distance_in_meters;
+            transit_distance = bus_distance_in_meters;
         }
         // Save biking results
         var biking_distance_in_meters;
