@@ -63,11 +63,16 @@ function draw() {
 
   fill(255);
   textSize(20);
-  text(int(radelec*100/maxrad) + "%",xelec + 90, yelec);
-  text(int(radtrans*100/maxrad) + "%",xelec + 90, ytrans);
-  text(int(radind*100/maxrad) + "%",xelec + 90, yind);
-  text(int(radcomm*100/maxrad) + "%",xelec + 90, ycomm);
-  text(int(radagg*100/maxrad) + "%",xelec + 90, yagg);
+  // text(int(radelec*100/maxrad) + "%",xelec + 90, yelec);
+  // text(int(radtrans*100/maxrad) + "%",xelec + 90, ytrans);
+  // text(int(radind*100/maxrad) + "%",xelec + 90, yind);
+  // text(int(radcomm*100/maxrad) + "%",xelec + 90, ycomm);
+  // text(int(radagg*100/maxrad) + "%",xelec + 90, yagg);
+  text(int(radelec*100/elecsize) + "%",xelec + 90, yelec);
+  text(int(radtrans*100/transsize) + "%",xelec + 90, ytrans);
+  text(int(radind*100/indsize) + "%",xelec + 90, yind);
+  text(int(radcomm*100/commsize) + "%",xelec + 90, ycomm);
+  text(int(radagg*100/aggsize) + "%",xelec + 90, yagg);
 
 
   fill(255, 56, 96);
@@ -82,7 +87,7 @@ function draw() {
   ellipse(xagg, yagg, radagg, radagg);
 
 
-noFill();
+  noFill();
   stroke(255, 56, 96);
   ellipse(xelec, yelec, elecsize, elecsize);
   stroke(255, 61, 75);
@@ -94,11 +99,10 @@ noFill();
   stroke(255,82,79);
   ellipse(xagg, yagg, aggsize, aggsize);
 
-noStroke();
+  noStroke();
 
   fill(200, 100, 200);
 
-  if(maxrad > maxsize*.74){
   if (mouseIsPressed){
 
     if(mouseX < xtrans + radtrans/2 && mouseX > xtrans - radtrans/2 && mouseY < ytrans + radtrans/2 && mouseY > ytrans - radtrans/2){
@@ -126,25 +130,27 @@ noStroke();
     }
 
   }
-}
-else{
-  background(54);
-  fill(255);
+
+if(maxrad < maxsize*.74){
+  // background(54);
+  fill(150, 255, 255, 150);
   textSize(20);
   noStroke();
-  textAlign(CENTER, CENTER);
-  text("Good job, you got the US to the Paris agreement number!", width/2, 100);
-  fill(255,82,79);
-  rectMode(CENTER);
-  rect(width/2, height/2, 120, 50, 20, 20, 20, 20);
-  fill(255);
-  text("RESET", width/2, height/2);
+  push();
+  // textAlign(CENTER, CENTER);
+  text("Good job, you got the US to the\nParis agreement number!", 20, height-50);
+  pop();
 }
+fill(255,82,79, 150);
+rectMode(CENTER);
+rect(70, 40, 120, 50, 20, 20, 20, 20);
+fill(255);
+text("RESET", 35, 45);
 }
 
 
 function mousePressed(){
-  if(mouseX < width/2+100 && mouseX > width/2 - 100 && mouseY < height/2+100 && mouseY > height/2 -100){
+  if(mouseX < 120 && mouseX > 0 && mouseY < 100 && mouseY > 0){
     maxrad = maxsize;
     indsize = maxsize*indper;
     radind = indsize;
@@ -156,6 +162,7 @@ function mousePressed(){
     radtrans = transize;
     elecsize = maxsize*elecper;
     radelec = elecsize;
+    console.log("HI");
   }
 
 }
