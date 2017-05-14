@@ -29,18 +29,20 @@
             overflow: none;
         }
 
-        .butto/*n.active {
-            background: cyan;
-            /*color: gray;*/
-        }*/
-
-        /*.mapContainer {
-            padding-top: 300px;
-            padding-bottom: 300px;
-        }*/
-
         #map {
             height: 100%;
+        }
+
+        input[type="radio"] {
+            visibility:hidden;
+        }
+        .mode {
+            cursor: pointer;
+        }
+        input[type="radio"]:checked + .mode {
+            border-color: #4a4a4a;
+            box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.2);
+            color: #363636;
         }
     </style>
 </head>
@@ -181,14 +183,7 @@
         <section class="hero is-light vertical-padding">
             <div class="container">
                 <p>
-                    Here is the interactive that shows the leading causes of greenhouse gas emissions (industry, transportation/commute, etc). Mess around with the bubble sizes to see what we need to do in order to reach the goals set by the Paris agreement
-                </p>
-            </div>
-        </section>
-        <section class="hero is-light vertical-padding">
-            <div class="container">
-                <p>
-                    As we can see in the secon above, transportation is the second-largest contributor to American greenhouse gas emissions. By changing the way we commute, we can go a long way towards helping our nation hit its Paris target.
+                    As we can see in the secon above, transportation is the second-largest contributor to American greenhouse gas emissions. By changing the way we commute, we can go a long way towards helping our nation hit its Paris target. Let's take a look at <strong>your</strong> commuting habits!
                 </p>
                 <div class="column is-6 is-offset-3">
                     <div class="card">
@@ -202,16 +197,6 @@
                           </span>
                         </a>
                       </header>
-                      <div class="card-content" id="ask_transportation_mode">
-                        <div class="content">
-                            <p> How do you get to work? </p>
-                            <div class="block" align="center">
-                              <a class="button is-active" @click="set_transportation_mode" data="DRIVING"><i class="fa fa-car" aria-hidden="true"></i></a>
-                              <a class="button is-active" @click="set_transportation_mode" data="BUS"><i class="fa fa-bus" aria-hidden="true"></i></a>
-                              <a class="button is-active" @click="set_transportation_mode" data="BIKE"><i class="fa fa-bicycle" aria-hidden="true"></i></a>
-                            </div>
-                        </div>
-                      </div>
                       <div class="card-content">
                         <div class="content">
                             <p> What is your route? </p>
@@ -225,24 +210,41 @@
                                 <input class="input" type="text" placeholder="Destination" v-model="emissions.destination"/>
                               </p>
                             </div>
+                            <p> What mode of transportation do you use? </p>
+                            <div class="block" align="center">
+                              <input type="radio" id="car" value="CAR" v-model="emissions.travel_mode"></input>
+                              <label class="button mode" for="car"><i class="fa fa-car" aria-hidden="true"></i></label>
+                              <input type="radio" id="bus" value="BUS" v-model="emissions.travel_mode"></input>
+                              <label class="button mode" for="bus"><i class="fa fa-bus" aria-hidden="true"></i></label>
+                              <input type="radio" id="bike" value="BIKE" v-model="emissions.travel_mode"></input>
+                              <label class="button mode" for="bike"><i class="fa fa-bicycle" aria-hidden="true"></i></label>
+                            </div>
                             <div class="field">
                                 <p class="has-text-right">
-                                    <button class="button is-primary" @click="compute_emissions">Calculate</button>
-
+                                    <button id="calculate_emissions" class="button is-primary" @click="compute_emissions">Calculate</button>
                                 </p>
                             </div>
-
                         </div>
                       </div>
                     </div>
                     <br>
-
                 </div>
 
                 <div v-if="emissions.result">
-                    <iframe class="interactive" src="app/map.html" scrolling="no"></iframe>
-                    <p class="vertical-padding">
-                        Your {{emissions.result.distance_in_meters/1000}} km drive to (and from?) work emits <strong>{{emissions.result.car}}</strong> of carbon dioxide. Over the course of a year, that adds up to <strong>{{emissions.result.car_yearly}}</strong>.
+                    <p class="vertical-padding" v-if="emissions.travel_mode == 'CAR'">
+                        Your {{emissions.result.distance_in_meters/1000}} km drive to (and from?) work emits <strong>{{emissions.result.car}} grams</strong> of carbon dioxide. Over the course of a year, that adds up to <strong>{{emissions.result.car_yearly}} grams</strong>.
+                        
+                    </p>
+                    <p class="vertical-padding" v-if="emissions.travel_mode == 'BUS'">
+                        Your {{emissions.result.transit_distance/1000}} km route to (and from?) work emits <strong>{{emissions.result.bus}} grams</strong> of carbon dioxide. Over the course of a year, that adds up to <strong>{{emissions.result.bus_yearly}} grams</strong>.
+                        
+                    </p>
+                    <p class="vertical-padding" v-if="emissions.travel_mode == 'BIKE'">
+                        Your {{emissions.result.bike_distance_in_meters/1000}} km bike to (and from?) work emits <strong>{{emissions.result.bike}} grams</strong> of carbon dioxide. Over the course of a year, that adds up to <strong>{{emissions.result.bike_yearly}} grams</strong>.
+                        
+                    </p>
+                    <p class="vertical-padding" v-if="emissions.result.car > 30000">
+                        Your commute seems to be far more than an hour long! You are creating more than 30,000 grams of carbon per commute. That's about the size of a Dalmatian! I'm so sorry for you :( , and we can't create a graphic in that case because your carbon footprint is too big.
                     </p>
                     <p class="vertical-padding" v-if="emissions.result.has_transit && emissions.result.pct_saving_if_bus > 0">
                         Lucky for you, there’s a bus/train route that can get you to work.  By taking public transportation/the bus, you could cut your emissions by <b>{{emissions.result.pct_saving_if_bus}}%</b>. If just X% of Americans took the bus to work each day, it would cut US greenhouse gas emissions by X%.
@@ -254,7 +256,7 @@
                         Fortunately, it looks like you work close enough to home to bike or walk there. By biking or walking, you could reduce your emissions by <b>{{emissions.result.pct_saving_if_bike}}%</b>.  If just X% of Americans walked or biked to work each day, it would cut US greenhouse gas emissions by X%.
                     </p>
                     <p class="vertical-padding" v-if="!emissions.result.has_transit && !emissions.result.distance_in_meters < 5000">
-                        It looks like you can't walk or take the bus. Go carpool or something.
+                        Unfortunately, it looks pretty unfeasible for you to walk, bike, or take the bus to work. Go carpool or something.
                     </p>
                 </div>
             </div>
@@ -300,12 +302,10 @@
                     decrease: null
                 },
                 emissions: {
-                    origin: "9 watson street, cambridge, MA, 02139",
-                    destination: "77 Massachusetts Ave, Cambridge, MA 02139",
+                    origin: "",
+                    destination: "",
+                    travel_mode: "",
                     result: false
-                },
-                transportation: {
-                    mode: "DRIVING"
                 }
             },
             methods: {
@@ -324,37 +324,26 @@
                 },
                 compute_emissions: function () {
                     var self = this;
+                    if (self.emissions.origin == "" || self.emissions.destination == "") {
+                        alert("Please fill in your route details!");
+                        return;
+                    }
+                    if (self.emissions.travel_mode == "") {
+                        alert("Please choose a transporation mode!");
+                        return;
+                    }
+                    
                     console.log(self.emissions.origin);
                     console.log(self.emissions.destination);
                     getCommute(self.emissions.origin, self.emissions.destination, function (res) {
                         self.emissions.result = res;
                     })
-                },
-                set_transportation_mode: function(mode) {
-                    var self = this;
-                    console.log(this);
-                    // var self.transportation.mode = mode;
-                    console.log(self.transportation.mode);
                 }
             }
         });
         update_temp = vm.update_temp;
         update_co2 = vm.update_co2;
-        var map;
-        // function initMap() {
-        // map = new google.maps.Map(document.getElementById('map'), {
-        //   center: {lat: -34.397, lng: 150.644},
-        //   zoom: 8
-        // });
-        // }
 
-        // $('.button').click(function(){
-        //     if($(this).hasClass('active')){
-        //         $(this).removeClass('active')
-        //     } else {
-        //         $(this).addClass('active')
-        //     }
-        // });
     </script>
 </body>
 </html>

@@ -6,10 +6,9 @@ function getCommute(origin, destination, callback) {
         travelMode: 'TRANSIT',
     }, function (res, status) {
         var has_transit = res.rows[0].elements[0].status != "ZERO_RESULTS";
-        var bus_distance_in_meters = 0;
+        var transit_distance = 0;
         if (has_transit) {
-            bus_distance_in_meters = res.rows[0].elements[0].distance.value;
-            transit_distance = bus_distance_in_meters;
+            transit_distance = res.rows[0].elements[0].distance.value;
         }
         // Save biking results
         var biking_distance_in_meters;
@@ -19,24 +18,31 @@ function getCommute(origin, destination, callback) {
             travelMode: 'BICYCLING',
         }, function (res, status) {
             biking_distance_in_meters = res.rows[0].elements[0].distance.value;
-        });
-        service.getDistanceMatrix({
-            origins: [origin],
-            destinations: [destination],
-            travelMode: 'DRIVING',
-        }, function (res, status) {
-            var distance_in_meters = res.rows[0].elements[0].distance.value;
-            callback({
-                "distance_in_meters": distance_in_meters,
-                "car": Math.floor(distance_in_meters*0.230577999) + " grams", // 371 g/pass-mi
-                "car_yearly": Math.floor(distance_in_meters*0.230577999*42*5) + " grams",
-                "bus": Math.floor(bus_distance_in_meters*0.18582970789)  + " grams", // 299 g/pass-mi
-                "bike": Math.floor(biking_distance_in_meters*0.021) + " grams", //21 g/km,
-                "pct_saving_if_bus": Math.floor(100*(distance_in_meters*0.230577999-transit_distance*0.18582970789)/(distance_in_meters*0.230577999)),
-                "pct_saving_if_bike": Math.floor(100*(371-21)/371),
-                "has_transit": has_transit,
-                "transit_distance": transit_distance
-            })
+            service.getDistanceMatrix({
+                origins: [origin],
+                destinations: [destination],
+                travelMode: 'DRIVING',
+            }, function (res, status) {
+                var distance_in_meters = res.rows[0].elements[0].distance.value;
+                var car = distance_in_meters*0.230577999;  // 371 g/pass-mi
+                var bus = transit_distance*0.18582970789;  // 299 g/pass-mi
+                var bike = biking_distance_in_meters*0.021;  //21 g/km,
+                var YEARLY_MULTIPLIER = 42*5;
+                callback({
+                    "distance_in_meters": distance_in_meters,
+                    "bike_distance_in_meters": biking_distance_in_meters,
+                    "car": Math.floor(car),
+                    "car_yearly": Math.floor(car*YEARLY_MULTIPLIER),
+                    "bus": Math.floor(bus),
+                    "bus_yearly": Math.floor(bus*YEARLY_MULTIPLIER),
+                    "bike": Math.floor(bike),
+                    "bike_yearly": Math.floor(bike*YEARLY_MULTIPLIER),
+                    "pct_saving_if_bus": Math.floor(100*(car - bus)/(car)),
+                    "pct_saving_if_bike": Math.floor(100*(car - bike)/car),
+                    "has_transit": has_transit,
+                    "transit_distance": transit_distance
+                })
+            });
         });
     })
 };
