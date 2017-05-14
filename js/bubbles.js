@@ -77,6 +77,8 @@ function draw() {
 
   fill(255, 56, 96);
   ellipse(xelec, yelec, radelec, radelec);
+  triangle(xelec + 110,  yelec - 40, xelec + 100, yelec - 30, xelec + 120, yelec - 30);
+  triangle(xelec + 110,  yelec + 25, xelec + 100, yelec + 15, xelec + 120, yelec + 15);
   fill(255, 61, 75);
   ellipse(xtrans, ytrans, radtrans, radtrans);
   fill(255, 69, 59);
@@ -90,6 +92,7 @@ function draw() {
   noFill();
   stroke(255, 56, 96);
   ellipse(xelec, yelec, elecsize, elecsize);
+  //triangle(xelec, yelec + elecsize + 5, yelec + elecsize + 5);
   stroke(255, 61, 75);
   ellipse(xtrans, ytrans, transsize, transsize);
   stroke(255, 69, 59);
@@ -114,10 +117,25 @@ function draw() {
       maxrad -= .01*commper*maxsize;
     }
 
-    if(mouseX < xelec + radelec/2 && mouseX > xelec- radelec/2 && mouseY < yelec + radelec/2 && mouseY > yelec - radelec/2){
+    // if(mouseX < xelec + radelec/2 && mouseX > xelec- radelec/2 && mouseY < yelec + radelec/2 && mouseY > yelec - radelec/2){
+    //   radelec -=.01*elecsize;
+    //   maxrad -= .01*elecper*maxsize;
+    // }
+
+    if(mouseX < xelec + 120 && mouseX > xelec + 100 && mouseY < yelec - 30 && mouseY > yelec - 40){
+            if(radelec < elecsize){
+      radelec +=.01*elecsize;
+      maxrad  += .01*elecper*maxsize;
+    }
+    }
+
+    if(mouseX < xelec + 120 && mouseX > xelec + 100 && mouseY < yelec + 25 && mouseY > yelec + 15){
+      if(radelec > 0){
       radelec -=.01*elecsize;
       maxrad -= .01*elecper*maxsize;
     }
+    }
+
 
     if(mouseX < xagg + radagg/2 && mouseX > xagg - radagg/2 && mouseY < yagg + radagg/2 && mouseY > yagg - radagg/2){
       radagg -=.01*aggsize;
@@ -141,11 +159,12 @@ if(maxrad < maxsize*.74){
   text("Good job, you got the US to the\nParis agreement number!", 20, height-50);
   pop();
 }
-fill(255,82,79, 150);
+
+fill(150, 255, 255, 150);
 rectMode(CENTER);
 rect(70, 40, 120, 50, 20, 20, 20, 20);
 fill(255);
-text("RESET", 35, 45);
+text("RESET", 35, 48);
 }
 
 
