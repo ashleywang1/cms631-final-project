@@ -47,7 +47,8 @@ function draw() {
 
   noFill();
   strokeWeight(3);
-  stroke(150, 255, 255, 150);
+  // stroke(150, 255, 255, 150);
+  stroke(0, 209, 178);
   ellipse(xmax, height/2, maxsize*.74, maxsize*.74);
 
   noStroke();
@@ -83,46 +84,63 @@ function draw() {
 
 
 
-  fill(255,82,79);
-//  fill(255, 56, 96);
+  // fill(255,82,79);
+  fill(255, 56, 97);
+  // fill(255, 38, 38, 100)
+  // fill(255, 56, 57);
   ellipse(xelec, yelec, radelec, radelec);
   triangle(xelec + 110,  yelec - 30, xelec + 100, yelec - 20, xelec + 120, yelec - 20);
   triangle(xelec + 110,  yelec + 25, xelec + 100, yelec + 15, xelec + 120, yelec + 15);
 
   //fill(255, 61, 75);
-  fill(255,83,67);
+  // fill(255,83,67);
+  // fill(255, 56, 67);
+  // fill(255, 38, 38, 100)
+  fill(255, 56, 97);
   ellipse(xtrans, ytrans, radtrans, radtrans);
   triangle(xtrans + 110,  ytrans - 30, xtrans + 100, ytrans - 20, xtrans + 120, ytrans - 20);
   triangle(xtrans + 110,  ytrans + 25, xtrans + 100, ytrans + 15, xtrans + 120, ytrans + 15);
 
-  fill(255, 69, 59);
+  // fill(255, 69, 59);
+  // fill(255, 56, 77);
+  // fill(255, 38, 38, 100)
+  fill(255, 56, 97);
   ellipse(xind, yind, radind, radind);
   triangle(xind + 110,  yind - 30, xind + 100, yind - 20, xind + 120, yind - 20);
   triangle(xind + 110,  yind + 25, xind + 100, yind + 15, xind + 120, yind + 15);
 
 //  fill(255,83,67);
-  fill(255, 61, 75);
+  // fill(255, 56, 87);
+  // fill(255, 38, 38, 100)
+  fill(255, 56, 97);
   ellipse(xcomm, ycomm, radcomm, radcomm);
   triangle(xcomm + 110,  ycomm - 30, xcomm + 100, ycomm - 20, xcomm + 120, ycomm - 20);
   triangle(xcomm + 110,  ycomm + 25, xcomm + 100, ycomm + 15, xcomm + 120, ycomm + 15);
 
   //fill(255,82,79);
-  fill(255, 56, 96);
+  fill(255, 56, 97);
+  // fill(255, 38, 38, 100)
+  // fill(255, 56, 97);
   ellipse(xagg, yagg, radagg, radagg);
   triangle(xagg + 110,  yagg - 30, xagg+ 100, yagg - 20, xagg + 120, yagg - 20);
   triangle(xagg + 110,  yagg + 25, xagg + 100, yagg + 15, xagg + 120, yagg + 15);
 
 
   noFill();
-  stroke(255, 56, 96);
+  stroke(255, 0, 57);
+  // stroke(255, 56, 97);
   ellipse(xelec, yelec, elecsize, elecsize);
-  stroke(255, 61, 75);
+  stroke(255, 0, 67);
+  // stroke(255, 56, 97);
   ellipse(xtrans, ytrans, transsize, transsize);
-  stroke(255, 69, 59);
+  stroke(255, 0, 77);
+  // stroke(255, 56, 97);
   ellipse(xind, yind, indsize, indsize);
-  stroke(255,83,67);
+  stroke(255,0,87);
+  // stroke(255, 56, 97);
   ellipse(xcomm, ycomm, commsize, commsize);
-  stroke(255,82,79);
+  stroke(255,0,0);
+  // stroke(255, 56, 97);
   ellipse(xagg, yagg, aggsize, aggsize);
 
   noStroke();
@@ -234,7 +252,8 @@ function draw() {
   }
 
 if(maxrad < maxsize*.74){
-  fill(150, 255, 255, 150);
+  // fill(150, 255, 255, 150);
+  fill(0, 209, 178);
   textSize(20);
   noStroke();
   push();
@@ -242,7 +261,8 @@ if(maxrad < maxsize*.74){
   pop();
 }
 
-fill(150, 255, 255, 150);
+// fill(150, 255, 255, 150);
+fill(0, 209, 178);
 rectMode(CENTER);
 rect(70, 40, 120, 50, 20, 20, 20, 20);
 fill(255);
