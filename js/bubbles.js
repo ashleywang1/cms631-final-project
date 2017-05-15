@@ -1,6 +1,6 @@
 function setup() {
   createCanvas(900, 600);
-  cursor(HAND);
+
 }
 
 var shrinking = false;
@@ -119,6 +119,14 @@ function draw() {
   noStroke();
 
   fill(200, 100, 200);
+
+  if(mouseX > xagg){
+    cursor(HAND);
+  }
+  else{
+    cursor(ARROW);
+  }
+
 
   if (mouseIsPressed){
 
