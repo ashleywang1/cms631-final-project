@@ -13,6 +13,9 @@
     <script src="js/commute.js"></script>
     <script src="js/logger.js"></script>
     <style>
+
+  
+
         main {
             width: 100%;
         }
@@ -231,33 +234,37 @@
                 </div>
 
                 <div v-if="emissions.result">
+                  <center><img src="img/footprint.png" style="width:304px;height:228px;"></center>
+                  <center><img src="img/FootprintUser.png" style="width:304px;height:228px;"></center>
                     <p class="vertical-padding" v-if="emissions.travel_mode == 'CAR'">
                         Your {{emissions.result.distance_in_meters/1000}} km drive to (and from?) work emits <strong>{{emissions.result.car}} grams</strong> of carbon dioxide. Over the course of a year, that adds up to <strong>{{emissions.result.car_yearly}} grams</strong>.
-
                     </p>
                     <p class="vertical-padding" v-if="emissions.travel_mode == 'BUS'">
                         Your {{emissions.result.transit_distance/1000}} km route to (and from?) work emits <strong>{{emissions.result.bus}} grams</strong> of carbon dioxide. Over the course of a year, that adds up to <strong>{{emissions.result.bus_yearly}} grams</strong>.
-
                     </p>
+
                     <p class="vertical-padding" v-if="emissions.travel_mode == 'BIKE'">
                         Your {{emissions.result.bike_distance_in_meters/1000}} km bike to (and from?) work emits <strong>{{emissions.result.bike}} grams</strong> of carbon dioxide. Over the course of a year, that adds up to <strong>{{emissions.result.bike_yearly}} grams</strong>.
-
                     </p>
+
                     <p class="vertical-padding" v-if="emissions.result.car > 30000">
                         Your commute seems to be far more than an hour long! You are creating more than 30,000 grams of carbon per commute. That's about the size of a Dalmatian! I'm so sorry for you :( , and we can't create a graphic in that case because your carbon footprint is too big.
                     </p>
                     <p class="vertical-padding" v-if="emissions.result.has_transit && emissions.result.pct_saving_if_bus > 0">
                         Lucky for you, there’s a bus/train route that can get you to work.  By taking public transportation/the bus, you could cut your emissions by <b>{{emissions.result.pct_saving_if_bus}}%</b>. If just X% of Americans took the bus to work each day, it would cut US greenhouse gas emissions by X%.
                     </p>
+
                     <p class="vertical-padding" v-if="emissions.result.has_transit && emissions.result.pct_saving_if_bus < 0">
                         It looks like it actually produces more. However, it's going to go on the route anyways so...
                     </p>
+
                     <p class="vertical-padding" v-if="emissions.result.distance_in_meters < 5000">
                         Fortunately, it looks like you work close enough to home to bike or walk there. By biking or walking, you could reduce your emissions by <b>{{emissions.result.pct_saving_if_bike}}%</b>.  If just X% of Americans walked or biked to work each day, it would cut US greenhouse gas emissions by X%.
-                    </p>
+                       </p>
                     <p class="vertical-padding" v-if="!emissions.result.has_transit && !emissions.result.distance_in_meters < 5000">
                         Unfortunately, it looks pretty unfeasible for you to walk, bike, or take the bus to work. Go carpool or something.
-                    </p>
+                      </p>
+
                 </div>
             </div>
         </section>
