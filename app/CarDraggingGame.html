@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Car Fuel Efficiency Quiz</title>
+    <style>
+      .car {
+        outline: 1px black solid;
+        font-size: 20px;
+        margin: 20px;
+        cursor: pointer;
+      }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+      var data = [
+       {
+         "mfr": "Volkswagen Group of",
+         "div": "Lamborghini",
+         "car": "Aventador Coupe LP740-4",
+         "co2": 904,
+         "fe": 10,
+         "score": 0
+       },
+       {
+         "mfr": "Volkswagen Group of",
+         "div": "Lamborghini",
+         "car": "Aventador Roadster",
+         "co2": 857,
+         "fe": 10,
+         "score": 0
+       },
+       {
+         "mfr": "Volkswagen Group of",
+         "div": "Lamborghini",
+         "car": "Aventador Roadster LP740-4",
+         "co2": 904,
+         "fe": 10,
+         "score": 0
+       },
+       {
+         "mfr": "aston martin",
+         "div": "Aston Martin Lagonda Ltd",
+         "car": "V12 Vantage S",
+         "co2": 805,
+         "fe": 11,
+         "score": 0
+       },
+       {
+         "mfr": "Ferrari",
+         "div": "Ferrari North America, Inc.",
+         "car": "F12 tdf",
+         "co2": 792,
+         "fe": 11,
+         "score": 0
+       }
+      ];
+
+      $(document).ready(function(){
+        // Create table view
+        var table = document.getElementById("gameTable");
+        var row = table.insertRow(0);
+        for (i = 0; i < 5; i++) {
+          var c = row.insertCell(i);
+          c.id = "gameCell";
+          c.data = data[i];
+          var label = [data[i].mfr, data[i].div, data[i].car].join(" ");
+          c.innerHTML = "<div class='car'> " + label + " </div>";
+        }
+      });
+
+
+      function dragCar(evt) {
+        evt.preventDefault();
+        draggedCar.style.position = 'absolute';
+        var top = parseInt(evt.clientY) - offsetY + window.pageYOffset;
+        var left = parseInt(evt.clientX) - offsetX + window.pageXOffset;
+        draggedCar.style.top = top.toString() + 'px';
+        draggedCar.style.left = left.toString() + 'px';
+        draggedCar.style.pointerEvents= "none";
+        draggedCar.style.zIndex = 1000;
+        // replace the data field
+        $("body").append(draggedCar);
+      }
+
+    </script>
+  </head>
+  <body>
+    <table id="gameTable"></table>
+  </body>
+</html>
