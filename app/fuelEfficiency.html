@@ -33,7 +33,7 @@
         height: 100px;
         padding: 0.5em;
         float: left;
-        margin: 110px 10px 10px 70px;
+        margin: 110px 10px 10px 30px;
       }
 
       .example_car img{
@@ -62,27 +62,49 @@
     </style>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="../js/car_data.js"></script>
     <script>
+
+      function getCarOptions(mfr) {
+        return car_data.filter(
+          function(c){ return c.mfr == mfr }
+        );
+      }
+
       $( function() {
+        // Set up the car selection
+        metadata.forEach(function(c) {
+          $("#manufacturer").append("<option>" + c.mfr +"</option>");
+        });
+
+        getCarOptions("aston martin").forEach(function(c) {
+          $("#carType").append("<option>" + c.car + "</option>");
+          // console.log(c.car);
+        })
+
+        // Set up the drag and drop game
         $( "#draggable" ).draggable();
-        // $( "#draggable1" ).draggable();
-        // $( "#draggable2" ).draggable();
-        // $( "#draggable3" ).draggable();
-        // $( "#draggable4" ).draggable();
         $( "#droppable" ).droppable({
           drop: function( event, ui ) {
-            console.log(event);
-            console.log(ui.offset.left);
-            console.log($( this ).width());
-            var percentage = ((ui.offset.left + 20)/$( this ).width())*100;
-            console.log(percentage);
+            var OFFSET = 20;
+            var percentage = ((ui.offset.left + OFFSET)/$( this ).width())*100;
             $( this )
               // .addClass( "ui-state-highlight" )
               .find( "p" )
                 .html(percentage.toFixed(0) + "%");
           }
         });
-      } );
+
+        // Set up selection handlers
+        document.getElementById("manufacturer").onchange = function(e) {
+          var mfr = $("#manufacturer")[0].options[e.target.selectedIndex].value
+          $("#carType").html("");
+          getCarOptions(mfr).forEach(function(c) {
+            $("#carType").append("<option>" + c.car + "</option>");
+          });
+        };
+      });
+
     </script>
   </head>
   <body>
@@ -91,31 +113,18 @@
     </div>
     <div id="garage" width="50%">
       <p>Enter your car's information here.</p>
+      <select name="manufactuer" id="manufacturer">
+      </select>
+      <select name="carType" id="carType">
+      </select>
+      <button> Get your car </button>
       <p>Or, get a random car here.</p>
+      <button> Random car </button>
       <div class="car" id="draggable">
         <img src="../img/lamborghini.png" />
         <center><label class="carLabel">Lamborghini</label></center>
       </div>
-      <!-- <div class="car" id="draggable1">
-        <img src="../img/ford_focus.png" />
-        <center><label class="carLabel">Ford Focus</label></center>
-      </div>
-      <div class="car" id="draggable2">
-        <img src="../img/honda_accord.png" />
-        <center><label class="carLabel">Honda Accord</label></center>
-      </div>
-      <div class="car" id="draggable3">
-        <img src="../img/audi.png" />
-        <center><label class="carLabel">Volkswagon Audi</label></center>
-      </div>
-      <div class="car" id="draggable4">
-        <img src="../img/toyota_prius.png" />
-        <center><label class="carLabel">Toyota Prius</label></center>
-      </div> -->
     </div>
-    <!-- <div id="draggable" class="ui-widget-content">
-      <p>Drag me to my target</p>
-    </div> -->
      
     <div id="droppable">
       <p style="position: absolute;">Drag your car here</p>
