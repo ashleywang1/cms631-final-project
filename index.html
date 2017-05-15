@@ -253,11 +253,14 @@
                     <p class="vertical-padding" v-if="emissions.result.car > 30000">
                         Your commute seems to be far more than an hour long! You are creating more than 30,000 grams of carbon per commute. That's about the size of a Dalmatian! I'm so sorry for you :( , and we can't create a graphic in that case because your carbon footprint is too big.
                     </p>
+                    
                     <p class="vertical-padding" v-if="emissions.result.has_transit && emissions.result.pct_saving_if_bus > 0">
-                        Lucky for you, there’s a bus/train route that can get you to work.  By taking public transportation/the bus, you could cut your emissions by <b>{{emissions.result.pct_saving_if_bus}}%</b>. If just X% of Americans took the bus to work each day, it would cut US greenhouse gas emissions by X%.
-                        <div class="my-container" style="position:relative;">
-                              <img src="img/Footprint.png"/>
-                              <img src="img/FootprintUser.png" style="position:absolute;top:50%;left:50%; transform:translate(-50%, -70%);" :style="{width: 100 - emissions.result.pct_saving_if_bus + '%', height: 100 -emissions.result.pct_saving_if_bus + '%'}"/>
+                        Lucky for you, there’s a bus route that can get you to work.  By taking the bus, you could cut your emissions by <b>{{emissions.result.pct_saving_if_bus}}%</b>. If just X% of Americans took the bus to work each day, it would cut US greenhouse gas emissions by X%.
+                        <div style="text-align: center">
+                            <div class="my-container" style="position: relative; width: 50%; margin-left:25%;">
+                                  <img src="img/Footprint.png"/>
+                                  <img src="img/FootprintUser.png" style="position:absolute;top:50%;left:50%; transform:translate(-50%, -70%);" :style="{width: 100 - emissions.result.pct_saving_if_bus + '%', height: 100 -emissions.result.pct_saving_if_bus + '%'}"/>
+                            </div>
                         </div>
                     </p>
 
@@ -266,10 +269,12 @@
                     </p>
 
                     <p class="vertical-padding" v-if="emissions.result.distance_in_meters < 5000">
-                        Fortunately, it looks like you work close enough to home to bike or walk there. By biking or walking, you could reduce your emissions by <b>{{emissions.result.pct_saving_if_bike}}%</b>.  If just X% of Americans walked or biked to work each day, it would cut US greenhouse gas emissions by X%.
-                        <div class="my-container" style="position:relative;">
-                              <img src="img/Footprint.png"/>
-                              <img src="img/FootprintUser.png" style="position:absolute;top:50%;left:50%; transform:translate(-50%, -70%);" :style="{width: 100-emissions.result.pct_saving_if_bike + '%', height: 100-emissions.result.pct_saving_if_bike + '%'}"/>
+                        {{emissions.result.has_transit ? "It" : "Fortunately, it"}} looks like you work close enough to home to bike or walk there. By biking or walking, you could reduce your emissions by <b>{{emissions.result.pct_saving_if_bike}}%</b>.  If just X% of Americans walked or biked to work each day, it would cut US greenhouse gas emissions by X%.
+                        <div style="text-align: center">
+                            <div class="my-container" style="position: relative; width: 50%; margin-left:25%;">
+                                  <img src="img/Footprint.png"/>
+                                  <img src="img/FootprintUser.png" style="position:absolute;top:50%;left:50%; transform:translate(-50%, -70%);" :style="{width: 100-emissions.result.pct_saving_if_bike + '%', height: 100-emissions.result.pct_saving_if_bike + '%'}"/>
+                            </div>
                         </div>
                        </p>
                     <p class="vertical-padding" v-if="!emissions.result.has_transit && !emissions.result.distance_in_meters < 5000">
