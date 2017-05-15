@@ -234,8 +234,10 @@
                 </div>
 
                 <div v-if="emissions.result">
-                  <center><img src="img/footprint.png" style="width:304px;height:228px;"></center>
-                  <center><img src="img/FootprintUser.png" style="width:304px;height:228px;"></center>
+                  <div class="my-container" style="position:relative;">
+                        <img src="img/footprint.png" style="position:absolute;top:0;left:0;width:50%;"/>
+                        <img src="img/FootprintUser.png" style="position:absolute;top:0;left:0;width:50%;"/>
+                  </div>
                     <p class="vertical-padding" v-if="emissions.travel_mode == 'CAR'">
                         Your {{emissions.result.distance_in_meters/1000}} km drive to (and from?) work emits <strong>{{emissions.result.car}} grams</strong> of carbon dioxide. Over the course of a year, that adds up to <strong>{{emissions.result.car_yearly}} grams</strong>.
                     </p>
@@ -244,6 +246,7 @@
                     </p>
 
                     <p class="vertical-padding" v-if="emissions.travel_mode == 'BIKE'">
+
                         Your {{emissions.result.bike_distance_in_meters/1000}} km bike to (and from?) work emits <strong>{{emissions.result.bike}} grams</strong> of carbon dioxide. Over the course of a year, that adds up to <strong>{{emissions.result.bike_yearly}} grams</strong>.
                     </p>
 

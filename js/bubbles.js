@@ -225,12 +225,10 @@ function draw() {
   }
 
 if(maxrad < maxsize*.74){
-  // background(54);
   fill(150, 255, 255, 150);
   textSize(20);
   noStroke();
   push();
-  // textAlign(CENTER, CENTER);
   text("Good job, you got the US to the\nParis agreement number!", 20, height-50);
   pop();
 }
