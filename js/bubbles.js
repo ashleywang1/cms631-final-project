@@ -1,5 +1,6 @@
 function setup() {
   createCanvas(900, 600);
+  cursor(HAND);
 }
 
 var shrinking = false;
@@ -38,15 +39,21 @@ var radelec = elecper*maxrad;
 var elecsize = elecper*maxsize;
 
 function draw() {
+
   background(54);
   noStroke();
   fill(255, 38, 38, 100);
   ellipse(xmax, height/2, maxrad, maxrad);
 
-  fill(150, 255, 255, 100);
+  noFill();
+  strokeWeight(3);
+  stroke(150, 255, 255, 150);
   ellipse(xmax, height/2, maxsize*.74, maxsize*.74);
 
-  noFill();
+  noStroke();
+  strokeWeight(1);
+
+
 
   push();
   translate(-30, 0);
