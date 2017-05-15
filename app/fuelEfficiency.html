@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Car Fuel Efficiency Quiz</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.css">
     <style>
       body {
         position: absolute;
@@ -11,21 +12,9 @@
         left: 0; right: 0;
       }
 
-      .car {
-        width: 100px;
-        height: 100px;
-        padding: 0.5em;
-        float: left;
-        margin: 10px 10px 10px 0;
-      }
-
-      .car img{
-        width: 100%;
-        cursor: pointer;
-      }
-
-      .carLabel {
-        font-size: 12px;
+      select {
+        margin: 10px;
+        padding: 10px;
       }
 
       .example_car {
@@ -52,6 +41,23 @@
         padding: 0.5em;
         float: left;
         margin: 10px 10px 10px 0;
+      }
+
+      #draggable img{
+        width: 100%;
+        cursor: pointer;
+      }
+
+      #getYourCar {
+        margin: 10px;
+      }
+
+      #getRandomCar {
+        margin: 10px;
+      }
+
+      .carLabel {
+        font-size: 12px;
       }
 
       #droppable {
@@ -95,7 +101,7 @@
           }
         });
 
-        // Set up selection handlers
+        // Set up selection and button handlers
         document.getElementById("manufacturer").onchange = function(e) {
           var mfr = $("#manufacturer")[0].options[e.target.selectedIndex].value
           $("#carType").html("");
@@ -103,6 +109,18 @@
             $("#carType").append("<option>" + c.car + "</option>");
           });
         };
+
+        document.getElementById("getYourCar").onclick = function(e) {
+          $("#draggable").html("");
+          var mfr = $("#manufacturer")[0].options[$("#manufacturer")[0].selectedIndex].text
+          var car = $("#carType")[0].options[$("#carType")[0].selectedIndex].text
+          $("#draggable").append("<img src='../img/yCar.png'/><center><label class='carLabel'>" + mfr + " " + car + "</label></center>");
+        }
+        document.getElementById("getRandomCar").onclick = function(e) {
+          $("#draggable").html("");
+          $("#draggable").append("<img src='../img/yCar.png'/><center><label class='carLabel'>Your car</label></center>");
+        }
+
       });
 
     </script>
@@ -117,14 +135,11 @@
       </select>
       <select name="carType" id="carType">
       </select>
-      <button> Get your car </button>
-      <p>Or, get a random car here.</p>
-      <button> Random car </button>
-      <div class="car" id="draggable">
-        <img src="../img/lamborghini.png" />
-        <center><label class="carLabel">Lamborghini</label></center>
-      </div>
+      <button type="button" class="btn btn-default" id="getYourCar"> Get your car </button>
+      <br>
+      <button type="button" class="btn btn-default" id="getRandomCar"> Get a random car </button>
     </div>
+    <div id="draggable"></div>
      
     <div id="droppable">
       <p style="position: absolute;">Drag your car here</p>
