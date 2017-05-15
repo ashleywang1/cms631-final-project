@@ -238,7 +238,7 @@ function draw() {
   if(mouseX < xind + 120 && mouseX > xind + 100 && mouseY < yind - 20 && mouseY > yind - 30){
     if(radind< indsize){
     radind +=.01*indsize;
-    maxsize  += .01*indper*maxsize;
+    maxrad  += .01*indper*maxsize;
   }
   }
 
@@ -283,7 +283,6 @@ function mousePressed(){
     radtrans = transize;
     elecsize = maxsize*elecper;
     radelec = elecsize;
-    console.log("HI");
   }
 
 }
