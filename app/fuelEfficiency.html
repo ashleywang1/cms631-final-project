@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Car Fuel Efficiency Quiz</title>
+    <style>
+      body {
+        position: absolute;
+        top: 0; bottom: 0;
+        left: 0; right: 0;
+      }
+
+      .car {
+        width: 100px;
+        height: 100px;
+        padding: 0.5em;
+        float: left;
+        margin: 10px 10px 10px 0;
+      }
+
+      .car img{
+        width: 100%;
+        cursor: pointer;
+      }
+
+      .carLabel {
+        font-size: 12px;
+      }
+
+      .example_car {
+        width: 100px;
+        height: 100px;
+        padding: 0.5em;
+        float: left;
+        margin: 110px 10px 10px 70px;
+      }
+
+      .example_car img{
+        width: 100%;
+      }
+
+      .percentile {
+        display: inline-block;
+        width: 19.5%;
+        height: 100%;
+      }
+
+      #draggable {
+        width: 100px;
+        height: 100px;
+        padding: 0.5em;
+        float: left;
+        margin: 10px 10px 10px 0;
+      }
+
+      #droppable {
+        width: 100%;
+        height: 150px; 
+        float: left; 
+      }
+    </style>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+      $( function() {
+        $( "#draggable" ).draggable();
+        // $( "#draggable1" ).draggable();
+        // $( "#draggable2" ).draggable();
+        // $( "#draggable3" ).draggable();
+        // $( "#draggable4" ).draggable();
+        $( "#droppable" ).droppable({
+          drop: function( event, ui ) {
+            console.log(event);
+            console.log(ui.offset.left);
+            console.log($( this ).width());
+            var percentage = ((ui.offset.left + 20)/$( this ).width())*100;
+            console.log(percentage);
+            $( this )
+              // .addClass( "ui-state-highlight" )
+              .find( "p" )
+                .html(percentage.toFixed(0) + "%");
+          }
+        });
+      } );
+    </script>
+  </head>
+  <body>
+    <div id="instructions" width="50%">
+      <h1>Do you know your car's fuel efficiency score?</h1>
+    </div>
+    <div id="garage" width="50%">
+      <p>Enter your car's information here.</p>
+      <p>Or, get a random car here.</p>
+      <div class="car" id="draggable">
+        <img src="../img/lamborghini.png" />
+        <center><label class="carLabel">Lamborghini</label></center>
+      </div>
+      <!-- <div class="car" id="draggable1">
+        <img src="../img/ford_focus.png" />
+        <center><label class="carLabel">Ford Focus</label></center>
+      </div>
+      <div class="car" id="draggable2">
+        <img src="../img/honda_accord.png" />
+        <center><label class="carLabel">Honda Accord</label></center>
+      </div>
+      <div class="car" id="draggable3">
+        <img src="../img/audi.png" />
+        <center><label class="carLabel">Volkswagon Audi</label></center>
+      </div>
+      <div class="car" id="draggable4">
+        <img src="../img/toyota_prius.png" />
+        <center><label class="carLabel">Toyota Prius</label></center>
+      </div> -->
+    </div>
+    <!-- <div id="draggable" class="ui-widget-content">
+      <p>Drag me to my target</p>
+    </div> -->
+     
+    <div id="droppable">
+      <p style="position: absolute;">Drag your car here</p>
+      <!-- ["#edf8e9","#bae4b3","#74c476","#31a354","#006d2c"] -->
+      <div class="percentile" style="background:#edf8e9">
+        <div class="example_car">
+          <img src="../img/lamborghini.png" />
+          <center><label class="carLabel">Lamborghini</label></center>
+        </div>
+      </div>
+      <div class="percentile" style="background:#bae4b3">
+        <div class="example_car">
+          <img src="../img/ford_focus.png" />
+          <center><label class="carLabel">Ford Focus</label></center>
+        </div>
+      </div>
+      <div class="percentile" style="background:#74c476">
+        <div class="example_car">
+          <img src="../img/audi.png" />
+          <center><label class="carLabel">Volkswagon Audi</label></center>
+        </div>
+      </div>
+      <div class="percentile" style="background:#31a354">
+        <div class="example_car">
+          <img src="../img/honda_accord.png" />
+          <center><label class="carLabel">Honda Accord</label></center>
+        </div>
+      </div>
+      <div class="percentile" style="background:#006d2c">
+        <div class="example_car">
+          <img src="../img/toyota_prius.png" />
+          <center><label class="carLabel">Toyota Prius</label></center>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
