@@ -1,5 +1,5 @@
 function setup() {
-  createCanvas(900, 520);
+  createCanvas(900, 600);
 }
 
 var shrinking = false;
@@ -8,31 +8,31 @@ var maxsize = maxrad;
 var xmax = maxsize-150;
 
 var xagg = xmax + maxrad + 70;
-var yagg = 40;
+var yagg = 55;
 var aggper = .09;
 var radagg = aggper*maxrad;
 var aggsize = aggper*maxsize;
 
 var xcomm = xagg;
-var ycomm = yagg + 60;
+var ycomm = yagg + 80;
 var commper = .12;
 var radcomm = commper*maxrad;
 var commsize = commper*maxsize;
 
 var xind = xagg;
-var yind = ycomm + 85;
+var yind = ycomm + 95;
 var indper = .21;
 var radind = indper*maxrad;
 var indsize = indper*maxsize;
 
 var xtrans = xagg;
-var ytrans = yind + 120;
+var ytrans = yind + 130;
 var transper = .27;
 var radtrans = transper*maxrad;
 var transsize = transper*maxsize;
 
 var xelec =  xagg;
-var yelec = ytrans+ 135;
+var yelec = ytrans+ 145;
 var elecper = .29;
 var radelec = elecper*maxrad;
 var elecsize = elecper*maxsize;
@@ -68,31 +68,38 @@ function draw() {
   // text(int(radind*100/maxrad) + "%",xelec + 90, yind);
   // text(int(radcomm*100/maxrad) + "%",xelec + 90, ycomm);
   // text(int(radagg*100/maxrad) + "%",xelec + 90, yagg);
-  text(int(radelec*100/elecsize) + "%",xelec + 90, yelec);
-  text(int(radtrans*100/transsize) + "%",xelec + 90, ytrans);
-  text(int(radind*100/indsize) + "%",xelec + 90, yind);
-  text(int(radcomm*100/commsize) + "%",xelec + 90, ycomm);
-  text(int(radagg*100/aggsize) + "%",xelec + 90, yagg);
+  text(int(radelec*100/elecsize) + "%",xelec + 90, yelec + 5);
+  text(int(radtrans*100/transsize) + "%",xelec + 90, ytrans + 5);
+  text(int(radind*100/indsize) + "%",xelec + 90, yind + 5);
+  text(int(radcomm*100/commsize) + "%",xelec + 90, ycomm + 5);
+  text(int(radagg*100/aggsize) + "%",xelec + 90, yagg + 5);
 
 
   fill(255, 56, 96);
   ellipse(xelec, yelec, radelec, radelec);
-  triangle(xelec + 110,  yelec - 40, xelec + 100, yelec - 30, xelec + 120, yelec - 30);
+  triangle(xelec + 110,  yelec - 30, xelec + 100, yelec - 20, xelec + 120, yelec - 20);
   triangle(xelec + 110,  yelec + 25, xelec + 100, yelec + 15, xelec + 120, yelec + 15);
   fill(255, 61, 75);
   ellipse(xtrans, ytrans, radtrans, radtrans);
+  triangle(xtrans + 110,  ytrans - 30, xtrans + 100, ytrans - 20, xtrans + 120, ytrans - 20);
+  triangle(xtrans + 110,  ytrans + 25, xtrans + 100, ytrans + 15, xtrans + 120, ytrans + 15);
   fill(255, 69, 59);
   ellipse(xind, yind, radind, radind);
+  triangle(xind + 110,  yind - 30, xind + 100, yind - 20, xind + 120, yind - 20);
+  triangle(xind + 110,  yind + 25, xind + 100, yind + 15, xind + 120, yind + 15);
   fill(255,83,67);
   ellipse(xcomm, ycomm, radcomm, radcomm);
+  triangle(xcomm + 110,  ycomm - 30, xcomm + 100, ycomm - 20, xcomm + 120, ycomm - 20);
+  triangle(xcomm + 110,  ycomm + 25, xcomm + 100, ycomm + 15, xcomm + 120, ycomm + 15);
   fill(255,82,79);
   ellipse(xagg, yagg, radagg, radagg);
+  triangle(xagg + 110,  yagg - 30, xagg+ 100, yagg - 20, xagg + 120, yagg - 20);
+  triangle(xagg + 110,  yagg + 25, xagg + 100, yagg + 15, xagg + 120, yagg + 15);
 
 
   noFill();
   stroke(255, 56, 96);
   ellipse(xelec, yelec, elecsize, elecsize);
-  //triangle(xelec, yelec + elecsize + 5, yelec + elecsize + 5);
   stroke(255, 61, 75);
   ellipse(xtrans, ytrans, transsize, transsize);
   stroke(255, 69, 59);
@@ -108,44 +115,97 @@ function draw() {
 
   if (mouseIsPressed){
 
-    if(mouseX < xtrans + radtrans/2 && mouseX > xtrans - radtrans/2 && mouseY < ytrans + radtrans/2 && mouseY > ytrans - radtrans/2){
-      radtrans -=.01*transsize;
-      maxrad -= .01*transper*maxsize;
+  //   if(mouseX < xtrans + radtrans/2 && mouseX > xtrans - radtrans/2 && mouseY < ytrans + radtrans/2 && mouseY > ytrans - radtrans/2){
+  //     radtrans -=.01*transsize;
+  //     maxrad -= .01*transper*maxsize;
+  // }
+  //   if(mouseX < xcomm + radcomm/2 && mouseX > xcomm - radcomm/2 && mouseY < ycomm + radcomm/2 && mouseY > ycomm - radcomm/2){
+  //     radcomm -=.01*commsize;
+  //     maxrad -= .01*commper*maxsize;
+  //   }
+  // if(mouseX < xelec + radelec/2 && mouseX > xelec- radelec/2 && mouseY < yelec + radelec/2 && mouseY > yelec - radelec/2){
+  //   radelec -=.01*elecsize;
+  //   maxrad -= .01*elecper*maxsize;
+  // }
+  // if(mouseX < xagg + radagg/2 && mouseX > xagg - radagg/2 && mouseY < yagg + radagg/2 && mouseY > yagg - radagg/2){
+  //   radagg -=.01*aggsize;
+  //   maxrad -= .01*aggper*maxsize;
+  // }
+  // if(mouseX < xind + radind/2 && mouseX > xind - radind/2 && mouseY < yind + radind/2 && mouseY > yind - radind/2){
+  //   radind -=.01*indsize;
+  //   maxrad -= .01*indper*maxsize;
+  // }
+
+
+  if(mouseX < xelec + 120 && mouseX > xelec + 100 && mouseY < yelec - 20 && mouseY > yelec - 30){
+    if(radelec < elecsize){
+    radelec +=.01*elecsize;
+    maxrad  += .01*elecper*maxsize;
   }
-    if(mouseX < xcomm + radcomm/2 && mouseX > xcomm - radcomm/2 && mouseY < ycomm + radcomm/2 && mouseY > ycomm - radcomm/2){
-      radcomm -=.01*commsize;
-      maxrad -= .01*commper*maxsize;
-    }
+  }
 
-    // if(mouseX < xelec + radelec/2 && mouseX > xelec- radelec/2 && mouseY < yelec + radelec/2 && mouseY > yelec - radelec/2){
-    //   radelec -=.01*elecsize;
-    //   maxrad -= .01*elecper*maxsize;
-    // }
+  if(mouseX < xelec + 120 && mouseX > xelec + 100 && mouseY < yelec + 25 && mouseY > yelec + 15){
+    if(radelec > 0){
+    radelec -=.01*elecsize;
+    maxrad -= .01*elecper*maxsize;
+  }
+  }
 
-    if(mouseX < xelec + 120 && mouseX > xelec + 100 && mouseY < yelec - 30 && mouseY > yelec - 40){
-            if(radelec < elecsize){
-      radelec +=.01*elecsize;
-      maxrad  += .01*elecper*maxsize;
-    }
-    }
+  if(mouseX < xcomm + 120 && mouseX > xcomm + 100 && mouseY < ycomm - 20 && mouseY > ycomm - 30){
+    if(radcomm < commsize){
+    radcomm +=.01*commsize;
+    maxrad  += .01*commper*maxsize;
+  }
+  }
 
-    if(mouseX < xelec + 120 && mouseX > xelec + 100 && mouseY < yelec + 25 && mouseY > yelec + 15){
-      if(radelec > 0){
-      radelec -=.01*elecsize;
-      maxrad -= .01*elecper*maxsize;
-    }
-    }
+  if(mouseX < xcomm + 120 && mouseX > xcomm + 100 && mouseY < ycomm + 25 && mouseY > ycomm + 15){
+    if(radcomm > 0){
+    radcomm -=.01*commsize;
+    maxrad -= .01*commper*maxsize;
+  }
+  }
 
+  if(mouseX < xagg + 120 && mouseX > xagg + 100 && mouseY < yagg - 20 && mouseY > yagg - 30){
+    if(radagg < aggsize){
+    radagg +=.01*aggsize;
+    maxrad  += .01*aggper*maxsize;
+  }
+  }
 
-    if(mouseX < xagg + radagg/2 && mouseX > xagg - radagg/2 && mouseY < yagg + radagg/2 && mouseY > yagg - radagg/2){
-      radagg -=.01*aggsize;
-      maxrad -= .01*aggper*maxsize;
-    }
+  if(mouseX < xagg + 120 && mouseX > xagg + 100 && mouseY < yagg + 25 && mouseY > yagg + 15){
+    if(radagg > 0){
+    radagg -=.01*aggsize;
+    maxrad -= .01*aggper*maxsize;
+  }
+  }
 
-    if(mouseX < xind + radind/2 && mouseX > xind - radind/2 && mouseY < yind + radind/2 && mouseY > yind - radind/2){
-      radind -=.01*indsize;
-      maxrad -= .01*indper*maxsize;
-    }
+  if(mouseX < xtrans + 120 && mouseX > xtrans + 100 && mouseY < ytrans - 20 && mouseY > ytrans - 30){
+    if(radtrans< transsize){
+    radtrans +=.01*transsize;
+    maxrad  += .01*transper*maxsize;
+  }
+  }
+
+  if(mouseX < xtrans + 120 && mouseX > xtrans + 100 && mouseY < ytrans + 25 && mouseY > ytrans + 15){
+    if(radtrans > 0){
+    radtrans -=.01*transsize;
+    maxrad -= .01*transper*maxsize;
+  }
+  }
+
+  if(mouseX < xind + 120 && mouseX > xind + 100 && mouseY < yind - 20 && mouseY > yind - 30){
+    if(radind< indsize){
+    radind +=.01*indsize;
+    maxsize  += .01*indper*maxsize;
+  }
+  }
+
+  if(mouseX < xind + 120 && mouseX > xind + 100 && mouseY < yind + 25 && mouseY > yind + 15){
+    if(radind > 0){
+    radind -=.01*indsize;
+    maxrad -= .01*indper*maxsize;
+  }
+  }
 
   }
 
