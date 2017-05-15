@@ -82,23 +82,32 @@ function draw() {
   text(int(radagg*100/aggsize) + "%",xelec + 90, yagg + 5);
 
 
-  fill(255, 56, 96);
+
+  fill(255,82,79);
+//  fill(255, 56, 96);
   ellipse(xelec, yelec, radelec, radelec);
   triangle(xelec + 110,  yelec - 30, xelec + 100, yelec - 20, xelec + 120, yelec - 20);
   triangle(xelec + 110,  yelec + 25, xelec + 100, yelec + 15, xelec + 120, yelec + 15);
-  fill(255, 61, 75);
+
+  //fill(255, 61, 75);
+  fill(255,83,67);
   ellipse(xtrans, ytrans, radtrans, radtrans);
   triangle(xtrans + 110,  ytrans - 30, xtrans + 100, ytrans - 20, xtrans + 120, ytrans - 20);
   triangle(xtrans + 110,  ytrans + 25, xtrans + 100, ytrans + 15, xtrans + 120, ytrans + 15);
+
   fill(255, 69, 59);
   ellipse(xind, yind, radind, radind);
   triangle(xind + 110,  yind - 30, xind + 100, yind - 20, xind + 120, yind - 20);
   triangle(xind + 110,  yind + 25, xind + 100, yind + 15, xind + 120, yind + 15);
-  fill(255,83,67);
+
+//  fill(255,83,67);
+  fill(255, 61, 75);
   ellipse(xcomm, ycomm, radcomm, radcomm);
   triangle(xcomm + 110,  ycomm - 30, xcomm + 100, ycomm - 20, xcomm + 120, ycomm - 20);
   triangle(xcomm + 110,  ycomm + 25, xcomm + 100, ycomm + 15, xcomm + 120, ycomm + 15);
-  fill(255,82,79);
+
+  //fill(255,82,79);
+  fill(255, 56, 96);
   ellipse(xagg, yagg, radagg, radagg);
   triangle(xagg + 110,  yagg - 30, xagg+ 100, yagg - 20, xagg + 120, yagg - 20);
   triangle(xagg + 110,  yagg + 25, xagg + 100, yagg + 15, xagg + 120, yagg + 15);
