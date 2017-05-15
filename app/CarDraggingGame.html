@@ -4,6 +4,18 @@
     <meta charset="UTF-8">
     <title>Car Fuel Efficiency Quiz</title>
     <style>
+      #firstColumn {
+        background: green;
+      }
+
+      #secondColumn {
+        background: silver;
+      }
+      
+      img {
+        width:100px;
+      }
+
       .car {
         outline: 1px black solid;
         font-size: 20px;
@@ -11,51 +23,15 @@
         cursor: pointer;
       }
     </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="../js/fuelefficiency.js"></script>
     <script>
-      var data = [
-       {
-         "mfr": "Volkswagen Group of",
-         "div": "Lamborghini",
-         "car": "Aventador Coupe LP740-4",
-         "co2": 904,
-         "fe": 10,
-         "score": 0
-       },
-       {
-         "mfr": "Volkswagen Group of",
-         "div": "Lamborghini",
-         "car": "Aventador Roadster",
-         "co2": 857,
-         "fe": 10,
-         "score": 0
-       },
-       {
-         "mfr": "Volkswagen Group of",
-         "div": "Lamborghini",
-         "car": "Aventador Roadster LP740-4",
-         "co2": 904,
-         "fe": 10,
-         "score": 0
-       },
-       {
-         "mfr": "aston martin",
-         "div": "Aston Martin Lagonda Ltd",
-         "car": "V12 Vantage S",
-         "co2": 805,
-         "fe": 11,
-         "score": 0
-       },
-       {
-         "mfr": "Ferrari",
-         "div": "Ferrari North America, Inc.",
-         "car": "F12 tdf",
-         "co2": 792,
-         "fe": 11,
-         "score": 0
-       }
-      ];
-
+      var car0 = "lamborghini";
+      var car25 = "ford_focus";
+      var car50 = "audi";
+      var car75 = "honda_accord";
+      var car100 = "toyota_prius";
       $(document).ready(function(){
         // Create table view
         var table = document.getElementById("gameTable");
@@ -63,8 +39,9 @@
         for (i = 0; i < 5; i++) {
           var c = row.insertCell(i);
           c.id = "gameCell";
-          c.data = data[i];
-          var label = [data[i].mfr, data[i].div, data[i].car].join(" ");
+          // c.data = data[i];
+          // var label = [data[i].mfr, data[i].div, data[i].car].join(" ");
+          var label = "<img src='../img/" + car0 + ".png'>"
           c.innerHTML = "<div class='car'> " + label + " </div>";
         }
       });
@@ -86,6 +63,19 @@
     </script>
   </head>
   <body>
-    <table id="gameTable"></table>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4" id="firstColumn">
+          <h1>What is your car's Fuel Efficiency score?</h1>
+          <h2>Instructions</h2>
+          <h3>What is your car?</h3>
+          <h3>Choose a random car</h3>
+        </div>
+        <div class="col-md-8" id="secondColumn">
+          <h1>Drag your car to where you think it belongs on the slide</h1>
+          <table id="gameTable"></table>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
