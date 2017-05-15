@@ -92,7 +92,7 @@
                 </div>
                 <div v-if="temperature.drew" class="vertical-padding">
                     <div v-if="temperature.status == 'right'" class="notification is-primary">
-                        Wow, you’re spot-on! Only X% of our users’ predictions align precisely with those
+                        Wow, you’re spot-on! Only {{stats.pct_right}}% of our users’ predictions align precisely with those
                         of scientists, who estimate that average global temperatures will rise by 3.6 degrees
                         Celsius by the year 2100, or roughly 6.5 degrees Fahrenheit, if the US and the rest
                         of the world don’t take significant action to curb greenhouse gas emissions. That’s
@@ -109,7 +109,7 @@
                     </div>
                     <div v-if="temperature.status == 'underestimate'" class="notification is-warning">
                         It looks like you thought global temperatures will go up in the future. You’re
-                        absolutely right, but like X% of our users, you underestimated how much temperatures
+                        absolutely right, but like {{stats.pct_under}}% of our users, you underestimated how much temperatures
                         will increase. Scientists actually predict that if the US and the rest of the world
                         don’t take significant action to curb greenhouse gas emissions, average global
                         temperatures will rise by 3.6 degrees Celsius by the year 2100, or roughly 6.5 degrees
@@ -118,7 +118,7 @@
                     </div>
                     <div v-if="temperature.status == 'overestimate'" class="notification is-primary">
                         It looks like you thought global temperatures will go up in the future. You’re
-                        absolutely right, but like X% of our users, you overestimated how much temperatures will
+                        absolutely right, but like {{stats.pct_over}}% of our users, you overestimated how much temperatures will
                         increase. Scientists actually predict that if the US and the rest of the world don’t take
                         significant action to curb greenhouse gas emissions, average global temperatures will
                         rise by 3.6 degrees Celsius by the year 2100, or roughly 6.5 degrees Fahrenheit. That’s
@@ -127,7 +127,7 @@
                     </div>
                     <div v-if="temperature.status == 'slight_underestimate'" class="notification is-warning">
                         It looks like you thought global temperatures will go up in the future. You’re absolutely
-                        right, but like X% of our users, you underestimated how much temperatures will increase.
+                        right, but like {{stats.pct_sunder}}% of our users, you underestimated how much temperatures will increase.
                         You were really close though! Scientists actually predict that if the US and the rest of
                         the world don’t take significant action to curb greenhouse gas emissions, average global
                         temperatures will rise by 3.6 degrees Celsius by the year 2100, or roughly 6.5 degrees
@@ -136,7 +136,7 @@
                     </div>
                     <div v-if="temperature.status == 'slight_overestimate'" class="notification is-primary">
                         It looks like you thought global temperatures will go up in the future. You’re absolutely
-                        right, but like X% of our users, you overestimated how much temperatures will increase.
+                        right, but like {{stats.pct_sover}}% of our users, you overestimated how much temperatures will increase.
                         You were really close though! Scientists actually predict that if the US and the rest of
                         the world don’t take significant action to curb greenhouse gas emissions, average global
                         temperatures will rise by 3.6 degrees Celsius by the year 2100, or roughly 6.5 degrees
@@ -253,11 +253,14 @@
                     <p class="vertical-padding" v-if="emissions.result.car > 30000">
                         Your commute seems to be far more than an hour long! You are creating more than 30,000 grams of carbon per commute. That's about the size of a Dalmatian! I'm so sorry for you :( , and we can't create a graphic in that case because your carbon footprint is too big.
                     </p>
+                    
                     <p class="vertical-padding" v-if="emissions.result.has_transit && emissions.result.pct_saving_if_bus > 0">
-                        Lucky for you, there’s a bus/train route that can get you to work.  By taking public transportation/the bus, you could cut your emissions by <b>{{emissions.result.pct_saving_if_bus}}%</b>. If just X% of Americans took the bus to work each day, it would cut US greenhouse gas emissions by X%.
-                        <div class="my-container" style="position:relative;">
-                              <img src="img/Footprint.png"/>
-                              <img src="img/FootprintUser.png" style="position:absolute;top:50%;left:50%; transform:translate(-50%, -70%);" :style="{width: 100 - emissions.result.pct_saving_if_bus + '%', height: 100 -emissions.result.pct_saving_if_bus + '%'}"/>
+                        Lucky for you, there’s a bus route that can get you to work.  By taking the bus, you could cut your emissions by <b>{{emissions.result.pct_saving_if_bus}}%</b>. If just X% of Americans took the bus to work each day, it would cut US greenhouse gas emissions by X%.
+                        <div style="text-align: center">
+                            <div class="my-container" style="position: relative; width: 50%; margin-left:25%;">
+                                  <img src="img/Footprint.png"/>
+                                  <img src="img/FootprintUser.png" style="position:absolute;top:50%;left:50%; transform:translate(-50%, -70%);" :style="{width: 100 - emissions.result.pct_saving_if_bus + '%', height: 100 -emissions.result.pct_saving_if_bus + '%'}"/>
+                            </div>
                         </div>
                     </p>
 
@@ -266,16 +269,17 @@
                     </p>
 
                     <p class="vertical-padding" v-if="emissions.result.distance_in_meters < 5000">
-                        Fortunately, it looks like you work close enough to home to bike or walk there. By biking or walking, you could reduce your emissions by <b>{{emissions.result.pct_saving_if_bike}}%</b>.  If just X% of Americans walked or biked to work each day, it would cut US greenhouse gas emissions by X%.
-                        <div class="my-container" style="position:relative;">
-                              <img src="img/Footprint.png"/>
-                              <img src="img/FootprintUser.png" style="position:absolute;top:50%;left:50%; transform:translate(-50%, -70%);" :style="{width: 100-emissions.result.pct_saving_if_bike + '%', height: 100-emissions.result.pct_saving_if_bike + '%'}"/>
+                        {{emissions.result.has_transit ? "It" : "Fortunately, it"}} looks like you work close enough to home to bike or walk there. By biking or walking, you could reduce your emissions by <b>{{emissions.result.pct_saving_if_bike}}%</b>.  If just X% of Americans walked or biked to work each day, it would cut US greenhouse gas emissions by X%.
+                        <div style="text-align: center">
+                            <div class="my-container" style="position: relative; width: 50%; margin-left:25%;">
+                                  <img src="img/Footprint.png"/>
+                                  <img src="img/FootprintUser.png" style="position:absolute;top:50%;left:50%; transform:translate(-50%, -70%);" :style="{width: 100-emissions.result.pct_saving_if_bike + '%', height: 100-emissions.result.pct_saving_if_bike + '%'}"/>
+                            </div>
                         </div>
                        </p>
                     <p class="vertical-padding" v-if="!emissions.result.has_transit && !emissions.result.distance_in_meters < 5000">
-                        Unfortunately, it looks pretty unfeasible for you to walk, bike, or take the bus to work. Go carpool or something.
-                      </p>
-
+                        Unfortunately, it looks like there’s no easy way for you to get to work by bus, and it’s too far to bike or walk. But you can still help the US reach its Paris target by carpooling, since every extra passenger in your car means one fewer car on the road. And when you’re in the market for a new car, consider purchasing a more energy-efficient one - it will not only shrink your carbon footprint, but it could even save you money in the long run by reducing the amount of gasoline you buy. 
+                    </p>
                 </div>
             </div>
         </section>
@@ -311,6 +315,13 @@
         const vm = new Vue({
             el: "main",
             data: {
+                stats: {
+                    pct_right: 10,
+                    pct_under: 40,
+                    pct_over: 10,
+                    pct_sunder: 10,
+                    pct_sover: 30
+                },
                 temperature: {
                     drew: false,
                     status: null
@@ -361,6 +372,29 @@
         });
         update_temp = vm.update_temp;
         update_co2 = vm.update_co2;
+
+        $.get("https://api.myjson.com/bins/toguh", function (arr) {
+            var total = 0;
+            var counts = {
+                "right": 0,
+                "wrong": 0,
+                "overestimate": 0,
+                "underestimate": 0,
+                "slight_overestimate": 0,
+                "slight_underestimate": 0
+            };
+            for (var i = 0; i < arr.length; i++)
+                if (arr[i].data.event == "temperature") {
+                    counts[arr[i].data.status]++;
+                    total++;
+                }
+            vm.stats.pct_right = Math.round(100.0 * counts.right / total)
+            vm.stats.pct_wrong = Math.round(100.0 * counts.wrong / total)
+            vm.stats.pct_under = Math.round(100.0 * counts.underestimate / total)
+            vm.stats.pct_over = Math.round(100.0 * counts.overestimate / total)
+            vm.stats.pct_sunder = Math.round(100.0 * counts.slight_underestimate / total)
+            vm.stats.pct_sover = Math.round(100.0 * counts.slight_overestimate / total)
+        })
 
     </script>
 </body>
