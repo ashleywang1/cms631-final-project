@@ -24,7 +24,7 @@
 
         iframe.interactive {
             width: 900px;
-            height: 520px;
+            height: 600px;
             border: none;
             overflow: none;
         }
@@ -233,15 +233,15 @@
                 <div v-if="emissions.result">
                     <p class="vertical-padding" v-if="emissions.travel_mode == 'CAR'">
                         Your {{emissions.result.distance_in_meters/1000}} km drive to (and from?) work emits <strong>{{emissions.result.car}} grams</strong> of carbon dioxide. Over the course of a year, that adds up to <strong>{{emissions.result.car_yearly}} grams</strong>.
-                        
+
                     </p>
                     <p class="vertical-padding" v-if="emissions.travel_mode == 'BUS'">
                         Your {{emissions.result.transit_distance/1000}} km route to (and from?) work emits <strong>{{emissions.result.bus}} grams</strong> of carbon dioxide. Over the course of a year, that adds up to <strong>{{emissions.result.bus_yearly}} grams</strong>.
-                        
+
                     </p>
                     <p class="vertical-padding" v-if="emissions.travel_mode == 'BIKE'">
                         Your {{emissions.result.bike_distance_in_meters/1000}} km bike to (and from?) work emits <strong>{{emissions.result.bike}} grams</strong> of carbon dioxide. Over the course of a year, that adds up to <strong>{{emissions.result.bike_yearly}} grams</strong>.
-                        
+
                     </p>
                     <p class="vertical-padding" v-if="emissions.result.car > 30000">
                         Your commute seems to be far more than an hour long! You are creating more than 30,000 grams of carbon per commute. That's about the size of a Dalmatian! I'm so sorry for you :( , and we can't create a graphic in that case because your carbon footprint is too big.
@@ -332,7 +332,7 @@
                         alert("Please choose a transporation mode!");
                         return;
                     }
-                    
+
                     console.log(self.emissions.origin);
                     console.log(self.emissions.destination);
                     getCommute(self.emissions.origin, self.emissions.destination, function (res) {
