@@ -47,22 +47,23 @@ function draw() {
   rectMode(CORNERS);
   rect(bounds.left, bounds.top, bounds.right, bounds.bottom);
 
-  // use gray for the dots, turn off stroke
-  data.forEach(function(entry) {
-    entry.update();  // run the next animation step
-    entry.display();
-  });
-
   for(var i = 0; i<table.getRowCount()-1; i++){
     var coord1y = map(temps[i], -1, 1, bounds.bottom, bounds.top);
     var coord1x = map(i, 0, dataCount-1, bounds.left, bounds.right);
     var coord2y = map(temps[i+1], -1, 1,  bounds.bottom, bounds.top);
     var coord2x = map(i+1, 0, dataCount-1, bounds.left, bounds.right);
 
-    stroke(0);
+    stroke(96);
     line(coord1x, coord1y, coord2x, coord2y);
     noStroke();
   }
+
+  data.forEach(function(entry) {
+    entry.update();  // run the next animation step
+    entry.display();
+  });
+
+
 }
 
 
@@ -82,27 +83,24 @@ function DataPoint(idx, amt) {
 
   this.display = function() {
     // color the dots in gray, with no outline
-    fill(96);
+    fill(50, 115, 220);
     noStroke();
+
     ellipse(x.value, y.value, 8, 8);
 
     cursor(HAND);
     // if the distance from the mouse to the data point is within 10 pixels
-    if (dist(mouseX, mouseY, x.value, y.value) < 10) {
+    if (dist(mouseX, mouseY, x.value, y.value) < 5) {
       // textAlign(CENTER);
       textSize(15);
       // draw the value of this data point (using 1 decimal point)
       text(years[idx], 20, 50);
       if(temps[idx] < 0){
-      fill(0, 255, 0);
+      fill(255, 56, 97);
       text("Temperatures dropped " +temps[idx] + " degrees Celsius.", 20, 100);
     }
-    else if(temps[idx] == 0.0){
-      fill(255, 255, 0);
-      text("Temperatures stayed steady!", 20, 100);
-    }
     else{
-      fill(255, 0, 0);
+      fill(0, 209, 178);
       text("Temperatures rose " + temps[idx] + " degrees Celsius.", 20, 100);
     }
     }
