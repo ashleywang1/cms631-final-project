@@ -1,8 +1,12 @@
 var Logger = {};
 
+Logger.uid = Math.random().toString(36).substring(7);
+document.cookie = "id=" + Logger.uid;
+
 Logger.ip_info = {};
 $.getJSON('//freegeoip.net/json/?callback=?', function (ip_info) {
     Logger.ip_info = ip_info;
+    Logger.log({"event": "logger_load"});
 });
 
 Logger.navigator = {};
@@ -12,6 +16,7 @@ Logger.log = function (data) {
     var event = {};
     event.data = data;
     event.context = {};
+    event.context.uid = Logger.uid;
     event.context.ip_info = Logger.ip_info;
     event.context.location = window.location;
     event.context.navigator = Logger.navigator;

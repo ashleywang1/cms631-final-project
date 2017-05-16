@@ -3,6 +3,14 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.1/css/bulma.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <script src="https://maps.google.com/maps/api/js?sensor=false&key=AIzaSyB9R73RQs2X2n3J8xpPKez_1hotrCwInH8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.5.0/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.3/vue.min.js"></script>
+
     <title>Car Fuel Efficiency Quiz</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.1/css/bulma.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
@@ -14,17 +22,35 @@
         left: 0; right: 0;
       }
 
+      .car {
+        width: 100px;
+        height: 100px;
+        padding: 0.5em;
+        float: left;
+        margin: 10px 10px 10px 0;
+      }
+
+      .car img{
+        width: 100%;
+        cursor: pointer;
+      }
+
+      .carLabel {
+        font-size: 12px;
+        /*width: 100%;*/
+      }
+      
       select {
         margin: 10px;
         padding: 10px;
       }
 
       .example_car {
-        width: 100px;
+        width: 150px;
         height: 100px;
         padding: 0.5em;
         float: left;
-        margin: 110px 10px 10px 30px;
+        margin: 110px 20px 20px 70px;
       }
 
       .example_car img{
@@ -64,8 +90,8 @@
 
       #droppable {
         width: 100%;
-        height: 150px; 
-        float: left; 
+        height: 150px;
+        float: left;
       }
     </style>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -197,7 +223,6 @@
       <button type="button" id="getRandomCar">Random car </button>
     </div>
     <div id="draggable"></div>
-     
     <div id="droppable">
       <p style="position: absolute;">Drag your car here</p>
       <!-- ["#edf8e9","#bae4b3","#74c476","#31a354","#006d2c"] -->

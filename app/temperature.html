@@ -26,7 +26,7 @@
 </head>
 <body>
     <main>
-        <svg id="graph"/>
+        <iframe style="width:50%;height:100%;" src="../js/lineGraph/index.html"></iframe>
         <svg id="paint"/>
     </main>
     <script>
@@ -37,7 +37,8 @@
             let svg = d3.select(selector)
                 .attr("width", w)
                 .attr("height", h)
-                .style("background", "#3273dc");
+                .style("background", "url(https://earthobservatory.nasa.gov/Experiments/Biome/Images/precipbelize.gif)")
+                .style("background-size", "cover");
         }
 
         makeGraph("#graph");

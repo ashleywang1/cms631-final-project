@@ -67,7 +67,7 @@
             <div class="container">
                 <p>
                     Our planet is warming. Over the past 130 years, average global temperatures have
-                    increased by 1.2 degrees Celsius, or about 2 degrees Farenheit. While a few skeptics
+                    increased by 1.2 °C, or about 2 °F. While a few skeptics
                     argue about the specific cause for this rise in global temperatures, 97% of climate
                     scientists believe the largest contributor is the greenhouse gases like carbon
                     dioxide and methane that we release into the atmosphere all day, every day.
@@ -93,8 +93,7 @@
                 <div v-if="temperature.drew" class="vertical-padding">
                     <div v-if="temperature.status == 'right'" class="notification is-primary">
                         Wow, you’re spot-on! Only {{stats.pct_right}}% of our users’ predictions align precisely with those
-                        of scientists, who estimate that average global temperatures will rise by 3.6 degrees
-                        Celsius by the year 2100, or roughly 6.5 degrees Fahrenheit, if the US and the rest
+                        of scientists, who estimate that average global temperatures will rise by 3.6 °C by the year 2100, or roughly 6.5 °F, if the US and the rest
                         of the world don’t take significant action to curb greenhouse gas emissions. That’s
                         the difference between a warm spring day in the mid-60’s and a toastier summer day
                         in the low 70’s.
@@ -103,8 +102,7 @@
                         It looks like you thought global temperatures will go down in the future. However,
                         scientists actually predict that if the US and the rest of the world don’t take
                         significant action to curb greenhouse gas emissions, average global temperatures
-                        will rise by 3.6 degrees Celsius by the year 2100, or roughly 6.5 degrees
-                        Fahrenheit. That’s the difference between a pleasant spring day in the mid-60’s
+                        will rise by 3.6 °C by the year 2100, or roughly 6.5 °F. That’s the difference between a pleasant spring day in the mid-60’s
                         and a toastier summer day in the low 70’s.
                     </div>
                     <div v-if="temperature.status == 'underestimate'" class="notification is-warning">
@@ -112,7 +110,7 @@
                         absolutely right, but like {{stats.pct_under}}% of our users, you underestimated how much temperatures
                         will increase. Scientists actually predict that if the US and the rest of the world
                         don’t take significant action to curb greenhouse gas emissions, average global
-                        temperatures will rise by 3.6 degrees Celsius by the year 2100, or roughly 6.5 degrees
+                        temperatures will rise by 3.6 °C by the year 2100, or roughly 6.5 degrees
                         Fahrenheit. That’s the difference between a pleasant spring day in the mid-60’s and
                         a toastier summer day in the low 70’s.
                     </div>
@@ -121,7 +119,7 @@
                         absolutely right, but like {{stats.pct_over}}% of our users, you overestimated how much temperatures will
                         increase. Scientists actually predict that if the US and the rest of the world don’t take
                         significant action to curb greenhouse gas emissions, average global temperatures will
-                        rise by 3.6 degrees Celsius by the year 2100, or roughly 6.5 degrees Fahrenheit. That’s
+                        rise by 3.6 °C by the year 2100, or roughly 6.5 °F. That’s
                         the difference between a pleasant spring day in the mid-60’s and a toastier summer day
                         in the low 70’s.
                     </div>
@@ -130,22 +128,20 @@
                         right, but like {{stats.pct_sunder}}% of our users, you underestimated how much temperatures will increase.
                         You were really close though! Scientists actually predict that if the US and the rest of
                         the world don’t take significant action to curb greenhouse gas emissions, average global
-                        temperatures will rise by 3.6 degrees Celsius by the year 2100, or roughly 6.5 degrees
-                        Fahrenheit. That’s the difference between a pleasant spring day in the mid-60’s and a
-                        toastier summer day in the low 70’s.
+                        temperatures will rise by 3.6 °C by the year 2100, or roughly 6.5 °F. That’s the difference 
+                        between a pleasant spring day in the mid-60’s and a toastier summer day in the low 70’s.
                     </div>
                     <div v-if="temperature.status == 'slight_overestimate'" class="notification is-primary">
                         It looks like you thought global temperatures will go up in the future. You’re absolutely
                         right, but like {{stats.pct_sover}}% of our users, you overestimated how much temperatures will increase.
                         You were really close though! Scientists actually predict that if the US and the rest of
                         the world don’t take significant action to curb greenhouse gas emissions, average global
-                        temperatures will rise by 3.6 degrees Celsius by the year 2100, or roughly 6.5 degrees
-                        Fahrenheit. That’s the difference between a pleasant spring day in the mid-60’s and a
-                        toastier summer day in the low 70’s.
+                        temperatures will rise by 3.6 °C by the year 2100, or roughly 6.5 °F. That’s the difference between 
+                        a pleasant spring day in the mid-60’s and a toastier summer day in the low 70’s.
                     </div>
                 </div>
                 <p>
-                    This may not seem like a big difference, but 3.6 degrees Celsius of warming would have devastating
+                    This may not seem like a big difference, but 3.6 °C (6.5 °F) of warming would have devastating
                     impacts, including rising sea levels and increased coastal flooding due to melting ocean ice, a
                     dramatic increase in severe storms, long-lasting droughts, and the spread of diseases like malaria
                     and Zika to new parts of the globe.
@@ -153,8 +149,8 @@
                 <br/>
                 <p>
                     Fortunately, in 2016, the US became one of 185 nations to sign on to the historic Paris climate
-                    agreement, which aims to keep that increase in global temperatures to a far less drastic 1.5 degrees
-                    Celsius, or just over 2.5 degrees Farenheit.
+                    agreement, which aims to keep that increase in global temperatures to a far less drastic 1.5 °C, 
+                    or just over 2.5°F.
                 </p>
             </div>
         </section>
@@ -188,6 +184,12 @@
                 <p>
                     As we can see in the section above, transportation is the second-largest contributor to American greenhouse gas emissions. By changing the way we commute, we can go a long way towards helping our nation hit its Paris target. Let's take a look at <strong>your</strong> commuting habits!
                 </p>
+                <figure class="has-text-centered vertical-padding">
+                    <div class="container">
+                        <iframe class="interactive" src="app/fuelEfficiency.html" scrolling="no"></iframe>
+                    </div>
+                </figure>
+                <br/>
                 <div class="column is-6 is-offset-3">
                     <div class="card">
                       <header class="card-header">
@@ -239,27 +241,27 @@
                         <img src="img/FootprintUser.png" style="position:absolute;height:50%;width:50%;top:0;left:0;"/>
                   </div> -->
                     <p class="vertical-padding" v-if="emissions.travel_mode == 'CAR'">
-                        Your {{emissions.result.distance_in_meters/1000}} km drive to (and from?) work emits <strong>{{emissions.result.car}} grams</strong> of carbon dioxide. Over the course of a year, that adds up to <strong>{{emissions.result.car_yearly}} grams</strong>.
+                        Your <b>{{emissions.result.distance_in_meters/1000}} km</b> drive to work emits <strong>{{emissions.result.car}} lbs</strong> of carbon dioxide. Over the course of a year, that adds up to <strong>{{emissions.result.car_yearly}} lbs</strong>.
                     </p>
                     <p class="vertical-padding" v-if="emissions.travel_mode == 'BUS'">
-                        Your {{emissions.result.transit_distance/1000}} km route to (and from?) work emits <strong>{{emissions.result.bus}} grams</strong> of carbon dioxide. Over the course of a year, that adds up to <strong>{{emissions.result.bus_yearly}} grams</strong>.
+                        Your <b>{{emissions.result.transit_distance/1000}} km</b> route to (and from?) work emits <strong>{{emissions.result.bus}} lbs</strong> of carbon dioxide. Over the course of a year, that adds up to <strong>{{emissions.result.bus_yearly}} lbs</strong>.
                     </p>
 
                     <p class="vertical-padding" v-if="emissions.travel_mode == 'BIKE'">
 
-                        Your {{emissions.result.bike_distance_in_meters/1000}} km bike to (and from?) work emits <strong>{{emissions.result.bike}} grams</strong> of carbon dioxide. Over the course of a year, that adds up to <strong>{{emissions.result.bike_yearly}} grams</strong>.
+                        Your <b>{{emissions.result.bike_distance_in_meters/1000}} km</b> bike to (and from?) work emits <strong>{{emissions.result.bike}} lbs</strong> of carbon dioxide. Over the course of a year, that adds up to <strong>{{emissions.result.bike_yearly}} lbs</strong>.
                     </p>
 
-                    <p class="vertical-padding" v-if="emissions.result.car > 30000">
-                        Your commute seems to be far more than an hour long! You are creating more than 30,000 grams of carbon per commute. That's about the size of a Dalmatian! I'm so sorry for you :( , and we can't create a graphic in that case because your carbon footprint is too big.
+                    <p class="vertical-padding" v-if="emissions.result.car > 66">
+                        Your commute seems to be far more than an hour long! You are creating more than 66 lbs of carbon per commute. That's about the size of a Dalmatian! I'm so sorry for you :( , and we can't create a graphic in that case because your carbon footprint is too big.
                     </p>
-                    
+
                     <p class="vertical-padding" v-if="emissions.result.has_transit && emissions.result.pct_saving_if_bus > 0">
                         Lucky for you, there’s a bus route that can get you to work.  By taking the bus, you could cut your emissions by <b>{{emissions.result.pct_saving_if_bus}}%</b>. If just X% of Americans took the bus to work each day, it would cut US greenhouse gas emissions by X%.
                         <div style="text-align: center">
                             <div class="my-container" style="position: relative; width: 50%; margin-left:25%;">
                                   <img src="img/Footprint.png"/>
-                                  <img src="img/FootprintUser.png" style="position:absolute;top:50%;left:50%; transform:translate(-50%, -70%);" :style="{width: 100 - emissions.result.pct_saving_if_bus + '%', height: 100 -emissions.result.pct_saving_if_bus + '%'}"/>
+                                  <img src="img/FootprintUser.png" style="position:absolute;top:50%;left:50%; transform:translate(-50%, -50%);" :style="{width: 100 - emissions.result.pct_saving_if_bus + '%', height: 100 -emissions.result.pct_saving_if_bus + '%'}"/>
                             </div>
                         </div>
                     </p>
@@ -273,12 +275,12 @@
                         <div style="text-align: center">
                             <div class="my-container" style="position: relative; width: 50%; margin-left:25%;">
                                   <img src="img/Footprint.png"/>
-                                  <img src="img/FootprintUser.png" style="position:absolute;top:50%;left:50%; transform:translate(-50%, -70%);" :style="{width: 100-emissions.result.pct_saving_if_bike + '%', height: 100-emissions.result.pct_saving_if_bike + '%'}"/>
+                                  <img src="img/FootprintUser.png" style="position:absolute;top:50%;left:50%; transform:translate(-50%, -50%);" :style="{width: 100-emissions.result.pct_saving_if_bike + '%', height: 100-emissions.result.pct_saving_if_bike + '%'}"/>
                             </div>
                         </div>
                        </p>
                     <p class="vertical-padding" v-if="!emissions.result.has_transit && !emissions.result.distance_in_meters < 5000">
-                        Unfortunately, it looks like there’s no easy way for you to get to work by bus, and it’s too far to bike or walk. But you can still help the US reach its Paris target by carpooling, since every extra passenger in your car means one fewer car on the road. And when you’re in the market for a new car, consider purchasing a more energy-efficient one - it will not only shrink your carbon footprint, but it could even save you money in the long run by reducing the amount of gasoline you buy. 
+                        Unfortunately, it looks like there’s no easy way for you to get to work by bus, and it’s too far to bike or walk. But you can still help the US reach its Paris target by carpooling, since every extra passenger in your car means one fewer car on the road. And when you’re in the market for a new car, consider purchasing a more energy-efficient one - it will not only shrink your carbon footprint, but it could even save you money in the long run by reducing the amount of gasoline you buy.
                     </p>
                 </div>
             </div>
@@ -286,18 +288,20 @@
         <section class="hero is-primary is-medium">
             <div class="hero-body">
                 <div class="container has-text-centered">
-                    <h1 class="title">
-                        It’s as easy as changing the way you get to work.
-                    </h1>
-                    <h2 class="subtitle">
-                        For more information, go to: ????
+                    <h2 class="title">
+                        Will you help the US avoid breaking its promise <br/>
+                        to the rest of the world? It’s as easy as <br/>
+                        changing the way you get to work.
+                    </h2>
+                    <br/>
+                    <h2>
+                        And while you’re at it, take a few moments to show support for <br/>
+                        environmentally friendly energy and climate policies by signing <br/>
+                        these petitions and calling your Congressional representatives. 
                     </h2>
                 </div>
             </div>
         </section>
-        <figure class="has-text-centered vertical-padding">
-            <iframe class="interactive" src="app/fuelEfficiency.html" scrolling="no"></iframe>
-        </figure>
     </main>
     <footer class="footer">
         <div class="container is-dark">
