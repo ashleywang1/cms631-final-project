@@ -92,16 +92,18 @@ function DataPoint(idx, amt) {
     // if the distance from the mouse to the data point is within 10 pixels
     if (dist(mouseX, mouseY, x.value, y.value) < 5) {
       // textAlign(CENTER);
-      textSize(15);
+      fill(96);
+      textSize(25);
       // draw the value of this data point (using 1 decimal point)
       text(years[idx], 20, 50);
+      textSize(18);
       if(temps[idx] < 0){
-      fill(255, 56, 97);
-      text("Temperatures dropped " +temps[idx] + " degrees Celsius.", 20, 100);
+      fill(0, 209, 178);
+      text("Temperatures dropped " +temps[idx] + "° Celsius.", 20, 75);
     }
     else{
-      fill(0, 209, 178);
-      text("Temperatures rose " + temps[idx] + " degrees Celsius.", 20, 100);
+      fill(255, 56, 97);
+      text("Temperatures rose " + temps[idx] + "° Celsius.", 20, 75);
     }
     }
   }
