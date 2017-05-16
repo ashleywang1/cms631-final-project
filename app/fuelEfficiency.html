@@ -71,9 +71,8 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="../js/car_data.js"></script>
-    <!-- <script src="../js/fuelefficiency.js"></script> -->
+    <script src="js/logger.js"></script>
     <script>
-
 
       var getCarInfo = function () {
           var mfr = $("#manufacturer")[0].options[$("#manufacturer")[0].selectedIndex].text
@@ -165,7 +164,10 @@
           var mfr = $("#manufacturer")[0].options[$("#manufacturer")[0].selectedIndex].text
           var car = $("#carType")[0].options[$("#carType")[0].selectedIndex].text
           $("#draggable").append("<img src='../img/yCar.png'/><center><label class='carLabel'>" + mfr + " " + car + "</label></center>");
+          Logger.log({"event": "car_manufacturer", mfr});
+          Logger.log({"event": "car_type", car});
         }
+
         document.getElementById("getRandomCar").onclick = function(e) {
           $("#draggable").html("");
           $("#draggable").append("<img src='../img/yCar.png'/><center><label class='carLabel'>Your car</label></center>");
