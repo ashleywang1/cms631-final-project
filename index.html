@@ -67,7 +67,7 @@
             <div class="container">
                 <p>
                     Our planet is warming. Over the past 130 years, average global temperatures have
-                    increased by 1.2 degrees Celsius, or about 2 degrees Farenheit. While a few skeptics
+                    increased by 1.2 °C, or about 2 °F. While a few skeptics
                     argue about the specific cause for this rise in global temperatures, 97% of climate
                     scientists believe the largest contributor is the greenhouse gases like carbon
                     dioxide and methane that we release into the atmosphere all day, every day.
@@ -93,8 +93,7 @@
                 <div v-if="temperature.drew" class="vertical-padding">
                     <div v-if="temperature.status == 'right'" class="notification is-primary">
                         Wow, you’re spot-on! Only {{stats.pct_right}}% of our users’ predictions align precisely with those
-                        of scientists, who estimate that average global temperatures will rise by 3.6 degrees
-                        Celsius by the year 2100, or roughly 6.5 degrees Fahrenheit, if the US and the rest
+                        of scientists, who estimate that average global temperatures will rise by 3.6 °C by the year 2100, or roughly 6.5 °F, if the US and the rest
                         of the world don’t take significant action to curb greenhouse gas emissions. That’s
                         the difference between a warm spring day in the mid-60’s and a toastier summer day
                         in the low 70’s.
@@ -103,8 +102,7 @@
                         It looks like you thought global temperatures will go down in the future. However,
                         scientists actually predict that if the US and the rest of the world don’t take
                         significant action to curb greenhouse gas emissions, average global temperatures
-                        will rise by 3.6 degrees Celsius by the year 2100, or roughly 6.5 degrees
-                        Fahrenheit. That’s the difference between a pleasant spring day in the mid-60’s
+                        will rise by 3.6 °C by the year 2100, or roughly 6.5 °F. That’s the difference between a pleasant spring day in the mid-60’s
                         and a toastier summer day in the low 70’s.
                     </div>
                     <div v-if="temperature.status == 'underestimate'" class="notification is-warning">
@@ -112,7 +110,7 @@
                         absolutely right, but like {{stats.pct_under}}% of our users, you underestimated how much temperatures
                         will increase. Scientists actually predict that if the US and the rest of the world
                         don’t take significant action to curb greenhouse gas emissions, average global
-                        temperatures will rise by 3.6 degrees Celsius by the year 2100, or roughly 6.5 degrees
+                        temperatures will rise by 3.6 °C by the year 2100, or roughly 6.5 degrees
                         Fahrenheit. That’s the difference between a pleasant spring day in the mid-60’s and
                         a toastier summer day in the low 70’s.
                     </div>
@@ -121,7 +119,7 @@
                         absolutely right, but like {{stats.pct_over}}% of our users, you overestimated how much temperatures will
                         increase. Scientists actually predict that if the US and the rest of the world don’t take
                         significant action to curb greenhouse gas emissions, average global temperatures will
-                        rise by 3.6 degrees Celsius by the year 2100, or roughly 6.5 degrees Fahrenheit. That’s
+                        rise by 3.6 °C by the year 2100, or roughly 6.5 °F. That’s
                         the difference between a pleasant spring day in the mid-60’s and a toastier summer day
                         in the low 70’s.
                     </div>
@@ -130,22 +128,20 @@
                         right, but like {{stats.pct_sunder}}% of our users, you underestimated how much temperatures will increase.
                         You were really close though! Scientists actually predict that if the US and the rest of
                         the world don’t take significant action to curb greenhouse gas emissions, average global
-                        temperatures will rise by 3.6 degrees Celsius by the year 2100, or roughly 6.5 degrees
-                        Fahrenheit. That’s the difference between a pleasant spring day in the mid-60’s and a
-                        toastier summer day in the low 70’s.
+                        temperatures will rise by 3.6 °C by the year 2100, or roughly 6.5 °F. That’s the difference 
+                        between a pleasant spring day in the mid-60’s and a toastier summer day in the low 70’s.
                     </div>
                     <div v-if="temperature.status == 'slight_overestimate'" class="notification is-primary">
                         It looks like you thought global temperatures will go up in the future. You’re absolutely
                         right, but like {{stats.pct_sover}}% of our users, you overestimated how much temperatures will increase.
                         You were really close though! Scientists actually predict that if the US and the rest of
                         the world don’t take significant action to curb greenhouse gas emissions, average global
-                        temperatures will rise by 3.6 degrees Celsius by the year 2100, or roughly 6.5 degrees
-                        Fahrenheit. That’s the difference between a pleasant spring day in the mid-60’s and a
-                        toastier summer day in the low 70’s.
+                        temperatures will rise by 3.6 °C by the year 2100, or roughly 6.5 °F. That’s the difference between 
+                        a pleasant spring day in the mid-60’s and a toastier summer day in the low 70’s.
                     </div>
                 </div>
                 <p>
-                    This may not seem like a big difference, but 3.6 degrees Celsius of warming would have devastating
+                    This may not seem like a big difference, but 3.6 °C (6.5 °F) of warming would have devastating
                     impacts, including rising sea levels and increased coastal flooding due to melting ocean ice, a
                     dramatic increase in severe storms, long-lasting droughts, and the spread of diseases like malaria
                     and Zika to new parts of the globe.
@@ -153,8 +149,8 @@
                 <br/>
                 <p>
                     Fortunately, in 2016, the US became one of 185 nations to sign on to the historic Paris climate
-                    agreement, which aims to keep that increase in global temperatures to a far less drastic 1.5 degrees
-                    Celsius, or just over 2.5 degrees Farenheit.
+                    agreement, which aims to keep that increase in global temperatures to a far less drastic 1.5 °C, 
+                    or just over 2.5°F.
                 </p>
             </div>
         </section>
@@ -188,6 +184,12 @@
                 <p>
                     As we can see in the section above, transportation is the second-largest contributor to American greenhouse gas emissions. By changing the way we commute, we can go a long way towards helping our nation hit its Paris target. Let's take a look at <strong>your</strong> commuting habits!
                 </p>
+                <figure class="has-text-centered vertical-padding">
+                    <div class="container">
+                        <iframe class="interactive" src="app/fuelEfficiency.html" scrolling="no"></iframe>
+                    </div>
+                </figure>
+                <br/>
                 <div class="column is-6 is-offset-3">
                     <div class="card">
                       <header class="card-header">
@@ -286,18 +288,20 @@
         <section class="hero is-primary is-medium">
             <div class="hero-body">
                 <div class="container has-text-centered">
-                    <h1 class="title">
-                        It’s as easy as changing the way you get to work.
-                    </h1>
-                    <h2 class="subtitle">
-                        For more information, go to: ????
+                    <h2 class="title">
+                        Will you help the US avoid breaking its promise <br/>
+                        to the rest of the world? It’s as easy as <br/>
+                        changing the way you get to work.
+                    </h2>
+                    <br/>
+                    <h2>
+                        And while you’re at it, take a few moments to show support for <br/>
+                        environmentally friendly energy and climate policies by signing <br/>
+                        these petitions and calling your Congressional representatives. 
                     </h2>
                 </div>
             </div>
         </section>
-        <figure class="has-text-centered vertical-padding">
-            <iframe class="interactive" src="app/fuelEfficiency.html" scrolling="no"></iframe>
-        </figure>
     </main>
     <footer class="footer">
         <div class="container is-dark">
