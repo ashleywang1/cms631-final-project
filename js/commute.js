@@ -24,10 +24,10 @@ function getCommute(origin, destination, callback) {
                 travelMode: 'DRIVING',
             }, function (res, status) {
                 var distance_in_meters = res.rows[0].elements[0].distance.value;
-                var car = distance_in_meters*0.230577999;  // 371 g/pass-mi
-                var bus = transit_distance*0.18582970789;  // 299 g/pass-mi
-                var bike = biking_distance_in_meters*0.021;  //21 g/km,
-                var YEARLY_MULTIPLIER = 42*5;
+                var car = distance_in_meters*0.230577999*0.00220462;  // 371 g/pass-mi
+                var bus = transit_distance*0.18582970789*0.00220462;  // 299 g/pass-mi
+                var bike = biking_distance_in_meters*0.021*0.00220462;  //21 g/km,
+                var YEARLY_MULTIPLIER = 52*5;
                 callback({
                     "distance_in_meters": distance_in_meters,
                     "bike_distance_in_meters": biking_distance_in_meters,

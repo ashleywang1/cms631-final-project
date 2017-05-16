@@ -241,19 +241,19 @@
                         <img src="img/FootprintUser.png" style="position:absolute;height:50%;width:50%;top:0;left:0;"/>
                   </div> -->
                     <p class="vertical-padding" v-if="emissions.travel_mode == 'CAR'">
-                        Your {{emissions.result.distance_in_meters/1000}} km drive to (and from?) work emits <strong>{{emissions.result.car}} grams</strong> of carbon dioxide. Over the course of a year, that adds up to <strong>{{emissions.result.car_yearly}} grams</strong>.
+                        Your <b>{{emissions.result.distance_in_meters/1000}} km</b> drive to work emits <strong>{{emissions.result.car}} lbs</strong> of carbon dioxide. Over the course of a year, that adds up to <strong>{{emissions.result.car_yearly}} lbs</strong>.
                     </p>
                     <p class="vertical-padding" v-if="emissions.travel_mode == 'BUS'">
-                        Your {{emissions.result.transit_distance/1000}} km route to (and from?) work emits <strong>{{emissions.result.bus}} grams</strong> of carbon dioxide. Over the course of a year, that adds up to <strong>{{emissions.result.bus_yearly}} grams</strong>.
+                        Your <b>{{emissions.result.transit_distance/1000}} km</b> route to (and from?) work emits <strong>{{emissions.result.bus}} lbs</strong> of carbon dioxide. Over the course of a year, that adds up to <strong>{{emissions.result.bus_yearly}} lbs</strong>.
                     </p>
 
                     <p class="vertical-padding" v-if="emissions.travel_mode == 'BIKE'">
 
-                        Your {{emissions.result.bike_distance_in_meters/1000}} km bike to (and from?) work emits <strong>{{emissions.result.bike}} grams</strong> of carbon dioxide. Over the course of a year, that adds up to <strong>{{emissions.result.bike_yearly}} grams</strong>.
+                        Your <b>{{emissions.result.bike_distance_in_meters/1000}} km</b> bike to (and from?) work emits <strong>{{emissions.result.bike}} lbs</strong> of carbon dioxide. Over the course of a year, that adds up to <strong>{{emissions.result.bike_yearly}} lbs</strong>.
                     </p>
 
-                    <p class="vertical-padding" v-if="emissions.result.car > 30000">
-                        Your commute seems to be far more than an hour long! You are creating more than 30,000 grams of carbon per commute. That's about the size of a Dalmatian! I'm so sorry for you :( , and we can't create a graphic in that case because your carbon footprint is too big.
+                    <p class="vertical-padding" v-if="emissions.result.car > 66">
+                        Your commute seems to be far more than an hour long! You are creating more than 66 lbs of carbon per commute. That's about the size of a Dalmatian! I'm so sorry for you :( , and we can't create a graphic in that case because your carbon footprint is too big.
                     </p>
                     
                     <p class="vertical-padding" v-if="emissions.result.has_transit && emissions.result.pct_saving_if_bus > 0">
@@ -261,7 +261,7 @@
                         <div style="text-align: center">
                             <div class="my-container" style="position: relative; width: 50%; margin-left:25%;">
                                   <img src="img/Footprint.png"/>
-                                  <img src="img/FootprintUser.png" style="position:absolute;top:50%;left:50%; transform:translate(-50%, -70%);" :style="{width: 100 - emissions.result.pct_saving_if_bus + '%', height: 100 -emissions.result.pct_saving_if_bus + '%'}"/>
+                                  <img src="img/FootprintUser.png" style="position:absolute;top:50%;left:50%; transform:translate(-50%, -50%);" :style="{width: 100 - emissions.result.pct_saving_if_bus + '%', height: 100 -emissions.result.pct_saving_if_bus + '%'}"/>
                             </div>
                         </div>
                     </p>
@@ -275,7 +275,7 @@
                         <div style="text-align: center">
                             <div class="my-container" style="position: relative; width: 50%; margin-left:25%;">
                                   <img src="img/Footprint.png"/>
-                                  <img src="img/FootprintUser.png" style="position:absolute;top:50%;left:50%; transform:translate(-50%, -70%);" :style="{width: 100-emissions.result.pct_saving_if_bike + '%', height: 100-emissions.result.pct_saving_if_bike + '%'}"/>
+                                  <img src="img/FootprintUser.png" style="position:absolute;top:50%;left:50%; transform:translate(-50%, -50%);" :style="{width: 100-emissions.result.pct_saving_if_bike + '%', height: 100-emissions.result.pct_saving_if_bike + '%'}"/>
                             </div>
                         </div>
                        </p>
