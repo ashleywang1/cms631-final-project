@@ -4,9 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Car Fuel Efficiency Quiz</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.1/css/bulma.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <style>
       body {
+        background: #f5f5f5;
         position: absolute;
         top: 0; bottom: 0;
         left: 0; right: 0;
@@ -69,7 +71,17 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="../js/car_data.js"></script>
+    <!-- <script src="../js/fuelefficiency.js"></script> -->
     <script>
+
+
+      var getCarInfo = function () {
+          var mfr = $("#manufacturer")[0].options[$("#manufacturer")[0].selectedIndex].text
+          var car = $("#carType")[0].options[$("#carType")[0].selectedIndex].text
+          return car_data.filter(
+            function(c){ return c.mfr == mfr && c.car == car }
+          )[0];
+      };
 
       function getCarOptions(mfr) {
         return car_data.filter(
@@ -78,6 +90,10 @@
       }
 
       $( function() {
+        // Set up the text
+        $("#right").hide();
+        $("#wrong").hide();
+
         // Set up the car selection
         metadata.forEach(function(c) {
           $("#manufacturer").append("<option>" + c.mfr +"</option>");
@@ -95,6 +111,39 @@
             var OFFSET = 20;
             console.log(event);
             var percentage = ((ui.offset.left + OFFSET)/$( this ).width())*100;
+            var car = getCarInfo();
+            var l, h;
+            switch(car.score) {
+              case 0:
+                l = -3;
+                h = 16;
+                break;
+              case 25:
+                l = 18;
+                h = 36;
+                break;
+              case 50:
+                l = 37;
+                h = 56;
+                break;
+              case 75:
+                l = 58;
+                h = 76;
+                break;
+              case 100:
+                l = 78;
+                h = 92;
+                break;
+            }
+            if (percentage > l && percentage < h) {
+              console.log("correct");
+              $("#right").show();
+              $("#wrong").hide();
+            } else {
+              $("#right").hide();
+              $("#wrong").show();
+              console.log("wrong");
+            }
             $( this )
               // .addClass( "ui-state-highlight" )
               .find( "p" )
@@ -122,24 +171,28 @@
           $("#draggable").append("<img src='../img/yCar.png'/><center><label class='carLabel'>Your car</label></center>");
         }
 
+        // prevent dragging default
+        $(document).on('mousedown', ".example_car img", function(evt) {
+          evt.preventDefault();
+        });
+
       });
 
     </script>
   </head>
   <body>
-    <div id="instructions" width="50%">
-      <h1>Do you know your car's fuel efficiency score?</h1>
+    <div class="title" id="instructions" width="50%">
+      <h1>How fuel efficient do you think your car is?</h1>
     </div>
-    <br>
-    <div id="garage" width="50%">
+    <div id="garage">
       <p>What kind of car do you have?</p>
       <select name="manufactuer" id="manufacturer">
       </select>
       <select name="carType" id="carType">
       </select>
-      <button type="button" class="btn btn-default" id="getYourCar"> Get your car </button>
+      <button type="button" id="getYourCar"> Get your car </button>
       <span> Can't find yours? </span>
-      <button type="button" class="btn btn-default" id="getRandomCar">Random car </button>
+      <button type="button" id="getRandomCar">Random car </button>
     </div>
     <div id="draggable"></div>
      
@@ -179,8 +232,8 @@
     </div>
     <br>
     <div id="result">
-      <p id="wrong" style="visibility:hidden;">Drag the car into the category you think it belongs to. You're not quite there yet!</p>
-      <p id="right" style="visibility:hidden;">You've got it! This car has a fuel efficiency of <span id="fe"></span> miles per gallon, which puts it into the <span id="fe_percent"></span>th percentile of all the cars in our dataset!</p>
+      <p id="wrong">Drag the car into the category you think it belongs to. You're not quite there yet!</p>
+      <p id="right">You've got it! This car has a fuel efficiency of <span id="fe"></span> miles per gallon, which puts it into the <span id="fe_percent"></span>th percentile of all the cars in our dataset!</p>
     </div>
   </body>
 </html>
