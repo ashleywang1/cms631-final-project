@@ -128,7 +128,7 @@
                         right, but like {{stats.pct_sunder}}% of our users, you underestimated how much temperatures will increase.
                         You were really close though! Scientists actually predict that if the US and the rest of
                         the world don’t take significant action to curb greenhouse gas emissions, average global
-                        temperatures will rise by 3.6 °C by the year 2100, or roughly 6.5 °F. That’s the difference 
+                        temperatures will rise by 3.6 °C by the year 2100, or roughly 6.5 °F. That’s the difference
                         between a pleasant spring day in the mid-60’s and a toastier summer day in the low 70’s.
                     </div>
                     <div v-if="temperature.status == 'slight_overestimate'" class="notification is-primary">
@@ -136,7 +136,7 @@
                         right, but like {{stats.pct_sover}}% of our users, you overestimated how much temperatures will increase.
                         You were really close though! Scientists actually predict that if the US and the rest of
                         the world don’t take significant action to curb greenhouse gas emissions, average global
-                        temperatures will rise by 3.6 °C by the year 2100, or roughly 6.5 °F. That’s the difference between 
+                        temperatures will rise by 3.6 °C by the year 2100, or roughly 6.5 °F. That’s the difference between
                         a pleasant spring day in the mid-60’s and a toastier summer day in the low 70’s.
                     </div>
                 </div>
@@ -149,7 +149,7 @@
                 <br/>
                 <p>
                     Fortunately, in 2016, the US became one of 185 nations to sign on to the historic Paris climate
-                    agreement, which aims to keep that increase in global temperatures to a far less drastic 1.5 °C, 
+                    agreement, which aims to keep that increase in global temperatures to a far less drastic 1.5 °C,
                     or just over 2.5°F.
                 </p>
             </div>
@@ -257,7 +257,12 @@
                     </p>
 
                     <p class="vertical-padding" v-if="emissions.result.has_transit && emissions.result.pct_saving_if_bus > 0">
-                        Lucky for you, there’s a bus route that can get you to work.  By taking the bus, you could cut your emissions by <b>{{emissions.result.pct_saving_if_bus}}%</b>. If just X% of Americans took the bus to work each day, it would cut US greenhouse gas emissions by X%.
+                        Lucky for you, there’s a bus route that can get you to work.  By taking the bus, you could cut your emissions by
+                        <b>{{emissions.result.pct_saving_if_bus}}%</b>. Having just one driver switch to public transportation can reduce
+                        the typical American household’s annual carbon footprint by <a href = "https://www.transit.dot.gov/sites/fta.dot.gov/files/docs/PublicTransportationsRoleInRespondingToClimateChange2010.pdf">over 8 percent</a>! Imagine what the impact would be if
+                        millions of Americans made that simple change!
+
+
                         <div style="text-align: center">
                             <div class="my-container" style="position: relative; width: 50%; margin-left:25%;">
                                   <img src="img/Footprint.png"/>
@@ -271,7 +276,12 @@
                     </p>
 
                     <p class="vertical-padding" v-if="emissions.result.distance_in_meters < 5000">
-                        {{emissions.result.has_transit ? "It" : "Fortunately, it"}} looks like you work close enough to home to bike or walk there. By biking or walking, you could reduce your emissions by <b>{{emissions.result.pct_saving_if_bike}}%</b>.  If just X% of Americans walked or biked to work each day, it would cut US greenhouse gas emissions by X%.
+                        {{emissions.result.has_transit ? "It" : "Fortunately, it"}} looks like you work close enough to home to bike or walk there.
+                        By biking or walking, you could reduce your emissions by <b>{{emissions.result.pct_saving_if_bike}}%</b>.
+                        Replacing cars with bikes also reduces traffic congestion, increases air quality, improves physical fitness,
+                        and saves you money on gasoline and car maintenance. And during rush hour, biking could even get you to work (or back home)
+                        more quickly than driving!
+
                         <div style="text-align: center">
                             <div class="my-container" style="position: relative; width: 50%; margin-left:25%;">
                                   <img src="img/Footprint.png"/>
@@ -280,7 +290,12 @@
                         </div>
                        </p>
                     <p class="vertical-padding" v-if="!emissions.result.has_transit && !emissions.result.distance_in_meters < 5000">
-                        Unfortunately, it looks like there’s no easy way for you to get to work by bus, and it’s too far to bike or walk. But you can still help the US reach its Paris target by carpooling, since every extra passenger in your car means one fewer car on the road. And when you’re in the market for a new car, consider purchasing a more energy-efficient one - it will not only shrink your carbon footprint, but it could even save you money in the long run by reducing the amount of gasoline you buy.
+                      Unfortunately, it looks like there’s no easy way for you to get to work by bus, and it’s too far to bike or walk.
+                      But you can still help the US reach its Paris target by carpooling, since every extra passenger in your car means
+                      one fewer car on the road. And when you’re in the market for a new car, consider purchasing a more energy-efficient
+                      one - it will not only shrink your carbon footprint, but it could even save you money in the long run by reducing
+                      the amount of gasoline you buy. For more information on cutting the environmental impact of your commute, check
+                      out the US Department of Energy’s <a href = "http://www.fueleconomy.gov/feg/drive.shtml"> gas mileage tips</a>.
                     </p>
                 </div>
             </div>
@@ -297,7 +312,7 @@
                     <h2>
                         And while you’re at it, take a few moments to show support for <br/>
                         environmentally friendly energy and climate policies by signing <br/>
-                        these petitions and calling your Congressional representatives. 
+                        these petitions and calling your Congressional representatives.
                     </h2>
                 </div>
             </div>

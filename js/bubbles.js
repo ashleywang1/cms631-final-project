@@ -42,13 +42,17 @@ function draw() {
 
   background(54);
   noStroke();
-  fill(255, 38, 38, 100);
+  // fill(255, 38, 38, 100);
+  fill(255, 56, 97);
   ellipse(xmax, height/2, maxrad, maxrad);
+  fill(255);
+  text("Paris Agreement Number", xmax-maxsize*.74/4 - 40, height/2)
 
   noFill();
   strokeWeight(3);
   // stroke(150, 255, 255, 150);
   stroke(0, 209, 178);
+  // text("Paris Agreement Number", xmax + maxsize*.74, height/2)
   ellipse(xmax, height/2, maxsize*.74, maxsize*.74);
 
   noStroke();
