@@ -253,7 +253,7 @@
                     <p class="vertical-padding" v-if="emissions.result.car > 30000">
                         Your commute seems to be far more than an hour long! You are creating more than 30,000 grams of carbon per commute. That's about the size of a Dalmatian! I'm so sorry for you :( , and we can't create a graphic in that case because your carbon footprint is too big.
                     </p>
-                    
+
                     <p class="vertical-padding" v-if="emissions.result.has_transit && emissions.result.pct_saving_if_bus > 0">
                         Lucky for you, there’s a bus route that can get you to work.  By taking the bus, you could cut your emissions by <b>{{emissions.result.pct_saving_if_bus}}%</b>. If just X% of Americans took the bus to work each day, it would cut US greenhouse gas emissions by X%.
                         <div style="text-align: center">
@@ -278,7 +278,7 @@
                         </div>
                        </p>
                     <p class="vertical-padding" v-if="!emissions.result.has_transit && !emissions.result.distance_in_meters < 5000">
-                        Unfortunately, it looks like there’s no easy way for you to get to work by bus, and it’s too far to bike or walk. But you can still help the US reach its Paris target by carpooling, since every extra passenger in your car means one fewer car on the road. And when you’re in the market for a new car, consider purchasing a more energy-efficient one - it will not only shrink your carbon footprint, but it could even save you money in the long run by reducing the amount of gasoline you buy. 
+                        Unfortunately, it looks like there’s no easy way for you to get to work by bus, and it’s too far to bike or walk. But you can still help the US reach its Paris target by carpooling, since every extra passenger in your car means one fewer car on the road. And when you’re in the market for a new car, consider purchasing a more energy-efficient one - it will not only shrink your carbon footprint, but it could even save you money in the long run by reducing the amount of gasoline you buy.
                     </p>
                 </div>
             </div>
