@@ -107,7 +107,9 @@
                 <div class="has-text-centered vertical-padding">
                     <p>
                         How do you think average global temperatures will change in the future if we
-                        continue emitting greenhouse gases at our current rate?
+                        continue emitting greenhouse gases at our current rate? Click on the blank space and 
+                        drag the mouse to draw what you predict will happen to global temperatures between 
+                        now and 2100.
                     </p>
                     <figure class="has-text-centered vertical-padding">
                         <iframe class="interactive" src="app/temperature.html" scrolling="no"></iframe>
@@ -281,7 +283,7 @@
                         Your commute seems to be far more than an hour long! You are creating more than 66 lbs of carbon per commute. That's about the size of a Dalmatian! I'm so sorry for you :( , and we can't create a graphic in that case because your carbon footprint is too big.
                     </p>
 
-                    <p class="vertical-padding" v-if="emissions.result.has_transit && emissions.result.pct_saving_if_bus > 0">
+                    <div class="vertical-padding" v-if="emissions.result.has_transit && emissions.result.pct_saving_if_bus > 0">
                         Lucky for you, there’s a bus route that can get you to work.  By taking the bus, you could cut your emissions by
                         <b>{{emissions.result.pct_saving_if_bus}}%</b>. Having just one driver switch to public transportation can reduce
                         the typical American household’s annual carbon footprint by <a href = "https://www.transit.dot.gov/sites/fta.dot.gov/files/docs/PublicTransportationsRoleInRespondingToClimateChange2010.pdf">over 8 percent</a>! Imagine what the impact would be if
@@ -294,13 +296,9 @@
                                   <img src="img/FootprintUser.png" style="position:absolute;top:50%;left:50%; transform:translate(-50%, -50%);" :style="{width: 100 - emissions.result.pct_saving_if_bus + '%', height: 100 -emissions.result.pct_saving_if_bus + '%'}"/>
                             </div>
                         </div>
-                    </p>
+                    </div>
 
-                    <p class="vertical-padding" v-if="emissions.result.has_transit && emissions.result.pct_saving_if_bus < 0">
-                        It looks like it actually produces more. However, it's going to go on the route anyways so...
-                    </p>
-
-                    <p class="vertical-padding" v-if="emissions.result.distance_in_meters < 5000">
+                    <div class="vertical-padding" v-if="emissions.result.distance_in_meters < 5000">
                         {{emissions.result.has_transit ? "It" : "Fortunately, it"}} looks like you work close enough to home to bike or walk there.
                         By biking or walking, you could reduce your emissions by <b>{{emissions.result.pct_saving_if_bike}}%</b>.
                         Replacing cars with bikes also reduces traffic congestion, increases air quality, improves physical fitness,
@@ -313,7 +311,8 @@
                                   <img src="img/FootprintUser.png" style="position:absolute;top:50%;left:50%; transform:translate(-50%, -50%);" :style="{width: 100-emissions.result.pct_saving_if_bike + '%', height: 100-emissions.result.pct_saving_if_bike + '%'}"/>
                             </div>
                         </div>
-                       </p>
+                   </div>
+
                     <p class="vertical-padding" v-if="!emissions.result.has_transit && !emissions.result.distance_in_meters < 5000">
                       Unfortunately, it looks like there’s no easy way for you to get to work by bus, and it’s too far to bike or walk.
                       But you can still help the US reach its Paris target by carpooling, since every extra passenger in your car means
@@ -354,8 +353,8 @@
                       <a @click="postsurvey.equal_or_more='slightly'" class="button">Slightly more concerned</a>
                       <a @click="postsurvey.equal_or_more='equally'" class="button">Equally concerned</a>
                     </div>
+                    <br/>
                 </div>
-                <br/>
                 <div v-if="!postsurvey.how_likely">
                     <p class="subtitle is-5">
                         How likely are you to change the way you commute to work after going through our web page?
@@ -365,8 +364,8 @@
                       <a @click="postsurvey.how_likely='slightly'" class="button">Slightly likely</a>
                       <a @click="postsurvey.how_likely='not-at-all'" class="button">Not at all likely</a>
                     </div>
+                    <br/>
                 </div>
-                <br/>
                 <div v-if="!postsurvey.belief">
                     <p class="subtitle is-5">
                         To what extent do you believe that if many people chose greener commuting options, it would help reduce greenhouse gas emissions?
@@ -376,8 +375,8 @@
                       <a @click="postsurvey.belief='some'" class="button">It would make some difference.</a>
                       <a @click="postsurvey.belief='none'" class="button">It wouldn't change anything.</a>
                     </div>
+                    <br/>
                 </div>
-                <br/>
             </div>
         </section>
     </main>
