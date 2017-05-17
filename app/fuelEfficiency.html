@@ -133,32 +133,31 @@
             var percentage = ((ui.offset.left + OFFSET)/$( this ).width())*100;
             var car = getCarInfo();
             var l, h, correct;
-            switch(car.score) {
-              case 0:
-                l = -3;
-                h = 16;
-                correct = "right_bad";
-                break;
-              case 25:
-                l = 18;
-                h = 36;
-                correct = "right_bad";
-                break;
-              case 50:
-                l = 37;
-                h = 56;
-                correct = "right_middle";
-                break;
-              case 75:
-                l = 58;
-                h = 76;
-                correct = "right_good";
-                break;
-              case 100:
-                l = 78;
-                h = 92;
-                correct = "right_good";
-                break;
+            if (car.fe <=15) {
+              console.log(car.fe, car.fe <=15);
+              l = -3;
+              h = 16;
+              correct = "right_bad";
+            }
+            else if (car.fe > 15 && car.fe <= 18){
+              l = 18;
+              h = 36;
+              correct = "right_bad";
+            }
+            else if (car.fe > 18 && car.fe <=20 ) {
+              l = 37;
+              h = 56;
+              correct = "right_middle";
+            }
+            else if (car.fe > 20 && car.fe <= 24) {
+              l = 58;
+              h = 76;
+              correct = "right_good";
+            }
+            else if (car.fe > 24) {
+              l = 78;
+              h = 92;
+              correct = "right_good";
             }
             if (percentage > l && percentage < h) {
               console.log("correct");
@@ -214,7 +213,6 @@
             <option disabled> Manufacturer </option>
           </select>
           <select class="select" name="carType" id="carType">
-            <option disabled> Car Make and Model </option>
           </select>
           <br>
         </div>
@@ -252,7 +250,7 @@
           <p class="result" id="way2low">Cut yourself some slack, your car is better than you think. Click and drag your car to try again!</p> -->
           <br>
           <p class="result" id="low">Your car is a bit greener than you think. Click and drag your car to try again!</p>
-          <p class="result" id="right_bad">Good job, you got it! This car has a fuel efficiency of <span class="fe"></span> miles per gallon, which puts it into the bottom half of all the cars in our database! Not to worry, companies are introducing more and more fuel efficient cars. Consider one the next time you buy a car!</p>
+          <p class="result" id="right_bad">Good job, you got it! This car has a fuel efficiency of <span class="fe"></span> miles per gallon, which places it among the least-efficient cars in our database. Not to worry, companies are introducing more and more fuel efficient cars. Consider one the next time you buy a car!</p>
           <p class="result" id="right_middle">Good job, you got it! This car has a fuel efficiency of <span class="fe"></span> miles per gallon, which makes it roughly average amongst the cars in our database. You’re car is just about average, but it can still be better. Companies are introducing more and more fuel efficient cars. Consider one the next time you buy a car!</p>
           <p class="result" id="right_good">Good job, you got it! This car has a fuel efficiency of <span class="fe"></span> miles per gallon, which puts it into the top half of all the cars in our dataset. Your car is fuel efficient, keep up the good work!</p>
           <!-- <p class="result" id="high">Good guess, you’re so close! Click and drag your car to try again!</p> -->
