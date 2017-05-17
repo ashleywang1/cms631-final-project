@@ -46,7 +46,7 @@ function draw() {
   fill(255, 56, 97);
   ellipse(xmax, height/2, maxrad, maxrad);
   fill(255);
-  text("Paris Agreement Number", xmax-maxsize*.74/4 - 40, height/2)
+  text("Paris Agreement Goal", xmax-maxsize*.74/4 - 40, height/2)
 
   noFill();
   strokeWeight(3);
