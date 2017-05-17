@@ -31,7 +31,9 @@ function makePaint(selector, callback) {
         .x(d=>d[0])
         .y(d=>d[1]);
 
-    let pathdata = {};
+    let pathdata = {
+        0: [0, 300]
+    };
     let path = svg.append("path")
     .attr("class","line");
 
@@ -40,6 +42,7 @@ function makePaint(selector, callback) {
             background
                 .on("mousemove",function(d,i){
                     position = Math.round(d3.event.offsetX/(w/bars));
+                    pathdata[0] = [0, 300];
                     pathdata[position] = [position*w/bars,d3.mouse(this)[1]];
                     path.datum(_.values(pathdata)).attr("d",line);
                     svg

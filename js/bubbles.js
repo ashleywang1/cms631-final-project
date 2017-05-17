@@ -267,6 +267,9 @@ if(maxrad < maxsize*.74){
   push();
   text("Good job, you got the US to the\nParis agreement number!", 20, height-50);
   pop();
+  Logger.log({"event": "bubble_success", aggsize: aggsize, commsize: commsize, indsize: indsize, transsize: transsize, elecsize: elecsize});
+  Logger = {};
+  Logger.log = function(){};
 }
 
 // fill(150, 255, 255, 150);

@@ -29,7 +29,7 @@ function setup() {
 
   bounds.left = 5;
   bounds.right = width-5;
-  bounds.top = 5;
+  bounds.top = 300;
   bounds.bottom = height-5;
 
   for (var i = 0; i < dataCount; i++) {

@@ -67,6 +67,34 @@
         </div>
     </section>
     <main>
+        <section class="hero is-dark vertical-padding">
+            <div class="container" style="text-align: center;">
+                <h1 class="title">A few quick questions to help us customize your experience:</h1>
+                <br/>
+                <div v-if="!presurvey.how_concerned">
+                    <p class="subtitle is-5">How concerned are you about climate change?</p>
+                    <div class="block">
+                      <a @click="presurvey.how_concerned='very'" class="button">Very</a>
+                      <a @click="presurvey.how_concerned='somewhat'" class="button">Somewhat</a>
+                      <a @click="presurvey.how_concerned='slightly'" class="button">Slightly</a>
+                      <a @click="presurvey.how_concerned='not-at-all'" class="button">Not at all</a>
+                    </div>
+                </div>
+                <br/>
+                <div v-if="!presurvey.individual_actions">
+                    <p class="subtitle is-5">
+                        How much do you believe individual actions matter when it <br/>
+                        comes to curbing green house gas emissions?
+                    </p>
+                    <div class="block">
+                      <a @click="presurvey.individual_actions='a-lot'" class="button">A lot</a>
+                      <a @click="presurvey.individual_actions='a-little'" class="button">A little</a>
+                      <a @click="presurvey.individual_actions='not-at-all'" class="button">Not at all</a>
+                    </div>
+                </div>
+                <br/>
+            </div>
+        </section>
         <section class="hero is-light vertical-padding">
             <div class="container">
                 <p>
@@ -343,6 +371,10 @@
         const vm = new Vue({
             el: "main",
             data: {
+                presurvey: {
+                    complete: false,
+                    how_concerned: false
+                },
                 stats: {
                     pct_right: 10,
                     pct_under: 40,

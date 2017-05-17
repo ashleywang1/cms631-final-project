@@ -43,15 +43,35 @@
 
         makeGraph("#graph");
         makePaint("#paint", function (path) {
-            var distance_from_top_1 = path[1][1];
-            var distance_from_top_2 = path[_.size(path)-1][1];
+            var first, last;
+            for (var i = 0; i <= 10; i++)
+                if (path[i]) {
+                    first = 600 - path[i][1];
+                    break;
+                }
+            for (var i = 10; i >= 0; i--)
+                if (path[i]) {
+                    last = 600 - path[i][1];
+                    break;
+                }
 
-            if (distance_from_top_2 < distance_from_top_1 - 100)
-                parent.update_temp("overestimate");
-            else if (distance_from_top_2 < distance_from_top_1)
-                parent.update_temp("underestimate");
-            else
+            if (first > last)
                 parent.update_temp("wrong");
+            else if (first + 80 > last)
+                parent.update_temp("underestimate");
+            else if (first + 130 > last)
+                parent.update_temp("slight_underestimate");
+            else if (first + 160 > last)
+                parent.update_temp("right");
+            else if (first + 220 > last)
+                parent.update_temp("slight_overestimate");
+            else if (first + 300 > last)
+                parent.update_temp("slight_overestimate");
+            else
+                parent.update_temp("overestimate");
+
+            console.log(first, last);
+
 
             // @Nina: Here are the valid update values:
             // parent.update_temp("right");
