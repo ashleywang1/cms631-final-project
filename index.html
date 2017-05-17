@@ -361,7 +361,7 @@
                 </div>
             </div>
         </section>
-        <section v-if="!postsurvey.equal_or_more || !postsurvey.how_likely || !postsurvey.belief" class="hero is-dark vertical-padding">
+        <section v-if="!postsurvey.equal_or_more || !postsurvey.how_likely || !postsurvey.belief || !postsurvey.stay_paris" class="hero is-dark vertical-padding">
             <div class="container" style="text-align: center;">
                 <br/>
                 <h1 class="title">Let us know how we're doing!</h1>
@@ -397,6 +397,17 @@
                     </div>
                     <br/>
                 </div>
+                <div v-if="!postsurvey.stay_paris">
+                    <p class="subtitle is-5">
+                        Do you think we should stay in the Paris Agreement?
+                    </p>
+                    <div class="block">
+                      <a @click="postsurvey.stay_paris='yes'" class="button">Yes, absolutely.</a>
+                      <a @click="postsurvey.stay_paris='not-sure'" class="button">I'm not sure.</a>
+                      <a @click="postsurvey.stay_paris='no'" class="button">No.</a>
+                    </div>
+                    <br/>
+                </div>
             </div>
         </section>
     </main>
@@ -426,7 +437,8 @@
                 postsurvey: {
                     equal_or_more: false,
                     how_likely: false,
-                    belief: false
+                    belief: false,
+                    stay_paris: false
                 },
                 stats: {
                     pct_right: 10,
@@ -497,6 +509,9 @@
                 },
                 "postsurvey.belief": function (new_value) {
                     Logger.log({"event": "postsurvey", "postsurvey.belief": new_value});
+                },
+                "postsurvey.stay_paris": function (new_value) {
+                    Logger.log({"event": "postsurvey", "postsurvey.stay_paris": new_value});
                 }
             }
         });
