@@ -22,6 +22,11 @@
         left: 0; right: 0;
       }
 
+      #carSelection {
+        display: block;
+        padding: 10px;
+      }
+
       .car {
         width: 100px;
         height: 100px;
@@ -37,7 +42,6 @@
 
       .carLabel {
         font-size: 12px;
-        /*width: 100%;*/
       }
       
       select {
@@ -45,16 +49,9 @@
         padding: 10px;
       }
 
-      .example_car {
-        width: 150px;
-        height: 100px;
+      .percentile_label {
         padding: 0.5em;
         float: left;
-        margin: 110px 20px 20px 70px;
-      }
-
-      .example_car img{
-        width: 100%;
       }
 
       .percentile {
@@ -76,14 +73,6 @@
         cursor: pointer;
       }
 
-      #getYourCar {
-        margin: 10px;
-      }
-
-      #getRandomCar {
-        margin: 10px;
-      }
-
       .carLabel {
         font-size: 12px;
       }
@@ -91,13 +80,16 @@
       #droppable {
         width: 100%;
         height: 150px;
-        float: left;
+      }
+
+      #result {
+        padding: 10px;
       }
     </style>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="../js/car_data.js"></script>
-    <script src="js/logger.js"></script>
+    <script src="../js/logger.js"></script>
     <script>
 
       var getCarInfo = function () {
@@ -116,18 +108,21 @@
 
       $( function() {
         // Set up the text
-        $("#right").hide();
-        $("#wrong").hide();
+        $(".result").hide();
+        $("#garage").hide();
 
         // Set up the car selection
         metadata.forEach(function(c) {
           $("#manufacturer").append("<option>" + c.mfr +"</option>");
-        });
 
-        getCarOptions("aston martin").forEach(function(c) {
-          $("#carType").append("<option>" + c.car + "</option>");
-          // console.log(c.car);
-        })
+        });
+        $("#manufacturer")[0].selectedIndex = 0;
+        $("#carType").append("<option disabled>Car Make and Model</option>");
+        $("#carType")[0].selectedIndex = 0;
+
+        // getCarOptions("aston martin").forEach(function(c) {
+        //   $("#carType").append("<option>" + c.car + "</option>");
+        // })
 
         // Set up the drag and drop game
         $( "#draggable" ).draggable();
@@ -137,42 +132,49 @@
             console.log(event);
             var percentage = ((ui.offset.left + OFFSET)/$( this ).width())*100;
             var car = getCarInfo();
-            var l, h;
+            var l, h, correct;
             switch(car.score) {
               case 0:
                 l = -3;
                 h = 16;
+                correct = "right_bad";
                 break;
               case 25:
                 l = 18;
                 h = 36;
+                correct = "right_bad";
                 break;
               case 50:
                 l = 37;
                 h = 56;
+                correct = "right_middle";
                 break;
               case 75:
                 l = 58;
                 h = 76;
+                correct = "right_good";
                 break;
               case 100:
                 l = 78;
                 h = 92;
+                correct = "right_good";
                 break;
             }
             if (percentage > l && percentage < h) {
               console.log("correct");
-              $("#right").show();
-              $("#wrong").hide();
-            } else {
-              $("#right").hide();
-              $("#wrong").show();
+              $(".fe_percent").html(car.score);
+              $(".fe").html(car.fe);
+              $(".result").hide();
+              $("#" + correct).show();
+            } else if (percentage < l) {
+              // guessed too low
+              $(".result").hide();
+              $("#low").show();
               console.log("wrong");
+            } else if (percentage > h) {
+              $(".result").hide();
+              $("#high").show();
             }
-            $( this )
-              // .addClass( "ui-state-highlight" )
-              .find( "p" )
-                .html(percentage.toFixed(0) + "%");
           }
         });
 
@@ -185,82 +187,75 @@
           });
         };
 
-        document.getElementById("getYourCar").onclick = function(e) {
-          $("#draggable").html("");
+        document.getElementById("carType").onchange = function(e) {
           var mfr = $("#manufacturer")[0].options[$("#manufacturer")[0].selectedIndex].text
           var car = $("#carType")[0].options[$("#carType")[0].selectedIndex].text
-          $("#draggable").append("<img src='../img/yCar.png'/><center><label class='carLabel'>" + mfr + " " + car + "</label></center>");
+          // var id = mfr + car;
+          // $("#" + id).html("");
+          $("#draggable").append("<img src='../img/yCar.png'/><center><label class='carLabel'>" + mfr + "</label></center>");
+          
+          $( "#garage").show();
           Logger.log({"event": "car_manufacturer", mfr});
           Logger.log({"event": "car_type", car});
         }
-
-        document.getElementById("getRandomCar").onclick = function(e) {
-          $("#draggable").html("");
-          $("#draggable").append("<img src='../img/yCar.png'/><center><label class='carLabel'>Your car</label></center>");
-        }
-
-        // prevent dragging default
-        $(document).on('mousedown', ".example_car img", function(evt) {
-          evt.preventDefault();
-        });
-
       });
 
     </script>
   </head>
   <body>
-    <div class="title" id="instructions" width="50%">
-      <h1>How fuel efficient do you think your car is?</h1>
-    </div>
-    <div id="garage">
-      <p>What kind of car do you have?</p>
-      <select name="manufactuer" id="manufacturer">
-      </select>
-      <select name="carType" id="carType">
-      </select>
-      <button type="button" id="getYourCar"> Get your car </button>
-      <span> Can't find yours? </span>
-      <button type="button" id="getRandomCar">Random car </button>
-    </div>
-    <div id="draggable"></div>
-    <div id="droppable">
-      <p style="position: absolute;">Drag your car here</p>
-      <!-- ["#edf8e9","#bae4b3","#74c476","#31a354","#006d2c"] -->
-      <div class="percentile" value="0" style="background:#edf8e9">
-        <div class="example_car">
-          <img src="../img/lamborghini.png" />
-          <center><label class="carLabel">Lamborghini</label></center>
+    <div class="columns is-multiline is-mobile">
+      <div class="column is-7">
+        <div id="carSelection">
+          <p>Choose your car</p>
+          <select class="select" name="manufactuer" id="manufacturer">
+            <option disabled> Manufacturer </option>
+          </select>
+          <select class="select" name="carType" id="carType">
+            <option disabled> Car Make and Model </option>
+          </select>
+          <br>
         </div>
       </div>
-      <div class="percentile" value="25" style="background:#bae4b3">
-        <div class="example_car">
-          <img src="../img/ford_focus.png" />
-          <center><label class="carLabel">Ford Focus</label></center>
+      <div class="column is-3" id="garage">
+        <p style="padding:10px;">Drag this car to the place on the scale below!</p>
+      </div>
+      <div class="column is-2">
+        <div id="draggable"></div>
+      </div>
+      <div class="column is-12">
+        <div id="droppable">
+          <!-- ["#edf8e9","#bae4b3","#74c476","#31a354","#006d2c"] -->
+          <div class="percentile" value="0" style="background:#edf8e9">
+            <p class="percentile_label">0%</p>
+          </div>
+          <div class="percentile" value="25" style="background:#bae4b3">
+            <p class="percentile_label">25%</p>
+          </div>
+          <div class="percentile" value="50" style="background:#74c476">
+            <p class="percentile_label">50%</p>
+          </div>
+          <div class="percentile" value="75" style="background:#31a354">
+            <p class="percentile_label">75%</p>
+          </div>
+          <div class="percentile" value="100" style="background:#006d2c">
+            <p class="percentile_label">100%</p>
+          </div>
         </div>
       </div>
-      <div class="percentile" value="50" style="background:#74c476">
-        <div class="example_car">
-          <img src="../img/audi.png" />
-          <center><label class="carLabel">Volkswagon Audi</label></center>
+      <div class="column">
+        <div>
+          <!-- <p class="result" id="wrong">Drag the car into the category you think it belongs to. You're not quite there yet!</p>
+          <p class="result" id="right">You've got it! This car has a fuel efficiency of <span class="fe"></span> miles per gallon, which puts it into the <span class="fe_percent"></span>th percentile of all the cars in our dataset!</p>
+          <p class="result" id="way2low">Cut yourself some slack, your car is better than you think. Click and drag your car to try again!</p> -->
+          <br>
+          <p class="result" id="low">Your car is a bit greener than you think. Click and drag your car to try again!</p>
+          <p class="result" id="right_bad">Good job, you got it! This car has a fuel efficiency of <span class="fe"></span> miles per gallon, which puts it into the <span class="fe_percent"></span>th percentile of all the cars in our dataset! Petroleum costs the US almost $5.2 billion in imports a week and driving a inefficient car can hurt your wallet too. Not to worry, companies are introducing more and more fuel efficient cars. Consider one the next time you buy a car!</p>
+          <p class="result" id="right_middle">Good job, you got it! This car has a fuel efficiency of <span class="fe"></span> miles per gallon, which puts it into the <span class="fe_percent"></span>th percentile of all the cars in our dataset! Petroleum costs the US almost $5.2 billion in imports a week and driving a inefficient car can hurt your wallet too. You’re car is just about average, but it can still be better. Companies are introducing more and more fuel efficient cars. Consider one the next time you buy a car!</p>
+          <p class="result" id="right_good">Good job, you got it! This car has a fuel efficiency of <span class="fe"></span> miles per gallon, which puts it into the <span class="fe_percent"></span>th percentile of all the cars in our dataset! Your car is fuel efficient, keep up the good work!</p>
+          <!-- <p class="result" id="high">Good guess, you’re so close! Click and drag your car to try again!</p> -->
+          <p class="result" id="high">Unfortunately, this was too optimistic a guess. Click and drag your car to try again!</p>
         </div>
       </div>
-      <div class="percentile" value="75" style="background:#31a354">
-        <div class="example_car">
-          <img src="../img/honda_accord.png" />
-          <center><label class="carLabel">Honda Accord</label></center>
-        </div>
-      </div>
-      <div class="percentile" value="100" style="background:#006d2c">
-        <div class="example_car">
-          <img src="../img/toyota_prius.png" />
-          <center><label class="carLabel">Toyota Prius</label></center>
-        </div>
-      </div>
-    </div>
-    <br>
-    <div id="result">
-      <p id="wrong">Drag the car into the category you think it belongs to. You're not quite there yet!</p>
-      <p id="right">You've got it! This car has a fuel efficiency of <span id="fe"></span> miles per gallon, which puts it into the <span id="fe_percent"></span>th percentile of all the cars in our dataset!</p>
     </div>
   </body>
 </html>
