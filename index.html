@@ -182,20 +182,11 @@
         <section class="hero is-dark vertical-padding">
             <div class="container">
                 <p>
-                    The graph below shows how much greenhouse gases the US emitted in 2005. How much do you think we would have to cut those emissions to meet our commitments under the Paris agreement?
+                    The graph below shows how much greenhouse gases the US emitted in 2005. How much do you think we would have to cut those emissions to meet our commitments under the Paris agreement? Click on the up and down arrows below to change the greenhouse gases emitted by various sources to see how we might reach the Paris goal.
                 </p>
                 <figure class="has-text-centered vertical-padding">
                     <iframe class="interactive" src="js/bubbles.html" scrolling="no"></iframe>
                 </figure>
-                <div v-if="co2.drew" class="vertical-padding">
-                    <div v-if="co2.decrease" class="notification is-warning">
-                      It looks like you thought the co2 would go down. Don't feel bad, X% of people thought so too! In
-                        reality, however, we think Y.
-                    </div>
-                    <div v-if="!co2.decrease" class="notification is-primary">
-                        Great! You are correct. I don't know what to say here so I'm just typing random things now!
-                    </div>
-                </div>
                 <p>
                     In order for the United States to live up to its promise in the Paris agreement, it will have to cut its greenhouse gas emissions by 26 to 28 percent of 2005 levels by 2025.
                 </p>
@@ -279,9 +270,9 @@
                         Your <b>{{emissions.result.bike_distance_in_meters/1000}} km</b> bike to (and from?) work emits <strong>{{emissions.result.bike}} lbs</strong> of carbon dioxide. Over the course of a year, that adds up to <strong>{{emissions.result.bike_yearly}} lbs</strong>.
                     </p>
 
-                    <p class="vertical-padding" v-if="emissions.result.car > 66">
+                    <!--<p class="vertical-padding" v-if="emissions.result.car > 66">
                         Your commute seems to be far more than an hour long! You are creating more than 66 lbs of carbon per commute. That's about the size of a Dalmatian! I'm so sorry for you :( , and we can't create a graphic in that case because your carbon footprint is too big.
-                    </p>
+                    </p>-->
 
                     <div class="vertical-padding" v-if="emissions.result.has_transit && emissions.result.pct_saving_if_bus > 0">
                         Lucky for you, there’s a bus route that can get you to work.  By taking the bus, you could cut your emissions by
