@@ -24,5 +24,15 @@ Logger.log = function (data) {
     console.log(event);
 
     // temporary endpoint for storage
-    $.post('http://the-road-to-paris.kevz.me:3000/log', JSON.stringify(event));
+    // $.post('https://the-road-to-paris.kevz.me:3000/log', JSON.stringify(event));
+    $.get("https://api.myjson.com/bins/toguh", function (arr) {
+         arr.push(event);
+         $.ajax({
+             url: 'https://api.myjson.com/bins/toguh',
+             type: 'PUT',
+             data: JSON.stringify(arr),
+             contentType:"application/json; charset=utf-8",
+             dataType:"json",
+         });
+     })
 };
