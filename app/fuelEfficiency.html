@@ -182,6 +182,7 @@
         document.getElementById("manufacturer").onchange = function(e) {
           var mfr = $("#manufacturer")[0].options[e.target.selectedIndex].value
           $("#carType").html("");
+          $("#carType").append("<option disabled>Car Make and Model</option>");
           getCarOptions(mfr).forEach(function(c) {
             $("#carType").append("<option>" + c.car + "</option>");
           });
