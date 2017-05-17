@@ -15,6 +15,7 @@ report("")
 
 nb_people = 0
 counter = {}
+regions = {}
 for event in events:
     href = event["context"]["location"]["href"]
     if "?" in href:
@@ -23,10 +24,20 @@ for event in events:
             counter[href] = set()
         if "ip" in event["context"]["ip_info"] and event["context"]["ip_info"]["ip"][:3] != "18.":
             counter[href].add(event["context"]["ip_info"]["ip"])
+            region = event["context"]["ip_info"]["region_name"]
+            if region not in regions:
+                regions[region] = set()
+            regions[region].add(event["context"]["ip_info"]["ip"])
+            print()
 report("traffic sources:")
 for k, v in counter.items():
     report(" - " + k + ": " + str(len(v)))
     nb_people += len(v)
+report("")
+
+report("regions:")
+for k, v in regions.items():
+    report(" - " + k + ": " + str(len(v)))
 report("")
 
 petition_ip = set()
@@ -53,6 +64,7 @@ def make_postsurvey():
     equal_or_more_concerned = {}
     how_likely_change_commute = {}
     belief_people_change_helps = {}
+    stay_in_paris_agreement = {}
     for user, values in postsurvey_ip.items():
         for thing in values:
             if "postsurvey.equal_or_more" in thing:
@@ -67,9 +79,14 @@ def make_postsurvey():
                 if thing["postsurvey.belief"] not in belief_people_change_helps:
                     belief_people_change_helps[thing["postsurvey.belief"]] = 0
                 belief_people_change_helps[thing["postsurvey.belief"]] += 1
+            if "postsurvey.stay_paris" in thing:
+                if thing["postsurvey.stay_paris"] not in stay_in_paris_agreement:
+                    stay_in_paris_agreement[thing["postsurvey.stay_paris"]] = 0
+                stay_in_paris_agreement[thing["postsurvey.stay_paris"]] += 1
     report("equal_or_more_concerned: " + str(equal_or_more_concerned) + "\n")
     report("how_likely_change_commute: " + str(how_likely_change_commute) + "\n")
     report("belief_people_change_helps: " + str(belief_people_change_helps) + "\n")
+    report("stay_in_paris_agreement: " + str(stay_in_paris_agreement) + "\n")
 make_postsurvey()
 
 """
