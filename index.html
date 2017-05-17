@@ -263,7 +263,7 @@
                         Your <b>{{emissions.result.distance_in_meters/1000}} km</b> drive to work emits <strong>{{emissions.result.car}} lbs</strong> of carbon dioxide. Over the course of a year, that adds up to <strong>{{emissions.result.car_yearly}} lbs</strong>.
                     </p>
                     <p class="vertical-padding" v-if="emissions.travel_mode == 'BUS'">
-                        Your <b>{{emissions.result.transit_distance/1000}} km</b> route to (and from?) work emits <strong>{{emissions.result.bus}} lbs</strong> of carbon dioxide. Over the course of a year, that adds up to <strong>{{emissions.result.bus_yearly}} lbs</strong>.
+                        Your <b>{{emissions.result.transit_distance/1000}} km</b> route to work emits <strong>{{emissions.result.bus}} lbs</strong> of carbon dioxide. Over the course of a year, that adds up to <strong>{{emissions.result.bus_yearly}} lbs</strong>.
                     </p>
 
                     <p class="vertical-padding" v-if="emissions.travel_mode == 'BIKE'">
