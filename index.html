@@ -269,12 +269,7 @@
 
                         Your <b>{{emissions.result.bike_distance_in_meters/1000}} km</b> bike to (and from?) work emits <strong>{{emissions.result.bike}} lbs</strong> of carbon dioxide. Over the course of a year, that adds up to <strong>{{emissions.result.bike_yearly}} lbs</strong>.
                     </p>
-
-                    <!--<p class="vertical-padding" v-if="emissions.result.car > 66">
-                        Your commute seems to be far more than an hour long! You are creating more than 66 lbs of carbon per commute. That's about the size of a Dalmatian! I'm so sorry for you :( , and we can't create a graphic in that case because your carbon footprint is too big.
-                    </p>-->
-
-                    <div class="vertical-padding" v-if="emissions.result.has_transit && emissions.result.pct_saving_if_bus > 0">
+                    <div class="vertical-padding" v-if="emissions.result.has_transit && emissions.result.pct_saving_if_bus > 0 && emissions.travel_mode == 'CAR'">
                         Lucky for you, there’s a bus route that can get you to work.  By taking the bus, you could cut your emissions by
                         <b>{{emissions.result.pct_saving_if_bus}}%</b>. Having just one driver switch to public transportation can reduce
                         the typical American household’s annual carbon footprint by <a href = "https://www.transit.dot.gov/sites/fta.dot.gov/files/docs/PublicTransportationsRoleInRespondingToClimateChange2010.pdf">over 8 percent</a>! Imagine what the impact would be if
@@ -288,13 +283,39 @@
                             </div>
                         </div>
                     </div>
+                    <div class="vertical-padding" v-if="emissions.result.has_transit && emissions.result.pct_saving_if_bus > 0 && emissions.travel_mode == 'BUS'">
+                        Good job to you for taking public transportation to work! By taking the bus, you are cutting your emissions by
+                        <b>{{emissions.result.pct_saving_if_bus}}%</b>. By doing this instead of driving, you are reducing your household’s annual carbon footprint by <a href = "https://www.transit.dot.gov/sites/fta.dot.gov/files/docs/PublicTransportationsRoleInRespondingToClimateChange2010.pdf">over 8 percent</a>! Imagine what the impact would be if
+                        millions of Americans made that simple change!
 
-                    <div class="vertical-padding" v-if="emissions.result.distance_in_meters < 5000">
+
+                        <div style="text-align: center">
+                            <div class="my-container" style="position: relative; width: 50%; margin-left:25%;">
+                                  <img src="img/Footprint.png"/>
+                                  <img src="img/FootprintUser.png" style="position:absolute;top:50%;left:50%; transform:translate(-50%, -50%);" :style="{width: 100 - emissions.result.pct_saving_if_bus + '%', height: 100 -emissions.result.pct_saving_if_bus + '%'}"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="vertical-padding" v-if="emissions.result.distance_in_meters < 5000 && emissions.travel_mode != 'BIKE'">
                         {{emissions.result.has_transit ? "It" : "Fortunately, it"}} looks like you work close enough to home to bike or walk there.
                         By biking or walking, you could reduce your emissions by <b>{{emissions.result.pct_saving_if_bike}}%</b>.
                         Replacing cars with bikes also reduces traffic congestion, increases air quality, improves physical fitness,
                         and saves you money on gasoline and car maintenance. And during rush hour, biking could even get you to work (or back home)
                         more quickly than driving!
+
+                        <div style="text-align: center">
+                            <div class="my-container" style="position: relative; width: 50%; margin-left:25%;">
+                                  <img src="img/Footprint.png"/>
+                                  <img src="img/FootprintUser.png" style="position:absolute;top:50%;left:50%; transform:translate(-50%, -50%);" :style="{width: 100-emissions.result.pct_saving_if_bike + '%', height: 100-emissions.result.pct_saving_if_bike + '%'}"/>
+                            </div>
+                        </div>
+                   </div>
+
+                   <div class="vertical-padding" v-if="emissions.travel_mode == 'BIKE'">
+                        Good job to you for biking to work! By biking or walking, you are reducing your emissions by <b>{{emissions.result.pct_saving_if_bike}}%</b> compared to if you were driving.
+                        Replacing cars with bikes also reduces traffic congestion, increases air quality, improves physical fitness,
+                        and saves you money on gasoline and car maintenance.
 
                         <div style="text-align: center">
                             <div class="my-container" style="position: relative; width: 50%; margin-left:25%;">
