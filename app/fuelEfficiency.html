@@ -191,8 +191,9 @@
         document.getElementById("carType").onchange = function(e) {
           var mfr = $("#manufacturer")[0].options[$("#manufacturer")[0].selectedIndex].text
           var car = $("#carType")[0].options[$("#carType")[0].selectedIndex].text
-          // var id = mfr + car;
-          // $("#" + id).html("");
+          $("#draggable").html("");
+          $("#draggable").attr("style", "position: relative;left:0px;top:0px;");
+          $("#carContainer").append($("#draggable"));
           $("#draggable").append("<img src='../img/yCar.png'/><center><label class='carLabel'>" + mfr + "</label></center>");
           
           $( "#garage").show();
@@ -220,7 +221,7 @@
       <div class="column is-3" id="garage">
         <p style="padding:10px;">Drag your car to its place on the scale below!</p>
       </div>
-      <div class="column is-2">
+      <div class="column is-2" id="carContainer">
         <div id="draggable"></div>
       </div>
       <div class="column is-12">
@@ -246,13 +247,13 @@
       <div class="column">
         <div>
           <!-- <p class="result" id="wrong">Drag the car into the category you think it belongs to. You're not quite there yet!</p>
-          <p class="result" id="right">You've got it! This car has a fuel efficiency of <span class="fe"></span> miles per gallon, which puts it into the <span class="fe_percent"></span>th percentile of all the cars in our dataset!</p>
+          <p class="result" id="right">You've got it! This car has a fuel efficiency of <span class="fe"></span> miles per gallon, which puts it into the <span class="fe_percent"></span> of all the cars in our dataset!</p>
           <p class="result" id="way2low">Cut yourself some slack, your car is better than you think. Click and drag your car to try again!</p> -->
           <br>
           <p class="result" id="low">Your car is a bit greener than you think. Click and drag your car to try again!</p>
-          <p class="result" id="right_bad">Good job, you got it! This car has a fuel efficiency of <span class="fe"></span> miles per gallon, which puts it into the <span class="fe_percent"></span>th percentile of all the cars in our dataset! Petroleum costs the US almost $5.2 billion in imports a week and driving a inefficient car can hurt your wallet too. Not to worry, companies are introducing more and more fuel efficient cars. Consider one the next time you buy a car!</p>
-          <p class="result" id="right_middle">Good job, you got it! This car has a fuel efficiency of <span class="fe"></span> miles per gallon, which puts it into the <span class="fe_percent"></span>th percentile of all the cars in our dataset! Petroleum costs the US almost $5.2 billion in imports a week and driving a inefficient car can hurt your wallet too. You’re car is just about average, but it can still be better. Companies are introducing more and more fuel efficient cars. Consider one the next time you buy a car!</p>
-          <p class="result" id="right_good">Good job, you got it! This car has a fuel efficiency of <span class="fe"></span> miles per gallon, which puts it into the <span class="fe_percent"></span>th percentile of all the cars in our dataset! Your car is fuel efficient, keep up the good work!</p>
+          <p class="result" id="right_bad">Good job, you got it! This car has a fuel efficiency of <span class="fe"></span> miles per gallon, which puts it into the bottom half of all the cars in our database! Not to worry, companies are introducing more and more fuel efficient cars. Consider one the next time you buy a car!</p>
+          <p class="result" id="right_middle">Good job, you got it! This car has a fuel efficiency of <span class="fe"></span> miles per gallon, which makes it roughly average amongst the cars in our database. You’re car is just about average, but it can still be better. Companies are introducing more and more fuel efficient cars. Consider one the next time you buy a car!</p>
+          <p class="result" id="right_good">Good job, you got it! This car has a fuel efficiency of <span class="fe"></span> miles per gallon, which puts it into the top half of all the cars in our dataset. Your car is fuel efficient, keep up the good work!</p>
           <!-- <p class="result" id="high">Good guess, you’re so close! Click and drag your car to try again!</p> -->
           <p class="result" id="high">Unfortunately, this was too optimistic a guess. Click and drag your car to try again!</p>
         </div>
