@@ -1,17 +1,17 @@
-331 tracked events
+360 tracked events
 
 traffic sources:
+ - ?campaign=march-for-science: 21
+ - ?campaign=reddit: 8
  - ?campaign=friends-and-family: 5
- - ?campaign=reddit: 11
- - ?campaign=march-for-science: 20
 
-7 of 36 people clicked on the petition
+5 of 34 people clicked on the petition
 
-13 of 36 people completed the post-survey
+11 of 34 people completed the post-survey
 
-equal_or_more_concerned: {'equally': 8, 'slightly': 4}
+equal_or_more_concerned: {'slightly': 2, 'equally': 9}
 
-how_likely_change_commute: {'not-at-all': 6, 'slightly': 7}
+how_likely_change_commute: {'slightly': 6, 'not-at-all': 5}
 
-belief_people_change_helps: {'big': 4, 'none': 1, 'some': 8}
+belief_people_change_helps: {'big': 4, 'some': 7}
 

@@ -21,7 +21,7 @@ for event in events:
         href = href[href.index("?"):]
         if href not in counter:
             counter[href] = set()
-        if "ip" in event["context"]["ip_info"]:
+        if "ip" in event["context"]["ip_info"] and event["context"]["ip_info"]["ip"][:3] != "18.":
             counter[href].add(event["context"]["ip_info"]["ip"])
 report("traffic sources:")
 for k, v in counter.items():
@@ -32,7 +32,7 @@ report("")
 petition_ip = set()
 for event in events:
     if event["data"]["event"] == "petition":
-        if "ip" in event["context"]["ip_info"]:
+        if "ip" in event["context"]["ip_info"] and event["context"]["ip_info"]["ip"][:3] != "18.":
             petition_ip.add(event["context"]["ip_info"]["ip"])
 report(str(len(petition_ip)) + " of " + str(nb_people) + " people clicked on the petition")
 report("")
@@ -41,7 +41,7 @@ def make_postsurvey():
     postsurvey_ip = {}
     for event in events:
         if event["data"]["event"] == "postsurvey":
-            if "ip" in event["context"]["ip_info"]:
+            if "ip" in event["context"]["ip_info"] and event["context"]["ip_info"]["ip"][:3] != "18.":
                 ip = event["context"]["ip_info"]["ip"]
                 if ip not in postsurvey_ip:
                     postsurvey_ip[ip] = []
