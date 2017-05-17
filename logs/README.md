@@ -1,26 +1,17 @@
 331 tracked events
 
 traffic sources:
- - ?campaign=march-for-science: 20
  - ?campaign=friends-and-family: 5
  - ?campaign=reddit: 11
+ - ?campaign=march-for-science: 20
 
 7 of 36 people clicked on the petition
 
 13 of 36 people completed the post-survey
 
-postsurvey results
-[{'postsurvey.equal_or_more': 'equally'}, {'postsurvey.how_likely': 'not-at-all'}, {'postsurvey.belief': 'some'}]
-[{'postsurvey.how_likely': 'slightly'}, {'postsurvey.belief': 'none'}]
-[{'postsurvey.belief': 'big'}, {'postsurvey.how_likely': 'slightly'}, {'postsurvey.equal_or_more': 'slightly'}]
-[{'postsurvey.how_likely': 'not-at-all'}, {'postsurvey.belief': 'some'}, {'postsurvey.equal_or_more': 'equally'}]
-[{'postsurvey.equal_or_more': 'equally'}, {'postsurvey.how_likely': 'not-at-all'}, {'postsurvey.belief': 'some'}]
-[{'postsurvey.equal_or_more': 'slightly'}, {'postsurvey.how_likely': 'slightly'}, {'postsurvey.belief': 'big'}]
-[{'postsurvey.equal_or_more': 'equally'}, {'postsurvey.how_likely': 'slightly'}, {'postsurvey.belief': 'some'}]
-[{'postsurvey.equal_or_more': 'equally'}, {'postsurvey.how_likely': 'not-at-all'}, {'postsurvey.belief': 'some'}]
-[{'postsurvey.equal_or_more': 'equally'}, {'postsurvey.how_likely': 'not-at-all'}, {'postsurvey.belief': 'some'}]
-[{'postsurvey.equal_or_more': 'slightly'}, {'postsurvey.how_likely': 'slightly'}, {'postsurvey.belief': 'some'}]
-[{'postsurvey.equal_or_more': 'slightly'}, {'postsurvey.how_likely': 'not-at-all'}, {'postsurvey.belief': 'some'}]
-[{'postsurvey.equal_or_more': 'equally'}, {'postsurvey.how_likely': 'slightly'}, {'postsurvey.belief': 'big'}]
-[{'postsurvey.belief': 'big'}, {'postsurvey.equal_or_more': 'equally'}, {'postsurvey.how_likely': 'slightly'}]
+equal_or_more_concerned: {'equally': 8, 'slightly': 4}
+
+how_likely_change_commute: {'not-at-all': 6, 'slightly': 7}
+
+belief_people_change_helps: {'big': 4, 'none': 1, 'some': 8}
 

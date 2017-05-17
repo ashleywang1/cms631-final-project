@@ -37,22 +37,40 @@ for event in events:
 report(str(len(petition_ip)) + " of " + str(nb_people) + " people clicked on the petition")
 report("")
 
-postsurvey_ip = {}
-for event in events:
-    if event["data"]["event"] == "postsurvey":
-        if "ip" in event["context"]["ip_info"]:
-            ip = event["context"]["ip_info"]["ip"]
-            if ip not in postsurvey_ip:
-                postsurvey_ip[ip] = []
-            del event["data"]["event"]
-            postsurvey_ip[ip].append(event["data"])
-report(str(len(postsurvey_ip)) + " of " + str(nb_people) + " people completed the post-survey")
-report("")
+def make_postsurvey():
+    postsurvey_ip = {}
+    for event in events:
+        if event["data"]["event"] == "postsurvey":
+            if "ip" in event["context"]["ip_info"]:
+                ip = event["context"]["ip_info"]["ip"]
+                if ip not in postsurvey_ip:
+                    postsurvey_ip[ip] = []
+                del event["data"]["event"]
+                postsurvey_ip[ip].append(event["data"])
+    report(str(len(postsurvey_ip)) + " of " + str(nb_people) + " people completed the post-survey")
+    report("")
 
-report("postsurvey results")
-for user, values in postsurvey_ip.items():
-    report(str(values))
-report("")
+    equal_or_more_concerned = {}
+    how_likely_change_commute = {}
+    belief_people_change_helps = {}
+    for user, values in postsurvey_ip.items():
+        for thing in values:
+            if "postsurvey.equal_or_more" in thing:
+                if thing["postsurvey.equal_or_more"] not in equal_or_more_concerned:
+                    equal_or_more_concerned[thing["postsurvey.equal_or_more"]] = 0
+                equal_or_more_concerned[thing["postsurvey.equal_or_more"]] += 1
+            if "postsurvey.how_likely" in thing:
+                if thing["postsurvey.how_likely"] not in how_likely_change_commute:
+                    how_likely_change_commute[thing["postsurvey.how_likely"]] = 0
+                how_likely_change_commute[thing["postsurvey.how_likely"]] += 1
+            if "postsurvey.belief" in thing:
+                if thing["postsurvey.belief"] not in belief_people_change_helps:
+                    belief_people_change_helps[thing["postsurvey.belief"]] = 0
+                belief_people_change_helps[thing["postsurvey.belief"]] += 1
+    report("equal_or_more_concerned: " + str(equal_or_more_concerned) + "\n")
+    report("how_likely_change_commute: " + str(how_likely_change_commute) + "\n")
+    report("belief_people_change_helps: " + str(belief_people_change_helps) + "\n")
+make_postsurvey()
 
 """
 TODO:
