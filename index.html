@@ -67,7 +67,7 @@
         </div>
     </section>
     <main>
-        <section class="hero is-dark vertical-padding">
+        <section v-if="!presurvey.how_concerned || !presurvey.individual_actions" class="hero is-dark vertical-padding">
             <div class="container" style="text-align: center;">
                 <h1 class="title">A few quick questions to help us customize your experience:</h1>
                 <br/>
@@ -112,15 +112,6 @@
                     <figure class="has-text-centered vertical-padding">
                         <iframe class="interactive" src="app/temperature.html" scrolling="no"></iframe>
                     </figure>
-                    <div v-if="temperature.drew" style="background:red;">
-                        temporary trigger different text:
-                        <button @click="temperature.status='right'">right</button>
-                        <button @click="temperature.status='wrong'">wrong</button>
-                        <button @click="temperature.status='underestimate'">underestimate</button>
-                        <button @click="temperature.status='overestimate'">overestimate</button>
-                        <button @click="temperature.status='slight_underestimate'">slight_underestimate</button>
-                        <button @click="temperature.status='slight_overestimate'">slight_overestimate</button>
-                    </div>
                 </div>
                 <div v-if="temperature.drew" class="vertical-padding">
                     <div v-if="temperature.status == 'right'" class="notification is-primary">
@@ -372,8 +363,8 @@
             el: "main",
             data: {
                 presurvey: {
-                    complete: false,
-                    how_concerned: false
+                    how_concerned: false,
+                    individual_actions: false
                 },
                 stats: {
                     pct_right: 10,
@@ -402,7 +393,7 @@
                     var self = this;
                     self.temperature.drew = true;
                     self.temperature.status = status;
-                    Logger.log({"event": "temperature", status});
+                    Logger.log({"event": "temperature", "temperature.status": status});
                 },
                 update_co2: function (path) {
                     var self = this;
@@ -428,6 +419,14 @@
                         self.emissions.result = res;
                     })
                 }
+            },
+            watch: {
+                "presurvey.how_concerned": function (new_value) {
+                    Logger.log({"event": "presurvey", "presurvey.how_concerned": new_value});
+                },
+                "presurvey.individual_actions": function (new_value) {
+                    Logger.log({"event": "presurvey", "presurvey.individual_actions": new_value});
+                },
             }
         });
         update_temp = vm.update_temp;
