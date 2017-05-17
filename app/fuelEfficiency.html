@@ -189,6 +189,7 @@
         };
 
         document.getElementById("carType").onchange = function(e) {
+          $(".result").hide();
           var mfr = $("#manufacturer")[0].options[$("#manufacturer")[0].selectedIndex].text
           var car = $("#carType")[0].options[$("#carType")[0].selectedIndex].text
           $("#draggable").html("");
