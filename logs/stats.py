@@ -4,7 +4,7 @@ from glob import glob
 fout = open("README.md", "wt")
 def report(text):
     print(text)
-    fout.write(text + "\n")
+    fout.write(text + "\r\n")
 
 
 events = []
