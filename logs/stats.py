@@ -4,7 +4,7 @@ from glob import glob
 fout = open("README.md", "wt")
 def report(text):
     print(text)
-    fout.write(text + "\r\n")
+    fout.write(text + "\n")
 
 
 events = []
@@ -24,7 +24,7 @@ for event in events:
             counter[href].add(event["context"]["ip_info"]["ip"])
 report("traffic sources:")
 for k, v in counter.items():
-    report("    " + k + ": " + str(len(v)))
+    report(" - " + k + ": " + str(len(v)))
 report("")
 
 nb_petition = 0
