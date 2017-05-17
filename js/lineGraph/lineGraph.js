@@ -58,11 +58,11 @@ function draw() {
     noStroke();
   }
 
+
   data.forEach(function(entry) {
     entry.update();  // run the next animation step
     entry.display();
   });
-
 
 }
 
@@ -99,11 +99,11 @@ function DataPoint(idx, amt) {
       textSize(18);
       if(temps[idx] < 0){
       fill(0, 209, 178);
-      text("Temperatures dropped " + -1*temps[idx] + "° Celsius.", 20, 75);
+      text("Temperatures dropped " + -1*temps[idx] + "° Celsius from the mean.", 20, 75);
     }
     else{
       fill(255, 56, 97);
-      text("Temperatures rose " + temps[idx] + "° Celsius.", 20, 75);
+      text("Temperatures rose " + temps[idx] + "° Celsius from the mean.", 20, 75);
     }
     }
   }
