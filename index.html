@@ -337,9 +337,47 @@
                     <h2>
                         And while you’re at it, take a few moments to show support for <br/>
                         environmentally friendly energy and climate policies by signing <br/>
-                        these petitions and calling your Congressional representatives.
+                        <a href="https://www.change.org/p/congress-president-trump-keep-the-paris-climate-accord">this petition</a> and calling your Congressional representatives.
                     </h2>
                 </div>
+            </div>
+        </section>
+        <section v-if="!postsurvey.equal_or_more || !postsurvey.how_likely || !postsurvey.belief" class="hero is-dark vertical-padding">
+            <div class="container" style="text-align: center;">
+                <br/>
+                <h1 class="title">Let us know how we're doing!</h1>
+                <br/>
+                <div v-if="!postsurvey.equal_or_more">
+                    <p class="subtitle is-5">After going through our web page, are you equally concerned or more concerned about climate change?</p>
+                    <div class="block">
+                      <a @click="postsurvey.equal_or_more='much-more'" class="button">Much more concerned</a>
+                      <a @click="postsurvey.equal_or_more='slightly'" class="button">Slightly more concerned</a>
+                      <a @click="postsurvey.equal_or_more='equally'" class="button">Equally concerned</a>
+                    </div>
+                </div>
+                <br/>
+                <div v-if="!postsurvey.how_likely">
+                    <p class="subtitle is-5">
+                        How likely are you to change the way you commute to work after going through our web page?
+                    </p>
+                    <div class="block">
+                      <a @click="postsurvey.how_likely='very'" class="button">Very likely</a>
+                      <a @click="postsurvey.how_likely='slightly'" class="button">Slightly likely</a>
+                      <a @click="postsurvey.how_likely='not-at-all'" class="button">Not at all likely</a>
+                    </div>
+                </div>
+                <br/>
+                <div v-if="!postsurvey.belief">
+                    <p class="subtitle is-5">
+                        To what extent do you believe that if many people chose greener commuting options, it would help reduce greenhouse gas emissions?
+                    </p>
+                    <div class="block">
+                      <a @click="postsurvey.belief='big'" class="button">It will make a big difference.</a>
+                      <a @click="postsurvey.belief='some'" class="button">It would make some difference.</a>
+                      <a @click="postsurvey.belief='none'" class="button">It wouldn't change anything.</a>
+                    </div>
+                </div>
+                <br/>
             </div>
         </section>
     </main>
@@ -365,6 +403,11 @@
                 presurvey: {
                     how_concerned: false,
                     individual_actions: false
+                },
+                postsurvey: {
+                    equal_or_more: false,
+                    how_likely: false,
+                    belief: false
                 },
                 stats: {
                     pct_right: 10,
@@ -427,6 +470,15 @@
                 "presurvey.individual_actions": function (new_value) {
                     Logger.log({"event": "presurvey", "presurvey.individual_actions": new_value});
                 },
+                "postsurvey.equal_or_more": function (new_value) {
+                    Logger.log({"event": "postsurvey", "postsurvey.equal_or_more": new_value});
+                },
+                "postsurvey.how_likely": function (new_value) {
+                    Logger.log({"event": "postsurvey", "postsurvey.how_likely": new_value});
+                },
+                "postsurvey.belief": function (new_value) {
+                    Logger.log({"event": "postsurvey", "postsurvey.belief": new_value});
+                }
             }
         });
         update_temp = vm.update_temp;
