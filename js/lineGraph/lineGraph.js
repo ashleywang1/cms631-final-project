@@ -27,9 +27,9 @@ function setup() {
   temps = table.getColumn("Mean");
   years = table.getColumn("Year");
 
-  bounds.left = 5;
+  bounds.left = 30;
   bounds.right = width-5;
-  bounds.top = 300;
+  bounds.top = 30;
   bounds.bottom = height-5;
 
   for (var i = 0; i < dataCount; i++) {
@@ -37,15 +37,31 @@ function setup() {
     data.push(new DataPoint(i, temperature));
   }
 
+
+
 }
 
 function draw() {
   background(255);
 
-  // put a white rectangle behind the plot
-  fill(255);
-  rectMode(CORNERS);
-  rect(bounds.left, bounds.top, bounds.right, bounds.bottom);
+  // // put a white rectangle behind the plot
+   fill(255);
+   rectMode(CORNERS);
+   rect(bounds.left, bounds.top, bounds.right, bounds.bottom);
+
+
+
+  var meany = map(0, -1, 1, bounds.bottom, bounds.top);
+  stroke(200);
+  strokeWeight(2);
+  line(0, meany, width, meany);
+  fill(200);
+  noStroke();
+  textSize(15);
+  text("Mean Temp.\n1951-1980", width-90, meany-25)
+  strokeWeight(1.5);
+  noStroke();
+
 
   for(var i = 0; i<table.getRowCount()-1; i++){
     var coord1y = map(temps[i], -1, 1, bounds.bottom, bounds.top);
@@ -59,10 +75,29 @@ function draw() {
   }
 
 
+
   data.forEach(function(entry) {
     entry.update();  // run the next animation step
     entry.display();
   });
+
+  var x = 30;
+  var y = 200;
+  push();
+  fill(96);
+  textSize(20);
+  translate(30,300);
+  rotate(-HALF_PI);
+  translate(-x,-y);
+  text("Temperature Change", x,y);
+  pop();
+
+  fill(96);
+  textSize(20);
+  text("Years", 10, height-125);
+
+
+
 
 }
 
