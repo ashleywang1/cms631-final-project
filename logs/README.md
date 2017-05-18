@@ -1,58 +1,60 @@
-945 tracked events
+975 tracked events
 
 traffic sources:
- - ?campaign=reddit: 19
- - ?campaign=test: 0
- - ?campaign=march-for-science: 50
  - ?campaign=friends-and-family: 20
+ - ?campaign=test: 1
+ - ?campaign=march-for-science: 52
+ - ?campaign=reddit: 19
 
 regions:
- - Alaska: 2
- - Ontario: 1
- - Wisconsin: 1
- - Ohio: 1
+ - British Columbia: 1
  - Oregon: 5
+ - Maine: 2
+ - North Carolina: 3
  - : 5
- - Arizona: 1
- - Massachusetts: 7
- - Washington: 5
- - Colorado: 1
- - Quebec: 1
- - Virginia: 2
- - Selangor: 1
  - New South Wales: 1
- - Louisiana: 2
- - Stann Creek District: 1
+ - Maryland: 1
+ - Minnesota: 1
+ - Indiana: 2
+ - Colorado: 1
+ - Alaska: 2
+ - Georgia: 2
+ - Washington: 5
+ - Quebec: 1
+ - New Jersey: 2
+ - Selangor: 1
  - Lapponia: 1
  - Texas: 3
- - Indiana: 1
- - Pennsylvania: 3
- - Georgia: 2
- - British Columbia: 1
- - Illinois: 4
- - Florida: 3
+ - Arizona: 1
  - Queensland: 1
- - New Jersey: 2
- - North Carolina: 3
- - Scotland: 1
- - Minnesota: 1
- - California: 12
- - England: 3
- - New York: 5
- - Maryland: 1
+ - Massachusetts: 8
+ - Wisconsin: 1
+ - Virginia: 2
+ - Pennsylvania: 3
+ - Louisiana: 2
+ - Illinois: 4
  - Mississippi: 2
- - Maine: 2
+ - England: 3
+ - Scotland: 1
+ - California: 12
+ - New York: 6
+ - Florida: 3
+ - Stann Creek District: 1
+ - Ohio: 1
+ - Ontario: 1
  - District of Columbia: 1
 
-13 of 89 people clicked on the petition
+13 of 92 people clicked on the petition
 
-30 of 89 people completed the post-survey
+0 of 92 people clicked on the find your representative
 
-equal_or_more_concerned: {'much-more': 4, 'equally': 20, 'slightly': 6}
+31 of 92 people completed the post-survey
 
-how_likely_change_commute: {'not-at-all': 15, 'very': 4, 'slightly': 10}
+equal_or_more_concerned: {'equally': 21, 'slightly': 6, 'much-more': 4}
 
-belief_people_change_helps: {'some': 14, 'none': 1, 'big': 15}
+how_likely_change_commute: {'very': 4, 'not-at-all': 16, 'slightly': 10}
 
-stay_in_paris_agreement: {'yes': 16, 'no': 1, 'not-sure': 2}
+belief_people_change_helps: {'none': 1, 'some': 14, 'big': 16}
+
+stay_in_paris_agreement: {'yes': 17, 'no': 1, 'not-sure': 2}
 

@@ -48,6 +48,14 @@ for event in events:
 report(str(len(petition_ip)) + " of " + str(nb_people) + " people clicked on the petition")
 report("")
 
+representative_ip = set()
+for event in events:
+    if event["data"]["event"] == "representatives":
+        if "ip" in event["context"]["ip_info"] and event["context"]["ip_info"]["ip"][:3] != "18.":
+            representative_ip.add(event["context"]["ip_info"]["ip"])
+report(str(len(representative_ip)) + " of " + str(nb_people) + " people clicked on the find your representative")
+report("")
+
 def make_postsurvey():
     postsurvey_ip = {}
     for event in events:

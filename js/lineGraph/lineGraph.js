@@ -58,7 +58,7 @@ function draw() {
   fill(200);
   noStroke();
   textSize(15);
-  text("Mean Temp.\n1951-1980", width-90, meany+20)
+  text("Mean Temp.\n1888-2016", width-90, meany+20)
   strokeWeight(1.5);
   noStroke();
 
