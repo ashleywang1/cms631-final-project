@@ -51,7 +51,10 @@ function draw() {
   ellipse(xmax, height/2, maxsize, maxsize)
   noStroke();
   fill(255);
-  text("Paris Agreement Goal", xmax-maxsize*.74/4 - 40, height/2);
+  text("2005", xmax-maxsize*.74/4 + 50, height/2-170);
+  noStroke();
+  fill(255);
+  text("Paris Agreement", xmax-maxsize*.74/4 + 5, height/2-90);
   noFill();
   strokeWeight(3);
   // stroke(150, 255, 255, 150);
