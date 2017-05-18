@@ -31,7 +31,7 @@ function getCommute(origin, destination, callback) {
                 callback({
                     "distance_in_meters": distance_in_meters,
                     "bike_distance_in_meters": biking_distance_in_meters,
-                    "car": Math.floor(car),
+                    "car": Math.round(car*10)/10,
                     "car_yearly": Math.floor(car*YEARLY_MULTIPLIER),
                     "bus": Math.floor(bus),
                     "bus_yearly": Math.floor(bus*YEARLY_MULTIPLIER),
