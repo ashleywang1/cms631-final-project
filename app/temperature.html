@@ -28,8 +28,10 @@
     <main>
         <iframe style="width:50%;height:100%;" src="../js/lineGraph/index.html"></iframe>
         <svg id="paint"/>
+        <button id="show_projections" class="button is-info" style="position: absolute;bottom: 5px;right: 5px;" onclick="show_true();$(this).remove()">Show Projections</button>
     </main>
     <script>
+        $("#show_projections").hide();
         function makeGraph(selector) {
             let w = window.innerWidth / 2;
             let h = window.innerHeight;
@@ -42,7 +44,7 @@
         }
 
         makeGraph("#graph");
-        makePaint("#paint", function (path) {
+        show_true = makePaint("#paint", function (path) {
             var first, last;
             for (var i = 0; i <= 10; i++)
                 if (path[i]) {
@@ -57,20 +59,19 @@
 
             if (first > last)
                 parent.update_temp("wrong");
-            else if (first + 80 > last)
+            else if (last < 500)
                 parent.update_temp("underestimate");
-            else if (first + 130 > last)
+            else if (last < 550)
                 parent.update_temp("slight_underestimate");
-            else if (first + 160 > last)
+            else if (last < 570)
                 parent.update_temp("right");
-            else if (first + 220 > last)
-                parent.update_temp("slight_overestimate");
-            else if (first + 300 > last)
+            else if (last < 590)
                 parent.update_temp("slight_overestimate");
             else
                 parent.update_temp("overestimate");
 
             console.log(first, last);
+            $("#show_projections").show();
 
 
             // @Nina: Here are the valid update values:

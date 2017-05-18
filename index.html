@@ -127,7 +127,7 @@
                 </div>
                 <div v-if="temperature.drew" class="vertical-padding">
                     <div v-if="temperature.status == 'right'" class="notification is-primary">
-                        <h2 class="title">Wow, you’re spot-on!</h2>
+                        <h2 class="title" style="color:white;padding-bottom:5px;">Wow, you’re spot-on!</h2>
                         <p>
                             Only 5% of our users’ predictions align precisely with those of scientists, who estimate 
                             that average global temperatures will rise by 3.6 °C by the year 2100, or roughly 6.5 °F, 
@@ -262,7 +262,8 @@
                             </div>
                             <div class="field">
                                 <p class="has-text-right">
-                                    <button id="calculate_emissions" class="button is-primary" @click="compute_emissions">Calculate</button>
+                                    <button id="calculate_emissions" class="button is-primary" @click="compute_emissions" v-if="!emissions_loading">Calculate</button>
+                                    <a class="button is-primary is-loading" v-if="emissions_loading">Loading</a>
                                 </p>
                             </div>
                         </div>
@@ -375,7 +376,7 @@
                             Sign the petition.
                         </a></h2>
                         <h2 class="petition subtitle"><a target="_blank" @click="Logger.log({'event':'representatives'})" href="https://townhallproject.com/">
-                            <i class="fa fa-commenting" aria-hidden="true" style="vertical-align: middle;"></i>
+                            <i class="fa fa-commenting" aria-hidden="true"></i>
                             Find your representatives.
                         </a></h2>
                     </div>
@@ -451,6 +452,7 @@
         const vm = new Vue({
             el: "main",
             data: {
+                emissions_loading: false,
                 presurvey: {
                     how_concerned: false,
                     individual_actions: false
@@ -499,6 +501,7 @@
                 },
                 compute_emissions: function () {
                     var self = this;
+                    self.emissions_loading = true;
                     if (self.emissions.origin == "" || self.emissions.destination == "") {
                         alert("Please fill in your route details!");
                         return;
@@ -512,6 +515,7 @@
                     console.log(self.emissions.destination);
                     getCommute(self.emissions.origin, self.emissions.destination, function (res) {
                         self.emissions.result = res;
+                        self.emissions_loading = false;
                     })
                 }
             },

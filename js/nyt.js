@@ -42,7 +42,7 @@ function makePaint(selector, callback) {
             background
                 .on("mousemove",function(d,i){
                     position = Math.round(d3.event.offsetX/(w/bars));
-                    pathdata[0] = [0, 300];
+                    pathdata[0] = [0, 400];
                     pathdata[position] = [position*w/bars,d3.mouse(this)[1]];
                     path.datum(_.values(pathdata)).attr("d",line);
                     svg
@@ -60,4 +60,22 @@ function makePaint(selector, callback) {
                     if (callback) callback(pathdata)
                 })
         });
+
+    show_true = function () {
+        let line = d3.line()
+            .x(d=>d[0])
+            .y(d=>d[1]);
+
+        let pathdata = {
+            0: [0, 400],
+            1: [225, 280],
+            2: [450, 40],
+        };
+        let path = svg.append("path")
+            .attr("class","true-line");
+        path.datum(_.values(pathdata)).attr("d", line);
+
+        console.log("hi!");
+    }
+    return show_true;
 }
