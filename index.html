@@ -51,6 +51,18 @@
             box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.2);
             color: #363636;
         }
+
+        .petition {
+            padding: 10px;
+            width 100px;
+            display: inline-block;
+            color: white;
+            background-color: #3273dc;
+        }
+
+        .petition:hover {
+            background-color: #4283ec;
+        }
     </style>
 </head>
 <body>
@@ -109,22 +121,23 @@
                   How do you think average global temperatures will change in the future if we continue emitting greenhouse gases at our current rate? Move your mouse over the dots to see how temperatures in each past year compared to the average temperature between 1888 and 2016. Then click on the blank space and drag the mouse to draw what you predict will happen to global temperatures between now and 2100. Don't worry about exact values, we have omitted the axis to help you focus on the trends.
                 </p>
                 <div class="has-text-centered vertical-padding">
-                    <p>
-
-                    </p>
                     <figure class="has-text-centered vertical-padding">
                         <iframe class="interactive" src="app/temperature.html" scrolling="no"></iframe>
                     </figure>
                 </div>
                 <div v-if="temperature.drew" class="vertical-padding">
                     <div v-if="temperature.status == 'right'" class="notification is-primary">
-                        Wow, you’re spot-on! Only 5% of our users’ predictions align precisely with those
-                        of scientists, who estimate that average global temperatures will rise by 3.6 °C by the year 2100, or roughly 6.5 °F, if the US and the rest
-                        of the world don’t take significant action to curb greenhouse gas emissions. That’s
-                        the difference between a warm spring day in the mid-60’s and a toastier summer day
-                        in the low 70’s.
+                        <h2 class="title">Wow, you’re spot-on!</h2>
+                        <p>
+                            Only 5% of our users’ predictions align precisely with those of scientists, who estimate 
+                            that average global temperatures will rise by 3.6 °C by the year 2100, or roughly 6.5 °F, 
+                            if the US and the rest of the world don’t take significant action to curb greenhouse gas 
+                            emissions. That’s the difference between a warm spring day in the mid-60’s and a toastier 
+                            summer day in the low 70’s.
+                        </p>
                     </div>
                     <div v-if="temperature.status == 'wrong'" class="notification is-warning">
+                        <h2 class="title">Well, actually...</h2>
                         It looks like you thought global temperatures will go down in the future. However,
                         scientists actually predict that if the US and the rest of the world don’t take
                         significant action to curb greenhouse gas emissions, average global temperatures
@@ -132,6 +145,7 @@
                         and a toastier summer day in the low 70’s.
                     </div>
                     <div v-if="temperature.status == 'underestimate'" class="notification is-warning">
+                        <h2 class="title">You’re right!</h2>
                         It looks like you thought global temperatures will go up in the future. You’re
                         absolutely right, but like 25% of our users, you underestimated how much temperatures
                         will increase. Scientists actually predict that if the US and the rest of the world
@@ -141,6 +155,7 @@
                         a toastier summer day in the low 70’s.
                     </div>
                     <div v-if="temperature.status == 'overestimate'" class="notification is-primary">
+                        <h2 class="title">You’re right!</h2>
                         It looks like you thought global temperatures will go up in the future. You’re
                         absolutely right, but like 40% of our users, you overestimated how much temperatures will
                         increase. Scientists actually predict that if the US and the rest of the world don’t take
@@ -150,6 +165,7 @@
                         in the low 70’s.
                     </div>
                     <div v-if="temperature.status == 'slight_underestimate'" class="notification is-warning">
+                        <h2 class="title">You’re right!</h2>
                         It looks like you thought global temperatures will go up in the future. You’re absolutely
                         right, but like 20% of our users, you underestimated how much temperatures will increase.
                         You were really close though! Scientists actually predict that if the US and the rest of
@@ -158,6 +174,7 @@
                         between a pleasant spring day in the mid-60’s and a toastier summer day in the low 70’s.
                     </div>
                     <div v-if="temperature.status == 'slight_overestimate'" class="notification is-primary">
+                        <h2 class="title">You’re right!</h2>
                         It looks like you thought global temperatures will go up in the future. You’re absolutely
                         right, but like 10% of our users, you overestimated how much temperatures will increase.
                         You were really close though! Scientists actually predict that if the US and the rest of
@@ -205,7 +222,7 @@
                 <p>If you are a car owner, how do you think your car ranks in terms of fuel efficiency? The boxes below range in terms of fuel efficiency, with the least fuel efficient in light green on the left and the most fuel efficient in dark green on the right. First, choose your car's manufacturer and model to get your car. Then, drag and drop your car into the category you think it belongs to.</p>
                 <figure class="has-text-centered vertical-padding">
                     <div class="container">
-                        <iframe class="car_interactive" src="app/fuelEfficiency.html" scrolling="no"></iframe>
+                        <iframe class="car_interactive" style="height:470px;" src="app/fuelEfficiency.html" scrolling="no"></iframe>
                     </div>
                 </figure>
                 <br/>
@@ -353,9 +370,13 @@
                     </h2>
                     <div>
                         <br/>
-                        <h2 class="subtitle"><a target="_blank" @click="Logger.log({'event':'petition'})" href="https://www.change.org/p/congress-president-trump-keep-the-paris-climate-accord" style="color:#3273dc;">
-                            Petition: Save Our Planet. <br/>
-                            Keep the Paris Climate Accord.
+                        <h2 class="petition subtitle"><a target="_blank" @click="Logger.log({'event':'petition'})" href="https://www.change.org/p/congress-president-trump-keep-the-paris-climate-accord">
+                            <i class="fa fa-pencil-square-o" aria-hidden="true" style="vertical-align: middle;"></i>
+                            Sign the petition.
+                        </a></h2>
+                        <h2 class="petition subtitle"><a target="_blank" @click="Logger.log({'event':'representatives'})" href="https://townhallproject.com/">
+                            <i class="fa fa-commenting" aria-hidden="true" style="vertical-align: middle;"></i>
+                            Find your representatives.
                         </a></h2>
                     </div>
                 </div>
