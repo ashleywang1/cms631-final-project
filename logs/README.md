@@ -1,51 +1,56 @@
-546 tracked events
+858 tracked events
 
 traffic sources:
- - ?campaign=friends-and-family: 7
- - ?campaign=reddit: 12
- - ?campaign=march-for-science: 27
+ - ?campaign=march-for-science: 47
+ - ?campaign=reddit: 18
+ - ?campaign=friends-and-family: 19
 
 regions:
- - : 4
- - Pennsylvania: 1
- - California: 4
  - New South Wales: 1
- - Alaska: 1
- - Selangor: 1
- - Florida: 2
- - Maryland: 1
- - Minnesota: 1
- - Stann Creek District: 1
- - Ontario: 1
- - Georgia: 2
+ - England: 3
+ - Florida: 3
  - Indiana: 1
- - New York: 4
- - Massachusetts: 1
- - Mississippi: 1
- - Washington: 1
- - Scotland: 1
- - Ohio: 1
- - England: 2
- - Oregon: 2
- - Maine: 1
+ - Colorado: 1
  - British Columbia: 1
- - Queensland: 1
- - Texas: 2
- - Illinois: 1
- - Virginia: 1
+ - Selangor: 1
+ - Texas: 3
+ - Lapponia: 1
+ - Pennsylvania: 2
+ - Alaska: 2
+ - Illinois: 4
+ - Ontario: 1
+ - Oregon: 5
+ - Mississippi: 2
+ - Wisconsin: 1
+ - Maryland: 1
+ - : 4
+ - Ohio: 1
+ - Massachusetts: 5
+ - California: 12
+ - Scotland: 1
+ - Arizona: 1
+ - Georgia: 2
  - North Carolina: 3
- - Louisiana: 1
- - New Jersey: 1
+ - Washington: 5
+ - Minnesota: 1
+ - Louisiana: 2
+ - Maine: 2
+ - Quebec: 1
+ - Queensland: 1
+ - Stann Creek District: 1
+ - New Jersey: 2
+ - New York: 5
+ - Virginia: 2
 
-6 of 46 people clicked on the petition
+12 of 84 people clicked on the petition
 
-16 of 46 people completed the post-survey
+28 of 84 people completed the post-survey
 
-equal_or_more_concerned: {'much-more': 2, 'slightly': 3, 'equally': 11}
+equal_or_more_concerned: {'equally': 19, 'much-more': 3, 'slightly': 6}
 
-how_likely_change_commute: {'slightly': 7, 'not-at-all': 8, 'very': 1}
+how_likely_change_commute: {'not-at-all': 15, 'very': 3, 'slightly': 9}
 
-belief_people_change_helps: {'big': 7, 'some': 9}
+belief_people_change_helps: {'none': 1, 'big': 14, 'some': 13}
 
-stay_in_paris_agreement: {'not-sure': 1, 'yes': 4}
+stay_in_paris_agreement: {'yes': 14, 'not-sure': 2, 'no': 1}
 
