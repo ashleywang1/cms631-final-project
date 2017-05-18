@@ -226,11 +226,15 @@
                     </div>
                 </figure>
                 <br/>
+                <p>
+                    How much CO2 do you think your commute produces? Enter your home and work address into the boxes below to see what your carbon footprint is. Are you using the most convenient mode of transportation, or could you be doing something a bit more environmentally friendly?
+                </p>
+                <br/>
                 <div class="column is-6 is-offset-3">
                     <div class="card">
                       <header class="card-header">
                         <p class="card-header-title">
-                          How much CO2 does your commute produce?
+                          What is your route? 
                         </p>
                         <a class="card-header-icon">
                           <span class="icon">
@@ -240,7 +244,7 @@
                       </header>
                       <div class="card-content">
                         <div class="content">
-                            <p> What is your route? </p>
+                            <p> No need to give us your exact address, a city or county is okay too!</p>
                             <div class="field">
                               <p class="control">
                                 <input class="input" type="text" placeholder="Origin" v-model="emissions.origin"/>
@@ -371,11 +375,11 @@
                     </h2>
                     <div>
                         <br/>
-                        <h2 class="petition subtitle"><a target="_blank" @click="Logger.log({'event':'petition'})" href="https://www.change.org/p/congress-president-trump-keep-the-paris-climate-accord">
+                        <h2 class="petition subtitle" style="width:300px"><a target="_blank" @click="Logger.log({'event':'petition'})" href="https://www.change.org/p/congress-president-trump-keep-the-paris-climate-accord">
                             <i class="fa fa-pencil-square-o" aria-hidden="true" style="vertical-align: middle;"></i>
                             Sign the petition.
                         </a></h2>
-                        <h2 class="petition subtitle"><a target="_blank" @click="Logger.log({'event':'representatives'})" href="https://townhallproject.com/">
+                        <h2 class="petition subtitle" style="width:300px"><a target="_blank" @click="Logger.log({'event':'representatives'})" href="https://townhallproject.com/">
                             <i class="fa fa-commenting" aria-hidden="true"></i>
                             Find your representatives.
                         </a></h2>
