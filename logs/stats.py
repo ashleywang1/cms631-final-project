@@ -28,7 +28,6 @@ for event in events:
             if region not in regions:
                 regions[region] = set()
             regions[region].add(event["context"]["ip_info"]["ip"])
-            print()
 report("traffic sources:")
 for k, v in counter.items():
     report(" - " + k + ": " + str(len(v)))
@@ -37,7 +36,7 @@ report("")
 
 report("regions:")
 for k, v in regions.items():
-    report(" - " + k + ": " + str(len(v)))
+    report("" + k + ", " + str(len(v)))
 report("")
 
 petition_ip = set()
