@@ -1,56 +1,58 @@
-858 tracked events
+945 tracked events
 
 traffic sources:
- - ?campaign=march-for-science: 47
- - ?campaign=reddit: 18
- - ?campaign=friends-and-family: 19
+ - ?campaign=reddit: 19
+ - ?campaign=test: 0
+ - ?campaign=march-for-science: 50
+ - ?campaign=friends-and-family: 20
 
 regions:
- - New South Wales: 1
- - England: 3
- - Florida: 3
- - Indiana: 1
- - Colorado: 1
- - British Columbia: 1
- - Selangor: 1
- - Texas: 3
- - Lapponia: 1
- - Pennsylvania: 2
  - Alaska: 2
- - Illinois: 4
  - Ontario: 1
- - Oregon: 5
- - Mississippi: 2
  - Wisconsin: 1
- - Maryland: 1
- - : 4
  - Ohio: 1
- - Massachusetts: 5
- - California: 12
- - Scotland: 1
+ - Oregon: 5
+ - : 5
  - Arizona: 1
- - Georgia: 2
- - North Carolina: 3
+ - Massachusetts: 7
  - Washington: 5
- - Minnesota: 1
- - Louisiana: 2
- - Maine: 2
+ - Colorado: 1
  - Quebec: 1
- - Queensland: 1
- - Stann Creek District: 1
- - New Jersey: 2
- - New York: 5
  - Virginia: 2
+ - Selangor: 1
+ - New South Wales: 1
+ - Louisiana: 2
+ - Stann Creek District: 1
+ - Lapponia: 1
+ - Texas: 3
+ - Indiana: 1
+ - Pennsylvania: 3
+ - Georgia: 2
+ - British Columbia: 1
+ - Illinois: 4
+ - Florida: 3
+ - Queensland: 1
+ - New Jersey: 2
+ - North Carolina: 3
+ - Scotland: 1
+ - Minnesota: 1
+ - California: 12
+ - England: 3
+ - New York: 5
+ - Maryland: 1
+ - Mississippi: 2
+ - Maine: 2
+ - District of Columbia: 1
 
-12 of 84 people clicked on the petition
+13 of 89 people clicked on the petition
 
-28 of 84 people completed the post-survey
+30 of 89 people completed the post-survey
 
-equal_or_more_concerned: {'equally': 19, 'much-more': 3, 'slightly': 6}
+equal_or_more_concerned: {'much-more': 4, 'equally': 20, 'slightly': 6}
 
-how_likely_change_commute: {'not-at-all': 15, 'very': 3, 'slightly': 9}
+how_likely_change_commute: {'not-at-all': 15, 'very': 4, 'slightly': 10}
 
-belief_people_change_helps: {'none': 1, 'big': 14, 'some': 13}
+belief_people_change_helps: {'some': 14, 'none': 1, 'big': 15}
 
-stay_in_paris_agreement: {'yes': 14, 'not-sure': 2, 'no': 1}
+stay_in_paris_agreement: {'yes': 16, 'no': 1, 'not-sure': 2}
 
