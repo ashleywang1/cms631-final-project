@@ -48,6 +48,18 @@ for event in events:
 report(str(len(petition_ip)) + " of " + str(nb_people) + " people clicked on the petition")
 report("")
 
+temperature_ip = {}
+for event in events:
+    if event["data"]["event"] == "temperature":
+        if "ip" in event["context"]["ip_info"] and event["context"]["ip_info"]["ip"][:3] != "18.":
+            if event["data"]["temperature.status"] not in temperature_ip:
+                temperature_ip[event["data"]["temperature.status"]] = set()
+            temperature_ip[event["data"]["temperature.status"]].add(event["context"]["ip_info"]["ip"])
+report("line drawings:")
+for k, v in temperature_ip.items():
+    report(" - " + k + ": " + str(len(v)))
+report("")
+
 representative_ip = set()
 for event in events:
     if event["data"]["event"] == "representatives":
