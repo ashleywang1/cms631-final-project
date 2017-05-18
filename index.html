@@ -82,8 +82,8 @@
         <section v-if="!presurvey.how_concerned || !presurvey.individual_actions" class="hero is-dark vertical-padding">
             <div class="container" style="text-align: center;">
                 <h1 class="title">A few quick questions to help us customize your experience:</h1>
-                <br/>
                 <div v-if="!presurvey.how_concerned">
+                    <br/>
                     <p class="subtitle is-5">How concerned are you about climate change?</p>
                     <div class="block">
                       <a @click="presurvey.how_concerned='very'" class="button">Very</a>
@@ -92,8 +92,8 @@
                       <a @click="presurvey.how_concerned='not-at-all'" class="button">Not at all</a>
                     </div>
                 </div>
-                <br/>
                 <div v-if="!presurvey.individual_actions">
+                    <br/>
                     <p class="subtitle is-5">
                         How much do you believe individual actions matter when it <br/>
                         comes to curbing green house gas emissions?
@@ -137,7 +137,7 @@
                         </p>
                     </div>
                     <div v-if="temperature.status == 'wrong'" class="notification is-warning">
-                        <h2 class="title">Well, actually...</h2>
+                        <h2 class="title" style="padding-bottom:5px;">Well, actually...</h2>
                         It looks like you thought global temperatures will go down in the future. However,
                         scientists actually predict that if the US and the rest of the world don’t take
                         significant action to curb greenhouse gas emissions, average global temperatures
@@ -145,7 +145,7 @@
                         and a toastier summer day in the low 70’s.
                     </div>
                     <div v-if="temperature.status == 'underestimate'" class="notification is-warning">
-                        <h2 class="title">You’re right!</h2>
+                        <h2 class="title" style="padding-bottom:5px;">You’re right!</h2>
                         It looks like you thought global temperatures will go up in the future. You’re
                         absolutely right, but like 25% of our users, you underestimated how much temperatures
                         will increase. Scientists actually predict that if the US and the rest of the world
@@ -155,7 +155,7 @@
                         a toastier summer day in the low 70’s.
                     </div>
                     <div v-if="temperature.status == 'overestimate'" class="notification is-primary">
-                        <h2 class="title">You’re right!</h2>
+                        <h2 class="title" style="color:white;padding-bottom:5px;">You’re right!</h2>
                         It looks like you thought global temperatures will go up in the future. You’re
                         absolutely right, but like 40% of our users, you overestimated how much temperatures will
                         increase. Scientists actually predict that if the US and the rest of the world don’t take
@@ -165,7 +165,7 @@
                         in the low 70’s.
                     </div>
                     <div v-if="temperature.status == 'slight_underestimate'" class="notification is-warning">
-                        <h2 class="title">You’re right!</h2>
+                        <h2 class="title" style="padding-bottom:5px;">You’re right!</h2>
                         It looks like you thought global temperatures will go up in the future. You’re absolutely
                         right, but like 20% of our users, you underestimated how much temperatures will increase.
                         You were really close though! Scientists actually predict that if the US and the rest of
@@ -174,7 +174,7 @@
                         between a pleasant spring day in the mid-60’s and a toastier summer day in the low 70’s.
                     </div>
                     <div v-if="temperature.status == 'slight_overestimate'" class="notification is-primary">
-                        <h2 class="title">You’re right!</h2>
+                        <h2 class="title" style="color:white;padding-bottom:5px;">You’re right!</h2>
                         It looks like you thought global temperatures will go up in the future. You’re absolutely
                         right, but like 10% of our users, you overestimated how much temperatures will increase.
                         You were really close though! Scientists actually predict that if the US and the rest of

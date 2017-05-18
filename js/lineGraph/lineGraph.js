@@ -29,7 +29,7 @@ function setup() {
 
   bounds.left = 30;
   bounds.right = width-5;
-  bounds.top = 30;
+  bounds.top = 300;
   bounds.bottom = height-5;
 
   for (var i = 0; i < dataCount; i++) {
@@ -58,7 +58,7 @@ function draw() {
   fill(200);
   noStroke();
   textSize(15);
-  text("Mean Temp.\n1951-1980", width-90, meany-25)
+  text("Mean Temp.\n1951-1980", width-90, meany+20)
   strokeWeight(1.5);
   noStroke();
 
@@ -89,12 +89,12 @@ function draw() {
   translate(30,300);
   rotate(-HALF_PI);
   translate(-x,-y);
-  text("Temperature Change", x,y);
+  text("Temperature", x-100,y);
   pop();
 
   fill(96);
   textSize(20);
-  text("Years", 10, height-125);
+  text("Years", width/2-20, height-25);
 
 
 
